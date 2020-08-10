@@ -4,11 +4,17 @@
 =
 =	#1 . jquery 참조 코드
 =
-=	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+=	A -> <script src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
 =
 =	#2 . 부트스트랩 참조 코드
 =
-=	<script src="/webjars/bootstrap/3.3.5/bootstrap.min.js"></script>
+=	B -> <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>'>
+=   C -> <script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
+=
+=		
+=	수정한 적용 코드구요.
+=	순서는 가급적 지켜주시는게 오류가 안날것 같습니다. B A C 순서대로 적용해주시면 됩니다.
+=	부트스트랩js 가 jquery를 못읽으면 에러가 발생하더라구요.
 =
 =========================================================================
 
