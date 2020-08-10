@@ -5,10 +5,17 @@
 	<title>Home</title>
 </head>
 <body>
+
+<%@ include file="common/header.jspf" %>
 <h1>
 	Hello world!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+
+
+
+<%@ include file="common/footer.jspf" %>
 </body>
 </html>
