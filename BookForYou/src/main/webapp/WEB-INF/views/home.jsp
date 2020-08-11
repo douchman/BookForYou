@@ -46,11 +46,15 @@ img {
 			</div>
 			<div class="item">
 				<img class="d-block w-100" src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Second slide">
-				<div class="carousel-caption">...</div>
+				<div class="carousel-caption">
+					<input type="button" class="btn btn-primary btn-lg" name="enter" value="입장하기">
+				</div>
 			</div>
 			<div class="item">
 				<img class="d-block w-100" src="https://images.pexels.com/photos/2544554/pexels-photo-2544554.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Third slide">
-				<div class="carousel-caption">...</div>
+				<div class="carousel-caption">
+					<input type="button" class="btn btn-warning btn-lg" name="enter" value="입장하기">
+				</div>
 			</div>
 		</div>
 
