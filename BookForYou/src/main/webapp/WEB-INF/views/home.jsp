@@ -14,8 +14,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 
-
-
 <%@ include file="common/footer.jspf" %>
 </body>
 </html>
