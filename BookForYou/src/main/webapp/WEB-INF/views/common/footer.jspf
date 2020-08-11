@@ -17,10 +17,8 @@
 </head>
 <body>
 
-	<div class="container">
-		<hr />
-	</div>
 
+	<hr />
 	<div class="contactfield row">
 		<div class="col-md-4">
 			<address>
