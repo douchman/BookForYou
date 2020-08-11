@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../common/header.jspf" %>
 
-
-
-HELLO
 <div class="container">
 
 <label> *ID </label><br>
@@ -21,6 +19,6 @@ HELLO
 </div>
 
 
-
+<%@ include file="../common/footer.jspf" %>
 </body>
 </html>
