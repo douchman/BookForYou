@@ -23,17 +23,9 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		
+	public String home() {
 		
 		return "home";
-	}
-	
-	@RequestMapping(value = "memberProc", method = RequestMethod.GET)
-	public String memberProc(Locale locale, Model model) {
-		
-		
-		return "/MemberShip/membershipForm";
 	}
 	
 }
