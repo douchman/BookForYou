@@ -6,17 +6,17 @@
 <meta charset="UTF-8">
 <title>BookForYou</title>
 <style type="text/css">
-h2 {
+h4 {
 	padding-left: 5%;
 }
 
-.col-sm-4 {
+.col-sm-3 {
 	text-align: center;
 }
 
 img{
 	width: 80%;
-	height: 342px;
+	height: 171px;
 }
 .row>div>.book:hover{
 	cursor: pointer;
@@ -25,17 +25,16 @@ img{
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jspf"%>
-	<form id="frm" action="detail" method="get">
+	<form id="frm" action="${home }detail" method="get">
 		<input id="bookName" type="hidden" name="bookName" />
-		<input id="searchStr" type="hidden" name="searchStr" />
 	</form>
 	<div class="panel panel-default">
-		<h2><b>이런 책 좋아하지?</b></h2>
+		<h4><b>${searchStr }</b></h4>
 	</div>
 	<div style="margin: 10px;">
 
 		<div class="row">
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
 					<div class="caption">
@@ -47,7 +46,7 @@ img{
 				</div>
 			</div>
 
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
 					<div class="caption">
@@ -58,7 +57,7 @@ img{
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
 					<div class="caption">
@@ -69,7 +68,7 @@ img{
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
 					<div class="caption">
@@ -80,7 +79,7 @@ img{
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
 					<div class="caption">
@@ -92,7 +91,76 @@ img{
 				</div>
 			</div>
 
-			<div class="col-sm-4 col-md-2">
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">바다에서 M</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 col-md-1">
+				<div class="book">
+					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
+					<div class="caption">
+						<p style="font-size: medium;">바다에서 M</p>
+					</div>
+					<div class="captionRating">
+						<b style="font-size: small;">평점 5.0</b>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3 col-md-1">
 				<div class="book">
 					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
 					<div class="caption">
@@ -112,12 +180,6 @@ $(function() {
 	$('.book').click(function(event) {
 		var bookName = $(this).children('.caption').children().text();
 		$('#bookName').val(bookName);
-		document.getElementById("frm").submit();
-	})
-	$('.panel').click(function(event) {
-		var searchStr = '안녕, 나의 빨강머리 앤';
-		$('#searchStr').val(searchStr);
-		document.getElementById("frm").action = "search";
 		document.getElementById("frm").submit();
 	})
 })

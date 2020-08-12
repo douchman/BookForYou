@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public class JedisPubSubClient {
 	private JedisPool pool;
 
-	public JedisPubSubClient(String hostName, int port, String password) {
+	public JedisPubSubClient(String hostName, int port, String password) {	//JedisPubSubClient("Redis Host Ip", Redis Port, "Redis Pw")
 		super();
 		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 		this.pool = new JedisPool(jedisPoolConfig, hostName, port, 1000, password);
