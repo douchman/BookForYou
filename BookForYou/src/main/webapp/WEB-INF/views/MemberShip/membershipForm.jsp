@@ -114,7 +114,7 @@ margin-bottom: 10px;
 
 
 
-
+<form method="post">
 	<div class="container">
 
 	
@@ -132,12 +132,12 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e1">
-			<input id="usrId" type="email"
+			<input id="usrid" type="email" name="usrid" value="${member.usrid }"
 				class="chkinput col-md-4 form-control col-md-offset-4"
 				placeholder="아이디(이메일)" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
 				
-				<input type="button"class="btn btn-primary" value="이메일인증">
+				<input type="button"class="btn btn-primary" value="중복확인">
 		</div>
 
 
@@ -146,7 +146,7 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e2">
-			<input id="usrNickName" type="text"
+			<input id="usrnickname" type="text" name="usrnickname" value="${member.usrnickname}"
 				class="chkinput col-md-4 form-control col-md-offset-4"
 				placeholder="2 ~ 8  글자" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
@@ -160,7 +160,7 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e3">
-			<input id="pw" type="text" class="col-md-4 form-control col-md-offset-4"
+			<input id="pw" name="pw" type="text" class="col-md-4 form-control col-md-offset-4"
 				placeholder="숫자, 영문, 특수문자 포함" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;">
 		</div>
@@ -232,15 +232,22 @@ margin-bottom: 10px;
 
 		<!-- onclick="location.href='nextMemberShipPage'" -->
 		<div class="row e7">
+			<!--  
 			<a href="nextMemberShipPage"><button class="btn btn-primary col-md-1 col-md-offset-7">
 				<span>다음 </span><span class="glyphicon glyphicon-arrow-right"></span>
 			</button></a>
+			-->
+			<input type="submit" 
+			class="btn btn-primary col-md-1 col-md-offset-7" 
+			value="다음"
+			onclick="javascript: form.action='nextMemberShipPage';"
+			>
 		</div>
 
 
 	</div>
 
-
+</form>
 	<%@ include file="../common/footer.jspf"%>
 	
 	<script src='<c:url value="/resources/js/memberForm.js" />'></script>

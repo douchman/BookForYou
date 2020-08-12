@@ -114,6 +114,10 @@ to {
 
 
 
+	<form>
+	<input type="hidden" name="usrid" value="${member.usrid}">
+	<input type="hidden" name="usrnickname" value="${member.usrnickname}">
+	<input type="hidden" name="pw" value="${member.pw}">
 	
 	<div id="wrapper" align="center" class="container">
 
@@ -193,19 +197,35 @@ to {
 
 
 		<div class="row area-btn">
+			<!--  
 			<button onclick="location.href='previousMemberShipPage'" class="btn btn-primary col-md-2 col-md-offset-3">
 				<span class="glyphicon glyphicon-arrow-left"></span><span> 이전</span>
 			</button>
 			
+			
 			<button onclick="location.href='myPage'" class="btn btn-primary col-md-2 col-md-offset-2">
 				<span>마이페이지 임시 이동 </span><span class="glyphicon glyphicon-arrow-right"></span>
 			</button>
+			
+			
+			-->
+			
+			<input class="btn btn-primary col-md-2 col-md-offset-3" value="이전으로" type="submit"
+			onclick="javascript : form.action='previousMemberShipPage';"
+			> 
+			
+			<input class="btn btn-primary col-md-2 col-md-offset-2" value="가입 완료" type="submit"
+			onclick="javascript : form.action='membershipResult';"
+			> 
+			
+			
+			
 		</div>
 
 
 
 	</div>
-
+</form>
 
 	<%@ include file="../common/footer.jspf"%>
 </body>
