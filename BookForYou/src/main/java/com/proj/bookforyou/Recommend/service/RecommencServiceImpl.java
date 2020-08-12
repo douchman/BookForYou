@@ -11,7 +11,7 @@ import redis.clients.jedis.Jedis;
 public class RecommencServiceImpl implements IRecommendService{
 	@Override
 	public void saveData(String usrId, String bookName, String score) {
-		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379, "1234");
+		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
 		Map<String, String> bookScore = new HashMap<String, String>();
@@ -23,7 +23,7 @@ public class RecommencServiceImpl implements IRecommendService{
 	}
 	@Override
 	public Map<String, String> loadData(String usrId) {
-		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379, "1234");
+		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
 		Map<String, String> usrScore = jedis.hgetAll(usrId);
