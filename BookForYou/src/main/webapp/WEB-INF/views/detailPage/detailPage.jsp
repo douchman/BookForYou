@@ -193,10 +193,8 @@
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용 <br />
 
 						<div align="left" class="reviewBtn">
-							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg"
-								width="25px" height="25px" style="vertical-align: bottom;">
-							5 <input type="button" value="좋아요" class="likeReiew"
-								style="margin-left: 83%;">
+							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg" width="25px" height="25px" style="vertical-align: bottom;"> 5
+							<input type="button" value="좋아요" class="likeReiew" style="margin-left: 83%;">
 						</div>
 					</div>
 					<div style="border: 1px solid; width: 600px; margin: auto;"
@@ -209,12 +207,10 @@
 
 						<div align="left" class="reviewBtn">
 							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg"
-								width="25px" height="25px" style="vertical-align: bottom;">
-							5 <input type="button" value="수정" class="modifyBtn"
-								onclick="popUp('/detailPage/modifyReview.jsp')"
-								style="margin-left: 65%;"> <input type="button"
-								value="삭제" class="deleteBtn"> <input type="button"
-								value="좋아요" class="likeReiew">
+								width="25px" height="25px" style="vertical-align: bottom;"> 5 
+								<input type="button" value="수정" class="modifyBtn" onclick="popUp('/detailPage/modifyReview.jsp')" style="margin-left: 65%;"> 
+								<input type="button" value="삭제" class="deleteBtn"> 
+								<input type="button" value="좋아요" class="likeReiew">
 						</div>
 					</div>
 
@@ -234,9 +230,9 @@
 			<li>
 			<table>
 				<tr>
-					<th rowspan="3"><img
-						src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-						height="200px" width="150px"></th>
+					<th rowspan="3">
+						<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px">
+					</th>
 					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
 				</tr>
 
@@ -252,9 +248,9 @@
 			<li>
 				<table>
 				<tr>
-					<th rowspan="3"><img
-						src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-						height="200px" width="150px"></th>
+					<th rowspan="3">
+						<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px">
+					</th>
 					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
 				</tr>
 
@@ -289,23 +285,19 @@
 				<table>
 					<tr>
 						<th rowspan="3">
-							<div
-								style="width: 300px; height: 360px; margin-left: 15px; float: right;">
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									<img
-										src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-										height="100%" width="100%">
+							<div style="width: 300px; height: 360px; margin-left: 15px; float: right;">
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="100%" width="100%">
 								</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									두번째 영역</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									세번째 영역</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									네번째 영역</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									두번째 영역
+								</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									세번째 영역
+								</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									네번째 영역
+								</div>
 							</div>
 						</th>
 					</tr>
@@ -327,23 +319,19 @@
 				<table>
 					<tr>
 						<th rowspan="3">
-							<div
-								style="width: 300px; height: 360px; margin-left: 15px; float: right;">
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									<img
-										src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-										height="100%" width="100%">
+							<div style="width: 300px; height: 360px; margin-left: 15px; float: right;">
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="100%" width="100%">
 								</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									두번째 영역</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									세번째 영역</div>
-								<div
-									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-									네번째 영역</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									두번째 영역
+								</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									세번째 영역
+								</div>
+								<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									네번째 영역
+								</div>
 							</div>
 						</th>
 					</tr>
