@@ -285,66 +285,82 @@
 
 		<div>
 			<ul>
-				<li>
-					<table>
-						<tr align="right">
-							<td>
+			<li>
+				<table>
+					<tr>
+						<th rowspan="3">
+							<div
+								style="width: 300px; height: 360px; margin-left: 15px; float: right;">
 								<div
-									style="width: 300px; height: 360px; margin-left: 15px; float: right;">
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										<img
-											src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-											height="100%" width="100%">
-									</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										두번째 영역</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										세번째 영역</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										네번째 영역</div>
-									<div>
-										<h4 style="float: left;">컬렉션 이름</h4>
-									</div>
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									<img
+										src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+										height="100%" width="100%">
 								</div>
-							</td>
-						</tr>
-					</table>
-				</li>
-				
-				<li>
-					<table>
-						<tr align="right">
-							<td>
 								<div
-									style="width: 300px; height: 360px; margin-left: 15px; float: right;">
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										<img
-											src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
-											height="100%" width="100%">
-									</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										두번째 영역</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										세번째 영역</div>
-									<div
-										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
-										네번째 영역</div>
-									<div>
-										<h4 style="float: left;">컬렉션 이름</h4>
-									</div>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</li>
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									두번째 영역</div>
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									세번째 영역</div>
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									네번째 영역</div>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<h3>컬렉션 이름</h3>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<h4>만든사람 닉네임</h4>
+						</td>
+					</tr>
+				</table>
+			</li>
 			
+			<li>
+				<table>
+					<tr>
+						<th rowspan="3">
+							<div
+								style="width: 300px; height: 360px; margin-left: 15px; float: right;">
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									<img
+										src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+										height="100%" width="100%">
+								</div>
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									두번째 영역</div>
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									세번째 영역</div>
+								<div
+									style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+									네번째 영역</div>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<h3>컬렉션 이름</h3>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<h4>만든사람 닉네임</h4>
+						</td>
+					</tr>
+				</table>
+			</li>
+
 			<li class="last">
 			<table>
 				<tr><td><input type="button" value="더보기" id="seeMoreBook" class="moreColl" style="width: 800px; height: 50px"></td></tr>
@@ -423,16 +439,15 @@
 	});
 	
 	$('.moreColl').on('click', function(){
-		$('<li><table><tr align="right"><td>' +						
+		$('<li><table><tr><th rowspan="3">' +						
 			'<div style="width: 300px; height: 360px; margin-left: 15px; float: right;">' +
 			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">'+
 			'<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="100%" width="100%"></div>' +
 			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">	두번째 영역</div>'+
 			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">세번째 영역</div>'+
-			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">네번째 영역</div>' +
-			'<div><h4 style="float: left;">컬렉션 이름</h4></div>' +
-			'</div></td></tr></table></li>')
-		.prependTo('.last');	//여기다 데이터를 저장해서 불러오기(json)
+			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">네번째 영역</div></th></tr>' +
+			'<tr><td><h3>컬렉션 이름</h3></td></tr><tr><td><h4>만든사람 닉네임</h4></td></tr></table></li>')
+		.prependTo('.last');	
 	});
 </script>
 </body>
