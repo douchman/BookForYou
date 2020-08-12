@@ -6,7 +6,31 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
+
+	<context:property-placeholder location="resources/DBconn" />
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		p:driverClassName="${driverClassName}" 
+		p:url="${url}"
+		p:username="${usrname}" 
+		p:password="${password}" />
+
+
+
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="/WEB-INF/spring/mapper/*.xml" />
+
+
+	<bean id="bfuMemberFactoryBean"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:mapperInterface="com.proj.bookforyou.MemberShip.ImemberDAO"
+		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
+
+
 </beans>

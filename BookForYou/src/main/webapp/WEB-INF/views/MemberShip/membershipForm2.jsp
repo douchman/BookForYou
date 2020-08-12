@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,17 +41,19 @@ to {
 }
 
 
-#wrapper .area-title{
+#wrapper .area-title, .area-head{
 	-webkit-animation : fadein 3s;
 	animation-delay : 50ms
 
 }
 
-#wrapper .area-title #headline1{
-	color: #1E90FF;
+.area-head .head-title{
+	color: #4682B4;
+	margin-bottom: 40px;
 }
 
-#wrapper .area-title #headline2{
+
+#wrapper .area-title #headline{
 	color: #808080;
 }
 
@@ -87,7 +90,7 @@ to {
 
 #wrapper .area-btn{
  	padding-top: 40px;
- 	-webkit-animation : fadein 3s;
+ 	-webkit-animation : fadein 4s;
 	animation-delay : 140ms
  }
 
@@ -100,31 +103,34 @@ to {
 	font-size: 15pt;
 }
 
-#brandlogo{
 
-	padding-bottom: 45px;
-}
 </style>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BookForYou - 선택 입력 사항</title>
 </head>
 <body>
-	<%@ include file="../common/header.jspf"%>
+	<%@ include file="../common/header2.jspf"%>
 
 
 
+	<form>
+	<input type="hidden" name="usrid" value="${member.usrid}">
+	<input type="hidden" name="usrnickname" value="${member.usrnickname}">
+	<input type="hidden" name="pw" value="${member.pw}">
 	
 	<div id="wrapper" align="center" class="container">
 
-		<div>
-			<a id="brandlogo" href="#"> 로고가 올 자리입니다. </a>
+		<div class="area-head">
+			
+			<h1 class="head-title"> <img src='<c:url value="/resources/img/textlogo_resize.png"/>'> 와 함께하기 2단계 </h1>
+			
 		</div>
 
 		<div class="area-title" style="height: 150px;">
-			<h2 id="headline1">고객님의 관심사를 표현해 주세요!</h2>
-
-			<h4 id="headline2">고객님의 소중한 정보는 고객님께 알맞은 책을 추천해드리는데 도움이 된답니다.</h4>
+			<h4 id="headline">회원님의 관심사를 표현해 주세요.</h4	>
+			<br>	
+			<h4 id="headline">회원님의 소중한 정보는 회원님께 알맞은 책을 추천해드리는데 도움이 된답니다.</h4>
 
 		</div>
 
@@ -132,13 +138,13 @@ to {
 	
 		<h5 class="h-title1"> 모든 관심사를 다 적으실 필요는 없습니다. </h5>
 		<h5 class="h-title2"> 원하시는 관심사만 설정해주세요. </h5>
-		<h5 class="h-title3"> 이 과정은 건너뛰어도 서비스 이용에 전혀 문제되지 않는답니다. </h5>
+		<h5 class="h-title3"> 이 과정을 건너뛰어도 서비스 이용에  문제되지 않습니다! </h5>
 			
 	</div>
 		
 
 		<div class="area-interest seq1">
-			<span class="item-txt"> #1 고객님의 관심사</span>
+			<span class="item-txt"> #1회원님의 관심사</span>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle"
 					data-toggle="dropdown" aria-expanded="false">
@@ -155,7 +161,7 @@ to {
 		</div>
 
 		<div class="area-interest seq2">
-			<span class="item-txt"> #2 고객님의 관심사</span>
+			<span class="item-txt"> #2 회원님의 관심사</span>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle"
 					data-toggle="dropdown" aria-expanded="false">
@@ -172,7 +178,7 @@ to {
 		</div>
 		
 		<div class="area-interest seq3">
-			<span class="item-txt"> #3 고객님의 관심사</span>
+			<span class="item-txt"> #3 회원님의 관심사</span>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle"
 					data-toggle="dropdown" aria-expanded="false">
@@ -191,19 +197,35 @@ to {
 
 
 		<div class="row area-btn">
+			<!--  
 			<button onclick="location.href='previousMemberShipPage'" class="btn btn-primary col-md-2 col-md-offset-3">
 				<span class="glyphicon glyphicon-arrow-left"></span><span> 이전</span>
 			</button>
 			
+			
 			<button onclick="location.href='myPage'" class="btn btn-primary col-md-2 col-md-offset-2">
 				<span>마이페이지 임시 이동 </span><span class="glyphicon glyphicon-arrow-right"></span>
 			</button>
+			
+			
+			-->
+			
+			<input class="btn btn-primary col-md-2 col-md-offset-3" value="이전으로" type="submit"
+			onclick="javascript : form.action='previousMemberShipPage';"
+			> 
+			
+			<input class="btn btn-primary col-md-2 col-md-offset-2" value="가입 완료" type="submit"
+			onclick="javascript : form.action='membershipResult';"
+			> 
+			
+			
+			
 		</div>
 
 
 
 	</div>
-
+</form>
 
 	<%@ include file="../common/footer.jspf"%>
 </body>
