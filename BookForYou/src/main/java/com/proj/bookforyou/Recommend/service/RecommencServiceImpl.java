@@ -95,6 +95,9 @@ public class RecommencServiceImpl implements IRecommendService {
 				similarityTable[j][i] = similarityTable[i][j];
 			}
 		}
+		for(int i=0; i<usrList.size(); i++) {
+			similarityTable[i][i] = "0";
+		}
 		return similarityTable;
 	}
 	

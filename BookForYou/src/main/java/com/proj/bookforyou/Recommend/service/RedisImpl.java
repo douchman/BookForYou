@@ -63,10 +63,9 @@ public class RedisImpl implements IRedis{
 			Map<String, String> usrBasedSimilarity = new HashMap<String, String>();
 			String usrSimilarity = usrList.get(i) + "Similarity";
 			for(int j=0; j<usrList.size(); j++) {
-				usrBasedSimilarity.put(usrList.get(i), similarityTable[i][j]);
+				usrBasedSimilarity.put(usrList.get(j), similarityTable[i][j]);
 			}
-			System.out.println(usrBasedSimilarity);
-			//jedis.hmset(usrSimilarity, usrBasedSimilarity);
+			jedis.hmset(usrSimilarity, usrBasedSimilarity);
 		}
 		jedis.close();
 		jedisPubSub.close();
