@@ -14,11 +14,12 @@ h2 {
 	text-align: center;
 }
 
-img{
+img {
 	width: 80%;
 	height: 342px;
 }
-.row>div>.book:hover{
+
+.row>div>.book:hover {
 	cursor: pointer;
 }
 </style>
@@ -26,11 +27,13 @@ img{
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jspf"%>
 	<form id="frm" action="detail" method="get">
-		<input id="bookName" type="hidden" name="bookName" />
-		<input id="searchStr" type="hidden" name="searchStr" />
+		<input id="bookName" type="hidden" name="bookName" /> <input
+			id="searchStr" type="hidden" name="searchStr" />
 	</form>
 	<div class="panel panel-default">
-		<h2><b>이런 책 좋아하지?</b></h2>
+		<h2>
+			<b>이런 책 좋아하지?</b>
+		</h2>
 	</div>
 	<div style="margin: 10px;">
 
@@ -106,21 +109,37 @@ img{
 
 		</div>
 	</div>
+
+
+	<div>
+		<input type="button" onclick="location.href='dataSet'" value="데이터 출력">
+		<input type="button" onclick="location.href='usrBasedResult'" value="사용자기반 결과 출력">
+		<input type="button" onclick="location.href='itemBasedResult'" value="아이템기반 결과 출력">
+		<table class="table">
+		<c:forEach var="item" items="${allUsrScoreList}">
+			<tr>
+				<td>${item }</td>
+			</tr>
+		</c:forEach>
+		</table>
+	</div>
+
+
 	<%@ include file="/WEB-INF/views/common/footer.jspf"%>
-<script type="text/javascript">
-$(function() {
-	$('.book').click(function(event) {
-		var bookName = $(this).children('.caption').children().text();
-		$('#bookName').val(bookName);
-		document.getElementById("frm").submit();
-	})
-	$('.panel').click(function(event) {
-		var searchStr = '안녕, 나의 빨강머리 앤';
-		$('#searchStr').val(searchStr);
-		document.getElementById("frm").action = "search";
-		document.getElementById("frm").submit();
-	})
-})
-</script>
+	<script type="text/javascript">
+		$(function() {
+			$('.book').click(function(event) {
+				var bookName = $(this).children('.caption').children().text();
+				$('#bookName').val(bookName);
+				document.getElementById("frm").submit();
+			})
+			$('.panel').click(function(event) {
+				var searchStr = '안녕, 나의 빨강머리 앤';
+				$('#searchStr').val(searchStr);
+				document.getElementById("frm").action = "search";
+				document.getElementById("frm").submit();
+			})
+		})
+	</script>
 </body>
 </html>

@@ -1,8 +1,11 @@
 package com.proj.bookforyou;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -41,16 +44,16 @@ public class HomeController {
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookName") String bookName, Model model) {
-		iRecommend.saveData("park", bookName, "5");		//Redis에 (아이디, 책이름, 점수)저장
-		Map<String, String> usrScore = iRecommend.loadData("Park");		//Redis에서 (아이디)정보 가져옴
-		
-		Set<String> key = usrScore.keySet();
-		 
-        Iterator<String> keyIter = key.iterator();
- 
-        while (keyIter.hasNext()) {
-            System.out.println(usrScore.get(keyIter.next()));
-        }
+//		iRecommend.saveData("park", bookName, "5");		//Redis에 (아이디, 책이름, 점수)저장
+//		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis에서 (아이디)정보 가져옴
+//		
+//		Set<String> key = usrScore.keySet();
+//		 
+//        Iterator<String> keyIter = key.iterator();
+// 
+//        while (keyIter.hasNext()) {
+//            System.out.println(usrScore.get(keyIter.next()));
+//        }
         
 		model.addAttribute("bookName", bookName);
 		return "detailPage/detailPage";
@@ -59,5 +62,29 @@ public class HomeController {
 	public String search(@RequestParam("searchStr") String searchStr, Model model) {
 		model.addAttribute("searchStr", searchStr);
 		return "Mainpage/searchForm";
+	}
+	
+	
+	
+	
+	
+	@RequestMapping("dataSet")
+	public String dataSet(Model model) {
+		model.addAttribute("allUsrScoreList", iRecommend.allUsrScoreList());
+		return "Mainpage/main";
+	}
+	@RequestMapping("usrBasedResult")
+	public String usrBasedResult(Model model) {
+		String[][] similarityTable = iRecommend.usrBasedSimilarity();
+//		for(int i=0; i<similarityTable.length; i++) {			//코사인 유사도 결과 확인 코드
+//			for(int j=0; j<similarityTable[i].length; j++) {
+//				System.out.print(String.format("%.2f", similarityTable[i][j]) + "  ");
+//			}
+//			System.out.println();
+//		}
+		List<String> usrList = iRecommend.getUsrList();
+		iRecommend.saveUsrBased(similarityTable, usrList);
+		model.addAttribute("similarityTable", similarityTable);
+		return "Mainpage/main";
 	}
 }
