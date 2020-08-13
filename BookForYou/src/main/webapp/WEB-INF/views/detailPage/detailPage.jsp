@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="<%=request.getContextPath() %>/lib/compressed jQuery 3.5.1.js" ></script>
 <script type="text/javascript">
@@ -37,10 +38,14 @@
 	  });
 	});
 </script>
+=======
+
+>>>>>>> master
 
 <style type="text/css">
 	*{margin:0; padding:0;}
 	
+<<<<<<< HEAD
 	.blind {
 	  position: absolute;
 	  overflow: hidden;
@@ -52,12 +57,18 @@
 	  clip: rect(0, 0, 0, 0);
 	}
 	
+=======
+>>>>>>> master
 	.startRadio {
 	  display: inline-block;
 	  overflow: hidden;
 	  height: 40px;
 	  margin-left: 30%;
+<<<<<<< HEAD
 	  margin-bottom: 5%;
+=======
+	  margin-bottom: 2%;
+>>>>>>> master
 	  margin-top: 5%;
 	}
 	.startRadio:after {
@@ -95,7 +106,10 @@
 	  height: 40px;
 	  pointer-events: none;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	table{
    		margin-top: 10%;
    		padding-left: 5%;
@@ -105,12 +119,19 @@
    		word-break: break-all;
    		margin: auto;
 	}
+<<<<<<< HEAD
 	
 	#wishBookList{
 		width: 200px;
 		height: 30px;
 	}
 	
+=======
+	.wishBookList{
+		width: 200px;
+		height: 30px;
+	}
+>>>>>>> master
 	.modifyBtn, .deleteBtn, .likeReiew{
 		border: none;
 		background-color: white;
@@ -119,11 +140,21 @@
 		display: inline-block;
 		cursor: pointer;
 		outline: 0;
+<<<<<<< HEAD
+=======
+	} 
+	a{
+		cursor: pointer;
+	}
+	li{
+	  list-style:none;
+>>>>>>> master
 	}
 </style>
 
 </head>
 <body>
+<<<<<<< HEAD
 	<table>
 		<tr>
 			<th rowspan="3" align="center"><img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px"></th>
@@ -132,10 +163,22 @@
 		<tr><td><h4>교육</h4></td></tr>
 		<tr>
 			<td>김종남, 김리라</td>
+=======
+	<%@ include file="../common/header.jspf"%>
+	<table>
+		<tr>
+			<th rowspan="3"><img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="220px" width="180px" style="padding: 10px; "></th>
+			<td colspan="2"><h2>희망을 주는 수학 수업</h2></td>
+		</tr>
+		<tr><td><h4> 교육</h4></td></tr>
+		<tr>
+			<td> 김종남, 김리라</td>
+>>>>>>> master
 			<td>별점</td>
 		</tr>
 		
 		<tr>
+<<<<<<< HEAD
 			<td colspan="2">
 			<div class="startRadio">
 				<label class="startRadio__box">
@@ -188,6 +231,58 @@
 		</tr>
 		
 		<tr>
+=======
+			<td colspan="2" >
+			<div class="startRadio">
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="0.5" id="0.5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 0.5개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="1" id="1"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 1개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="1.5" id="1.5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 1.5개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="2" id="2"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 2개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="2.5" id="2.5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 2.5개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="3" id="3"  onclick=" value_check();" onchange="review();"> 
+					<span class="startRadio__img"><span class="blind">별 3개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="3.5" id="3.5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 3.5개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="4" id="4"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 4개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="4.5" id="4.5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
+				</label>
+				<label class="startRadio__box">
+					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" onchange="review();">
+					<span class="startRadio__img"><span class="blind">별 5개</span></span>
+				</label>
+			</div>
+			<div id="review" style="margin-left: 30%; margin-bottom: 2%; display: none;">
+				<a onclick="popUp('/detailPage/writeReview')" id="writeReview" >리뷰를 작성해주세요!</a>
+			</div>
+			</td>
+			<td><input type="button" class="wishBookList" name="wishBookList" value="읽고 싶어요!" id="0" ></td>
+		</tr>
+		<tr>
+>>>>>>> master
 			<td><h3>작가</h3></td>
 			<td> 김종남, 김리라</td>
 		</tr>
@@ -208,27 +303,47 @@
 			<td colspan="2" style="width: 200px;">8-가 단원에 맞는 수학 수업을 소개한 교재. '유리수와 근사값', '식의 계산', '연립방정식', '부등식', '일차함수'로 구성되었다.</td>
 		</tr>
 	</table>
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> master
 	<table>
 		<tr>
 			<td><h2>별점 그래프</h2></td>
 		</tr>
+<<<<<<< HEAD
 		<tr>
 			<td><div id="columnchart_material" style="width: 700px; height: 500px;"></div></td>
 		</tr>
 		
+=======
+		<tr align="center">
+			<td><div id="columnchart_material"
+					style="width: 700px; height: 500px; border: 1px solid"></div></td>
+		</tr>
+
+>>>>>>> master
 		<tr>
 			<td><h2>리뷰</h2></td>
 		</tr>
 		<tr>
 			<td>
+<<<<<<< HEAD
 				<div style="overflow:auto; height: 600px;">
 				
 					<div style="border: 1px solid; width:600px; margin: auto;" align="center">
+=======
+				<div style="overflow: auto; height: 600px;">
+
+					<div style="border: 1px solid; width: 600px; margin: auto;"
+						align="center">
+>>>>>>> master
 						<h4 align="left">닉네임 님 4.5</h4>
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
+<<<<<<< HEAD
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						<br/>
 						
@@ -238,10 +353,24 @@
 						</div>
 					</div>
 					<div style="border: 1px solid; width:600px; margin: auto;" align="center">
+=======
+						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용 <br />
+
+						<div align="left" class="reviewBtn">
+							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg"
+								width="25px" height="25px" style="vertical-align: bottom;">
+							5 <input type="button" value="좋아요" class="likeReiew"
+								style="margin-left: 83%;">
+						</div>
+					</div>
+					<div style="border: 1px solid; width: 600px; margin: auto;"
+						align="center">
+>>>>>>> master
 						<h4 align="left">닉네임 님 4.5</h4>
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
+<<<<<<< HEAD
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
 						<br/>
 						
@@ -257,10 +386,31 @@
 		</tr>
 	</table>
 	
+=======
+						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용 <br />
+
+						<div align="left" class="reviewBtn">
+							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg"
+								width="25px" height="25px" style="vertical-align: bottom;">
+							5 <input type="button" value="수정" class="modifyBtn"
+								onclick="popUp('/detailPage/modifyReview.jsp')"
+								style="margin-left: 65%;"> <input type="button"
+								value="삭제" class="deleteBtn"> <input type="button"
+								value="좋아요" class="likeReiew">
+						</div>
+					</div>
+
+				</div>
+			</td>
+		</tr>
+	</table>
+
+>>>>>>> master
 	<table>
 		<tr>
 			<td><h2>작가의 다른 작품</h2></td>
 		</tr>
+<<<<<<< HEAD
 		<tr>
 			<th rowspan="3"><img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px"></th>
 			<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
@@ -360,5 +510,215 @@
 		
 	</table>
 <br/><br/>
+=======
+
+	</table>
+	<div>
+		<ul>
+			<li>
+			<table>
+				<tr>
+					<th rowspan="3"><img
+						src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+						height="200px" width="150px"></th>
+					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
+				</tr>
+
+				<tr>
+					<td>교육</td>
+				</tr>
+				<tr>
+					<td>김종남, 김리라</td>
+					<td>별점</td>
+				</tr>
+			</table>
+			</li>
+			<li>
+				<table>
+				<tr>
+					<th rowspan="3"><img
+						src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+						height="200px" width="150px"></th>
+					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
+				</tr>
+
+				<tr>
+					<td>교육</td>
+				</tr>
+				<tr>
+					<td>김종남, 김리라</td>
+					<td>별점</td>
+				</tr>
+			</table>
+			</li>
+			
+			<li class="last_li">
+			<table>
+				<tr><td><input type="button" value="더보기" id="seeMoreBook" class="more" style="width: 800px; height: 50px"></td></tr>
+			</table>
+			</li>
+		</ul>
+	</div>
+
+	<table>
+		<tr>
+			<td><h2>이 책이 포함된 컬렉션</h2></td>
+		</tr>
+	</table>
+
+
+		<div>
+			<ul>
+				<li>
+					<table>
+						<tr align="right">
+							<td>
+								<div
+									style="width: 300px; height: 360px; margin-left: 15px; float: right;">
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										<img
+											src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+											height="100%" width="100%">
+									</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										두번째 영역</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										세번째 영역</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										네번째 영역</div>
+									<div>
+										<h4 style="float: left;">컬렉션 이름</h4>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</li>
+				
+				<li>
+					<table>
+						<tr align="right">
+							<td>
+								<div
+									style="width: 300px; height: 360px; margin-left: 15px; float: right;">
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										<img
+											src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg"
+											height="100%" width="100%">
+									</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										두번째 영역</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										세번째 영역</div>
+									<div
+										style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">
+										네번째 영역</div>
+									<div>
+										<h4 style="float: left;">컬렉션 이름</h4>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</li>
+			
+			<li class="last">
+			<table>
+				<tr><td><input type="button" value="더보기" id="seeMoreBook" class="moreColl" style="width: 800px; height: 50px"></td></tr>
+			</table>
+			</li>
+		</ul>
+	</div>
+	<br/><br/>
+<%@ include file="../common/footer.jspf"%>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+	google.charts.load('current', {
+		'packages' : [ 'bar' ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ '별점', '인원' ], [ '1점', 10 ], [ '2점', 70 ],
+				[ '3점', 65 ], [ '4점', 100 ], [ '5점', 90 ] ]);
+
+		var options = {
+			chart : {
+				subtitle : '책 제목'
+			}
+		};
+
+	var chart = new google.charts.Bar(document
+				.getElementById('columnchart_material'));
+
+		chart.draw(data, google.charts.Bar.convertOptions(options));
+	}
+
+	function value_check() {
+		var check_count = document.getElementsByName("star").length;
+
+		for (var i = 0; i < check_count; i++) {
+			if (document.getElementsByName("star")[i].checked == true) {
+				console.log(document.getElementsByName("star")[i].value);
+			}
+		}
+	}
+
+	function review() {
+		if ($('input:radio[name=star]').is(':checked'))
+			$('#review').show();
+	}
+	
+	$(".wishBookList").click(function() {
+		$('#review').hide();
+		 var star = document.getElementsByName("star");
+	        for(var i=0;star.length;i++){
+	             if(star[i].checked){
+	            	 star[i].checked = false;
+	             }
+	             star.value = "0";
+	 	        console.log(star.value);
+
+	        }
+	});
+	
+	function popUp(url) {
+		window.name = "리뷰";
+		var myWindow = window
+				.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=400, lwfr=600, widtn=400px, height=600px");
+		//url, title, size
+	}
+	
+	$('.more').on('click', function(){
+		$('<li><table><tr><th rowspan="3">' +
+	  		'<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px"> '+        
+	      	'</th><td colspan="2"><h3>희망을 주는 수학 수업</h3></td></tr>' +
+			'<tr><td>교육</td></tr>	<tr><td>김종남, 김리라</td>	<td>별점</td>	</tr></table></li>')
+		.prependTo('.last_li');	//여기다 데이터를 저장해서 불러오기(json)
+	});
+	
+	$('.moreColl').on('click', function(){
+		$('<li><table><tr align="right"><td>' +						
+			'<div style="width: 300px; height: 360px; margin-left: 15px; float: right;">' +
+			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">'+
+			'<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="100%" width="100%"></div>' +
+			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">	두번째 영역</div>'+
+			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">세번째 영역</div>'+
+			'<div style="border: 3px solid #E8FFFF; float: left; width: 38%; height: 45%;">네번째 영역</div>' +
+			'<div><h4 style="float: left;">컬렉션 이름</h4></div>' +
+			'</div></td></tr></table></li>')
+		.prependTo('.last');	//여기다 데이터를 저장해서 불러오기(json)
+	});
+</script>
+>>>>>>> master
 </body>
 </html>

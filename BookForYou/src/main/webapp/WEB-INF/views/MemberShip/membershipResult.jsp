@@ -1,11 +1,25 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+=======
+<%@page import="Mail.AuthnumGenerator"%>
+<%@page import="Mail.ParkMail"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+>>>>>>> master
 <!DOCTYPE html>
 <html>
 <head>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 <meta charset="UTF-8">
 
 
@@ -13,7 +27,10 @@
 
 #wrapper .area-txt{
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 }
 
 
@@ -40,7 +57,12 @@
 
 	<%@ include file="../common/header2.jspf"%>
 
+<<<<<<< HEAD
 
+=======
+	<input id="usrAddress" type="hidden" value="${member.usrid}">
+	<input id="authNum" type="hidden" value="${authNum}">
+>>>>>>> master
 	<div id="wrapper" class="container">
 
 		<div class="area-logo row">
@@ -72,5 +94,41 @@
 
 	<%@ include file="../common/footer.jspf"%>
 
+<<<<<<< HEAD
+=======
+<script>
+
+var usrAddress = $('#usrAddress').val();
+var authNum = $('#authNum').val();
+
+$(document).ready(function(){
+	console.log("chk");
+	$.ajax({
+		type	:	"GET",
+		url		:	"sendMail",
+		data	:	{
+		"usrAddress"	:	usrAddress,
+		"authNum"		:	authNum
+		},
+		success	:	function(response){
+			console.log('done');
+		},
+		error:function(request,status,error){
+	        alert("code = "+ 
+	        		request.status + " message = " + 
+	        		request.responseText + " error = " + 
+	        		error); // 실패 시 처리
+	       }
+
+
+
+	})
+	
+})
+
+</script>
+
+
+>>>>>>> master
 </body>
 </html>
