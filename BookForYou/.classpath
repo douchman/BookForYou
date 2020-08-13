@@ -32,6 +32,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mail.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/parksMail.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ParksMail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

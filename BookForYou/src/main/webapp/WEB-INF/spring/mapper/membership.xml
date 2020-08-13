@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.proj.bookforyou.MemberShip.memberDAO">
+<mapper namespace="com.proj.bookforyou.MemberShip.ImemberDAO">
 
 
-	<!--  select 테이블에 ID 존재하는지 확인  : 반환값 0  or 1-->
-	<select id="isExistId" parameterType="String" resultType="int">
-	
-		
-	
+	<!-- select 테이블에 ID 존재하는지 확인 : 반환값 0 or 1 -->
+	<select id="isExistId"
+		parameterType="com.proj.bookforyou.MemberShip.BfuMember"
+		resultType="String">
+
+
+		SELECT
+		NVL2(usrId, '1', '0')
+		FROM bfuMember RIGHT OUTER JOIN
+		Dual
+		on usrId = #{usrid}
+
 	</select>
 
 
+	<select id="isExistNickName"
+		parameterType="com.proj.bookforyou.MemberShip.BfuMember"
+		resultType="String">
+
+
+		SELECT
+		NVL2(usrNickname, '1', '0')
+		FROM bfuMember RIGHT OUTER
+		JOIN Dual
+		on usrNickname = #{usrnickname}
+
+	</select>
+
+
+	<insert id="insertMember"
+		parameterType="com.proj.bookforyou.MemberShip.BfuMember">
+
+		INSERT INTO bfuMember(usrId, usrNickName, pw, gender, age, favorite, favorite2, favorite3, serviceState, usrAuthNum)
+		VALUES(#{usrid},#{pw},#{usrnickname},#{gender},#{age},#{favorite},#{favorite2},#{favorite3},#{servicestate}, #{usrauthnum})
+
+	</insert>
 
 
 
 
 
 
-	
 
 </mapper>

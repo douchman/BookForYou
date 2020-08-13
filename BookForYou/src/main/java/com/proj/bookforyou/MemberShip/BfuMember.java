@@ -33,6 +33,31 @@ public class BfuMember {
 	// 인증번호 
 	private String usrauthnum;
 
+	
+	// ID 와 닉네임 쿼리결과값 임시 저장 
+	private String idQueryRes;
+
+	private String nicknameQueryRes;
+
+	
+	
+	public String getNicknameQueryRes() {
+		return nicknameQueryRes;
+	}
+
+	public void setNicknameQueryRes(String nicknameQueryRes) {
+		this.nicknameQueryRes = nicknameQueryRes;
+	}
+
+	
+	public String getIdQueryRes() {
+		return idQueryRes;
+	}
+
+	public void setIdQueryRes(String idQueryRes) {
+		this.idQueryRes = idQueryRes;
+	}
+
 	public String getServicestate() {
 		return servicestate;
 	}
