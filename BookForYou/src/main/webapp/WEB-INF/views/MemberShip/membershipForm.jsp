@@ -204,6 +204,7 @@ margin-bottom: 10px;
 
 
 
+		<!--  연령대 부분 이전으로 돌아왔을때 값 유지 하도록 코드 추가 할 것. -->
 		<div class="row e6">
 			<h4 class="itemtxt col-md-2 col-md-offset-4">연령대 선택</h4>
 			<br>
