@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,7 @@
 	<%@ include file="../common/header2.jspf"%>
 
 	<input id="usrAddress" type="hidden" value="${member.usrid}">
+	<input id="authNum" type="hidden" value="${authNum}">
 	<div id="wrapper" class="container">
 
 		<div class="area-logo row">
@@ -78,6 +80,7 @@
 <script>
 
 var usrAddress = $('#usrAddress').val();
+var authNum = $('#authNum').val();
 
 $(document).ready(function(){
 	console.log("chk");
@@ -85,7 +88,8 @@ $(document).ready(function(){
 		type	:	"GET",
 		url		:	"sendMail",
 		data	:	{
-		"usrAddress"	:	usrAddress
+		"usrAddress"	:	usrAddress,
+		"authNum"		:	authNum
 		},
 		success	:	function(response){
 			console.log('done');

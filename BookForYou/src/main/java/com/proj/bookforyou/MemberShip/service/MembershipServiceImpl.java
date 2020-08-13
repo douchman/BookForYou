@@ -33,13 +33,16 @@ public class MembershipServiceImpl implements IMembershipService {
 
 	@Override
 	public String memberProc(BfuMember member) {
-		/*
-		parkmail.sendMail(member.getUsrid(), 
-				"인증메일 테스트", 
-				"인증번호" + authNumGen.getAuthNum());
-		*/
+		
+		AuthnumGenerator auth = new AuthnumGenerator();
+		
+		// 여기서 Authnum 을 생성해서 테이블에 올려놓고
+		// 메일 전송 페이지로 함께 보낸다.
+		
+		String authNum = auth.getAuthNum();
+		System.out.println("생성된 인증번호 : " + authNum);
 		//memdao.insertMember(member);
 		
-		return null;
+		return authNum;
 	}
 }

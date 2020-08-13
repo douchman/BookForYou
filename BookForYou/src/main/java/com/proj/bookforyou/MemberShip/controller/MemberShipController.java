@@ -97,9 +97,10 @@ public class MemberShipController {
 	public String membershipResult(Model model,
 			BfuMember member
 			) {
-		iMemserv.memberProc(member);
+		String authnum = iMemserv.memberProc(member);
 		
 		model.addAttribute("member",member);
+		model.addAttribute("authNum",authnum);
 		
 		return "/MemberShip/membershipResult";
 	}
@@ -107,9 +108,11 @@ public class MemberShipController {
 	
 	@RequestMapping(value = "sendMail")
 	public String sendMail(Model model,
-			@RequestParam("usrAddress") String usrAddress) {
+			@RequestParam("usrAddress") String usrAddress,
+			@RequestParam("authNum") String authNum) {
 		
 		model.addAttribute("mailAddress",usrAddress);
+		model.addAttribute("authNum",authNum);
 		
 		return "/MemberShip/sendMail";
 	}
