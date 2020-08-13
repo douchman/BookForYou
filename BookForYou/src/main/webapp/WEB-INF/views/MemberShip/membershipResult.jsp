@@ -1,9 +1,13 @@
+<%@page import="Mail.AuthnumGenerator"%>
+<%@page import="Mail.ParkMail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+
 
 
 <meta charset="UTF-8">
@@ -12,7 +16,6 @@
 <style>
 
 #wrapper .area-txt{
-
 
 }
 
@@ -40,7 +43,7 @@
 
 	<%@ include file="../common/header2.jspf"%>
 
-
+	<input id="usrAddress" type="hidden" value="${member.usrid}">
 	<div id="wrapper" class="container">
 
 		<div class="area-logo row">
@@ -71,6 +74,37 @@
 
 
 	<%@ include file="../common/footer.jspf"%>
+
+<script>
+
+var usrAddress = $('#usrAddress').val();
+
+$(document).ready(function(){
+	console.log("chk");
+	$.ajax({
+		type	:	"GET",
+		url		:	"sendMail",
+		data	:	{
+		"usrAddress"	:	usrAddress
+		},
+		success	:	function(response){
+			console.log('done');
+		},
+		error:function(request,status,error){
+	        alert("code = "+ 
+	        		request.status + " message = " + 
+	        		request.responseText + " error = " + 
+	        		error); // 실패 시 처리
+	       }
+
+
+
+	})
+	
+})
+
+</script>
+
 
 </body>
 </html>
