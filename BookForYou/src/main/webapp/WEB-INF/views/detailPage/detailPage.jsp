@@ -87,12 +87,12 @@
 	<%@ include file="../common/header.jspf"%>
 	<table>
 		<tr>
-			<th rowspan="3"><img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="220px" width="180px" style="padding: 10px; "></th>
-			<td colspan="2"><h2>희망을 주는 수학 수업</h2></td>
+			<th rowspan="3"><img src="${bookInfo.imgurl }" height="220px" width="180px" style="padding: 10px; "></th>
+			<td colspan="2"><h2>${bookInfo.title }</h2></td>
 		</tr>
-		<tr><td><h4> 교육</h4></td></tr>
+		<tr><td><h4>${bookInfo.addcode }</h4></td></tr>
 		<tr>
-			<td> 김종남, 김리라</td>
+			<td> ${bookInfo.author }</td>
 			<td>별점</td>
 		</tr>
 		
@@ -144,27 +144,27 @@
 				<a onclick="popUp('/detailPage/writeReview')" id="writeReview" >리뷰를 작성해주세요!</a>
 			</div>
 			</td>
-			<td><input type="button" class="wishBookList" name="wishBookList" value="읽고 싶어요!" id="0" ></td>
+			<td><button class="wishBookList" name="wishBookList" value="" >읽고 싶어요!</button></td>
 		</tr>
 		<tr>
 			<td><h3>작가</h3></td>
-			<td> 김종남, 김리라</td>
+			<td> ${bookInfo.author }</td>
 		</tr>
 		<tr>
 			<td><h3>카테고리</h3></td>
-			<td>교육</td>
+			<td>${bookInfo.addcode }</td>
 		</tr>
 		<tr>
 			<td><h3>출판연도</h3></td>
-			<td>2006 - 2007</td>
+			<td>${bookInfo.pubdate }</td>
 		</tr>
 		<tr>
 			<td><h3>출판사</h3></td>
-			<td>수학사랑</td>
+			<td>${bookInfo.publisher }</td>
 		</tr>
 		<tr>
 			<td><h3>정보</h3></td>
-			<td colspan="2" style="width: 200px;">8-가 단원에 맞는 수학 수업을 소개한 교재. '유리수와 근사값', '식의 계산', '연립방정식', '부등식', '일차함수'로 구성되었다.</td>
+			<td colspan="2" style="width: 200px;">${bookInfo.description }</td>
 		</tr>
 	</table>
 
@@ -400,15 +400,20 @@
 	
 	$(".wishBookList").click(function() {
 		$('#review').hide();
+		 var value = document.getElementsByName("wishBookList").val;
 		 var star = document.getElementsByName("star");
 	        for(var i=0;star.length;i++){
 	             if(star[i].checked){
 	            	 star[i].checked = false;
+		             star.value = "0";
+		             value = "1";
+		 	        console.log(star.value);
+		 	        console.log(value);
 	             }
-	             star.value = "0";
-	 	        console.log(star.value);
-
 	        }
+	       if(value = 0) value="1";
+	       else value="0";
+	       console.log(value + "sadada");
 	});
 	
 	function popUp(url) {

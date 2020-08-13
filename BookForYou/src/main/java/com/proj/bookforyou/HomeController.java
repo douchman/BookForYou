@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.proj.bookforyou.Recommend.service.IRecommendService;
+import com.proj.detailpage.detailService;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +32,8 @@ public class HomeController {
 	
 	@Autowired
 	private IRecommendService iRecommend;
+	@Autowired
+	private detailService deSerV;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -43,9 +46,9 @@ public class HomeController {
 		return "Mainpage/main";
 	}
 	@RequestMapping("detail")
-	public String detail(@RequestParam("bookName") String bookName, Model model) {
-//		iRecommend.saveData("park", bookName, "5");		//Redis에 (아이디, 책이름, 점수)저장
-//		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis에서 (아이디)정보 가져옴
+	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
+//		iRecommend.saveData("park", bookName, "5");		//Redis�뿉 (�븘�씠�뵒, 梨낆씠由�, �젏�닔)���옣
+//		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis�뿉�꽌 (�븘�씠�뵒)�젙蹂� 媛��졇�샂
 //		
 //		Set<String> key = usrScore.keySet();
 //		 
@@ -55,7 +58,7 @@ public class HomeController {
 //            System.out.println(usrScore.get(keyIter.next()));
 //        }
         
-		model.addAttribute("bookName", bookName);
+		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
 		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
@@ -76,7 +79,7 @@ public class HomeController {
 	@RequestMapping("usrBasedResult")
 	public String usrBasedResult(Model model) {
 		String[][] similarityTable = iRecommend.usrBasedSimilarity();
-//		for(int i=0; i<similarityTable.length; i++) {			//코사인 유사도 결과 확인 코드
+//		for(int i=0; i<similarityTable.length; i++) {			//肄붿궗�씤 �쑀�궗�룄 寃곌낵 �솗�씤 肄붾뱶
 //			for(int j=0; j<similarityTable[i].length; j++) {
 //				System.out.print(String.format("%.2f", similarityTable[i][j]) + "  ");
 //			}
