@@ -32,5 +32,9 @@
 		p:mapperInterface="com.proj.bookforyou.MemberShip.ImemberDAO"
 		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
 
+	<bean id="searchBookFactoryBean"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:mapperInterface="com.proj.bookforyou.service.ISearchDAO"
+		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
 
 </beans>

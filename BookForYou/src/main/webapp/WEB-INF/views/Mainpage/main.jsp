@@ -26,9 +26,8 @@ img {
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jspf"%>
-	<form id="frm" action="detail" method="get">
-		<input id="bookName" type="hidden" name="bookName" /> <input
-			id="searchStr" type="hidden" name="searchStr" />
+	<form id="detailFrm" action="detail" method="get">
+		<input id="bookNo" type="hidden" name="bookNo" />
 	</form>
 	<div class="panel panel-default">
 		<h2>
@@ -40,6 +39,7 @@ img {
 		<div class="row">
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
@@ -52,6 +52,7 @@ img {
 
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">바다에서 M</p>
@@ -63,6 +64,7 @@ img {
 			</div>
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
@@ -74,6 +76,7 @@ img {
 			</div>
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
@@ -85,6 +88,7 @@ img {
 			</div>
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">바다에서 M</p>
@@ -97,6 +101,7 @@ img {
 
 			<div class="col-sm-4 col-md-2">
 				<div class="book">
+					<input type="hidden" class="bookNo" value="5126591"/>
 					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
 					<div class="caption">
 						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
@@ -114,9 +119,21 @@ img {
 	<div>
 		<input type="button" onclick="location.href='dataSet'" value="데이터 출력">
 		<input type="button" onclick="location.href='usrBasedResult'" value="사용자기반 결과 출력">
-		<input type="button" onclick="location.href='itemBasedResult'" value="아이템기반 결과 출력">
+		<input type="button" onclick="location.href='Recommend'" value="사용자기반 추천">
 		<table class="table">
 		<c:forEach var="item" items="${allUsrScoreList}">
+			<tr>
+				<td>${item }</td>
+			</tr>
+		</c:forEach>
+		<c:forEach var="item" items="${similarityTable}">
+			<tr>
+				<c:forEach var="item1" items="${item}">
+					<td>${item1 }</td>
+				</c:forEach>
+			</tr>
+		</c:forEach>
+		<c:forEach var="item" items="${usrBasedRecommend}">
 			<tr>
 				<td>${item }</td>
 			</tr>
@@ -129,15 +146,14 @@ img {
 	<script type="text/javascript">
 		$(function() {
 			$('.book').click(function(event) {
-				var bookName = $(this).children('.caption').children().text();
-				$('#bookName').val(bookName);
-				document.getElementById("frm").submit();
+				var bookNo = $(this).children('.bookNo').val();
+				$('#bookNo').val(bookNo);
+				document.getElementById("detailFrm").submit();
 			})
 			$('.panel').click(function(event) {
 				var searchStr = '안녕, 나의 빨강머리 앤';
 				$('#searchStr').val(searchStr);
-				document.getElementById("frm").action = "search";
-				document.getElementById("frm").submit();
+				document.getElementById("searchFrm").submit();
 			})
 		})
 	</script>

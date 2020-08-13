@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.proj.bookforyou.Recommend.service.IRecommendService;
+import com.proj.bookforyou.service.IMainService;
 
 /**
  * Handles requests for the application home page.
@@ -31,6 +32,8 @@ public class HomeController {
 	
 	@Autowired
 	private IRecommendService iRecommend;
+	@Autowired
+	private IMainService iMainServ;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -43,7 +46,7 @@ public class HomeController {
 		return "Mainpage/main";
 	}
 	@RequestMapping("detail")
-	public String detail(@RequestParam("bookName") String bookName, Model model) {
+	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
 //		iRecommend.saveData("park", bookName, "5");		//Redis에 (아이디, 책이름, 점수)저장
 //		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis에서 (아이디)정보 가져옴
 //		
@@ -55,12 +58,13 @@ public class HomeController {
 //            System.out.println(usrScore.get(keyIter.next()));
 //        }
         
-		model.addAttribute("bookName", bookName);
+		model.addAttribute("bookNo", bookNo);
 		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
 	public String search(@RequestParam("searchStr") String searchStr, Model model) {
 		model.addAttribute("searchStr", searchStr);
+		model.addAttribute("searchBookLst", iMainServ.searchBook(searchStr));
 		return "Mainpage/searchForm";
 	}
 	
@@ -85,6 +89,11 @@ public class HomeController {
 		List<String> usrList = iRecommend.getUsrList();
 		iRecommend.saveUsrBased(similarityTable, usrList);
 		model.addAttribute("similarityTable", similarityTable);
+		return "Mainpage/main";
+	}
+	@RequestMapping("Recommend")
+	public String Recommend(Model model) {
+		model.addAttribute("usrBasedRecommend", iRecommend.usrBasedRecommend());
 		return "Mainpage/main";
 	}
 }
