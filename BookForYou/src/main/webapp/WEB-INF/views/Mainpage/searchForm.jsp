@@ -1,3 +1,5 @@
+<%@page import="com.proj.detailpage.bookSearchInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,10 +13,14 @@ h4 {
 }
 
 div.col-sm-12 {
-	width: 160px;
-	height: 280px;
+	width: 200px;
+	height: 340px;
 	margin-left: 12px;
 	text-align: center;
+}
+img{
+	width: 90%;
+	height: 100%;
 }
 
 .row>div>.book:hover{
@@ -39,6 +45,27 @@ div.caption {
    margin-top: 10px;
    margin-bottom: 10px;
 }
+article{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+#top {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	left: 93%;
+	top: 85%;
+	text-align: center;
+	background-color: rgba( 50, 205, 205, 1 );
+	color: #fff;
+	text-decoration: none;
+}
+.glyphicon{
+	padding-top: 10%;
+	font-size: 25px;
+}
 </style>
 </head>
 <body>
@@ -52,61 +79,47 @@ div.caption {
 	<div style="margin: 10px;">
 		<article>
 			<div class="row books">
-				<c:set var="count" value="31"/>
-				<c:forEach var="book" items="${searchBookLst }" varStatus="status" begin="0" end="30">
-					<div class="col-sm-12 col-md-1">
-						<div class="book">
-							<input type="hidden" class="bookNo" value="${book.masterseq }"/>
-							<img style="width: 130; height: 200px;" src="${book.imgurl }" alt="...">
-							<div class="caption">
-								<p style="font-size: medium;">${book.title }</p>
-							</div>
-							<div class="captionRating">
-								<b style="font-size: small;">평점 5.0</b>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+				
 			</div>
 		</article>
 	</div>
-	<%@ include file="/WEB-INF/views/common/footer.jspf"%>
+	<a id="top" href="#"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>TOP</a>
+<script src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
+<script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
 <script type="text/javascript">
+var page = 1;
 $(function() {
-	//스크롤 바닥 감지
-	window.onscroll = function(e) {
-	    //추가되는 임시 콘텐츠
-	    //window height + window scrollY 값이 document height보다 클 경우,
-	    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-	    	//실행할 로직 (콘텐츠 추가)
-	        var addContent = `<div class="row books">`;
-	        	addContent += `<c:forEach var="book" items="${searchBookLst }" varStatus="status" begin="${count }" end="${count+29 }">`;
-	        	addContent += `<div class="col-sm-12 col-md-1">`;
-	        	addContent += `<div class="book">`;
-	        	addContent += `<input type="hidden" class="bookNo" value="${book.masterseq }"/>`;
-	        	addContent += `<img style="width: 130; height: 200px;" src="${book.imgurl }" alt="...">`;
-	        	addContent += `<div class="caption">`;
-	        	addContent += `<p style="font-size: medium;">${book.title }</p>`;
-	        	addContent += `</div>`;
-	        	addContent += `<div class="captionRating">`;
-	        	addContent += `<b style="font-size: small;">평점 5.0</b>`;
-	        	addContent += `</div>`;
-	        	addContent += `</div>`;
-	        	addContent += `</div>`;
-	        	addContent += `</c:forEach>`;
-	        	addContent += `</div>`;
-	        	addContent += `<c:set var="count" value="${count+30 }"/>`;
-	        //article에 추가되는 콘텐츠를 append
-	        $('article').append(addContent);
-	    }
-	};
-	
-	$('.book').click(function(event) {
-		var bookNo = $(this).children('.bookNo').val();
-		$('#bookNo').val(bookNo);
-		document.getElementById("detailFrm").submit();
-	})
+	 getList(page);
+     page++;
 })
+
+$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+		if(page != 1) getList(page);
+		page++;   
+	} 
+});
+
+function detail(bookNo){
+	$('#bookNo').val(bookNo);
+	document.getElementById("detailFrm").submit();
+}
+
+function getList(page){
+    $.ajax({
+        type : 'POST',  
+        dataType : 'text', 
+        data : {"page" : page, "searchStr" : '${searchStr}'},
+        url : 'paging',
+        success : function(data) {
+        	$(".row").append(data);
+       },error:function(e){
+           if(e.status==300){
+               alert("데이터를 가져오는데 실패하였습니다.");
+           };
+       }
+    }); 
+}
 </script>
 </body>
 </html>

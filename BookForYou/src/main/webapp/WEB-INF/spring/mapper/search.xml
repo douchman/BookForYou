@@ -4,5 +4,17 @@
 	<select id="searchBook" parameterType="String" resultType="com.proj.detailpage.bookSearchInfo">
 		SELECT masterseq, title, imgurl FROM BOOKINFO
 		WHERE title LIKE '%'||#{searchStr}||'%' OR author LIKE '%'||#{searchStr}||'%'
+		ORDER BY title
+	</select>
+	<select id="getBookList" parameterType="Map" resultType="com.proj.detailpage.bookSearchInfo">
+		SELECT masterseq, title, imgurl 
+		FROM ( 
+			SELECT ROWNUM AS rnum, S.masterseq, S.title, S.imgurl 
+			FROM bookinfo S 
+			WHERE title LIKE '%'||#{searchStr}||'%' 
+			OR author LIKE '%'||#{searchStr}||'%'
+			ORDER BY masterseq
+			)
+		WHERE rnum BETWEEN #{start} AND #{end}
 	</select>
 </mapper>

@@ -10,6 +10,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.service.IMainService;
+import com.proj.detailpage.bookSearchInfo;
 
 /**
  * Handles requests for the application home page.
@@ -57,17 +62,28 @@ public class HomeController {
 //        while (keyIter.hasNext()) {
 //            System.out.println(usrScore.get(keyIter.next()));
 //        }
-        
 		model.addAttribute("bookNo", bookNo);
 		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
-	public String search(@RequestParam("searchStr") String searchStr, Model model) {
+	public String search(@RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+        session.setAttribute("searchList", iMainServ.searchBook(searchStr));
+        
 		model.addAttribute("searchStr", searchStr);
-		model.addAttribute("searchBookLst", iMainServ.searchBook(searchStr));
+		//model.addAttribute("searchBookLst", iMainServ.searchBook(searchStr));
 		return "Mainpage/searchForm";
 	}
-	
+	@RequestMapping(value = "paging", produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String paging(@RequestParam("page") String page, @RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		List<bookSearchInfo> bookList = (List<bookSearchInfo>)session.getAttribute("searchList");
+		//List<bookSearchInfo> bookList = iMainServ.getBookList(page, searchStr);
+		return iMainServ.scrollPaging(page, bookList);
+	}
 	
 	
 	
