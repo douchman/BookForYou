@@ -11,6 +11,7 @@
 
 
 <%
+/*
 	ParkMail parkmail = new ParkMail();
 	AuthnumGenerator authNumGen = new AuthnumGenerator();
 	
@@ -25,12 +26,13 @@
 			 	"<p>하단의 링크를 클릭하시면 이메일 인증을 완료됩니다.<br>"+
 				"<a href='http://localhost:8080/bookforyou/authDone?authNum="+
 			 	(String)pageContext.getAttribute("authNum")+"'><I><U>이메일 인증</U></I></a>"+"</div>";
+			 	*/
 %>
 
 <%
-	
+	/*
 	parkmail.sendMail( (String)pageContext.getAttribute("mailAddress"),
 			"< BookForYou > 계정을 활성화 해주세요.",
 			mailContents);
-	
+	*/
 %>
