@@ -1,5 +1,5 @@
 package com.proj.detailpage;
 
-public class IDAO {
-
+public interface IDAO {
+	public bookInfo detailView(int bookNo);
 }
