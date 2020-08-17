@@ -17,6 +17,7 @@
 	String authNum = authNumGen.getAuthNum();
 	// 메일 내용 작성하기
 	
+	
 	String mailContents = "<div align='center'>"+
 				"<p>안녕하세요.<br>"+
 			 	"<p>당신에게 딱 맞는 책 < BookForYou > 입니다.<br>"+
