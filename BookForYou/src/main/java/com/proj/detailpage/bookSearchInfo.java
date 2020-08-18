@@ -1,6 +1,7 @@
 package com.proj.detailpage;
 
 public class bookSearchInfo {
+
    private Integer masterseq;
    private String title;
    private String imgurl;
@@ -39,3 +40,5 @@ public class bookSearchInfo {
    }
 
 }
+	
+
