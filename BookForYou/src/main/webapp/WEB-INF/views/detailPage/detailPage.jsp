@@ -85,6 +85,16 @@
 </head>
 <body>
 	<%@ include file="../common/header.jspf"%>
+	<c:url var="home" value="/"/>
+	<%String num = "0"; %>
+	
+	<form action="${home }detail/indivRating" id="detFrm" method="post">
+		<input type="hidden" name="nickName" id="nickName" value="nick">
+		<input type="hidden" name="masterSeq" id="masterSeq" value="${bookInfo.masterseq }">
+		<input type="hidden" name="rating" id="rating" />
+		<input type="hidden" name="wish" id="wish" />
+	</form>
+	
 	<table>
 		<tr>
 			<th rowspan="3"><img src="${bookInfo.imgurl }" height="220px" width="180px" style="padding: 10px; "></th>
@@ -100,43 +110,43 @@
 			<td colspan="2" >
 			<div class="startRadio">
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="0.5" id="0.5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="0.5" id="0.5"  onclick=" value_check();"  <% if("0.5".equals(num)){%>checked<%}%> onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 0.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="1" id="1"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="1" id="1"  onclick=" value_check();" <% if("1".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 1개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="1.5" id="1.5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="1.5" id="1.5"  onclick=" value_check();" <% if("1.5".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 1.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="2" id="2"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="2" id="2"  onclick=" value_check();" <% if("2".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 2개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="2.5" id="2.5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="2.5" id="2.5"  onclick=" value_check();" <% if("2.5".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 2.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="3" id="3"  onclick=" value_check();" onchange="review();"> 
+					<input type="radio" name="star" value="3" id="3"  onclick=" value_check();" <% if("3".equals(num)){%>checked<%}%>  onchange="review();"> 
 					<span class="startRadio__img"><span class="blind">별 3개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="3.5" id="3.5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="3.5" id="3.5"  onclick=" value_check();" <% if("3.5".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 3.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="4" id="4"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="4" id="4"  onclick=" value_check();" <% if("4".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 4개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="4.5" id="4.5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="4.5" id="4.5"  onclick=" value_check();"  <% if("4.5".equals(num)){%>checked<%}%> onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" onchange="review();">
+					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" <% if("5".equals(num)){%>checked<%}%>  onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 5개</span></span>
 				</label>
 			</div>
@@ -144,7 +154,9 @@
 				<a onclick="popUp('/detailPage/writeReview')" id="writeReview" >리뷰를 작성해주세요!</a>
 			</div>
 			</td>
-			<td><button class="wishBookList" name="wishBookList" value="" >읽고 싶어요!</button></td>
+			<td>
+				<button class="wishBookList" name="wishBookList" value="wish">읽고 싶어요!</button>
+			</td>
 		</tr>
 		<tr>
 			<td><h3>작가</h3></td>
@@ -167,7 +179,6 @@
 			<td colspan="2" style="width: 200px;">${bookInfo.description }</td>
 		</tr>
 	</table>
-
 	<table>
 		<tr>
 			<td><h2>별점 그래프</h2></td>
@@ -368,8 +379,8 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ '별점', '인원' ], [ '1점', 10 ], [ '2점', 70 ],
-				[ '3점', 65 ], [ '4점', 100 ], [ '5점', 90 ] ]);
+				[ '별점', '인원' ], [ '0.5 ~ 1', 10 ], [ '1.5 ~ 2', 70 ],
+				[ '2.5 ~ 3', 1], [ '3.5 ~ 4', 100 ], [ '4.5 ~ 5', 90 ] ]);
 
 		var options = {
 			chart : {
@@ -388,10 +399,18 @@
 
 		for (var i = 0; i < check_count; i++) {
 			if (document.getElementsByName("star")[i].checked == true) {
-				console.log(document.getElementsByName("star")[i].value);
+				var star = "";
+				console.log(star);
+				star = document.getElementsByName("star")[i].value;
+				console.log(star);
 			}
+			console.log(star);
 		}
+		console.log(star);
+		document.getElementById("rating").value = star;
+		$("#detFrm").submit();
 	}
+	
 
 	function review() {
 		if ($('input:radio[name=star]').is(':checked'))
@@ -400,20 +419,17 @@
 	
 	$(".wishBookList").click(function() {
 		$('#review').hide();
-		 var value = document.getElementsByName("wishBookList").val;
 		 var star = document.getElementsByName("star");
 	        for(var i=0;star.length;i++){
 	             if(star[i].checked){
 	            	 star[i].checked = false;
 		             star.value = "0";
-		             value = "1";
 		 	        console.log(star.value);
-		 	        console.log(value);
 	             }
 	        }
-	       if(value = 0) value="1";
-	       else value="0";
-	       console.log(value + "sadada");
+	       // document.getElementById("rating").value = star;
+	        document.getElementById("wish").value = document.getElementById("wishBookList").value;
+	        $("#detFrm").submit();
 	});
 	
 	function popUp(url) {
