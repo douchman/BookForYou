@@ -114,7 +114,7 @@ margin-bottom: 10px;
 
 
 
-<form method="post">
+<form id="frm1" method="post">
 	<div class="container">
 
 	
@@ -137,7 +137,7 @@ margin-bottom: 10px;
 				placeholder="아이디(이메일)" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
 				
-				<input type="button"class="btn btn-primary" value="중복확인">
+				<input id="chkId" type="button"class="btn btn-primary" value="중복확인">
 		</div>
 
 
@@ -151,7 +151,7 @@ margin-bottom: 10px;
 				placeholder="2 ~ 8  글자" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
 				
-				<input type="button"class="btn btn-primary" value="중복확인">
+				<input id="chkNickname" type="button"class="btn btn-primary" value="중복확인">
 		</div>
 
 
@@ -160,7 +160,7 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e3">
-			<input id="pw" name="pw" type="text" class="col-md-4 form-control col-md-offset-4"
+			<input id="pw" name="pw" type="password" class="col-md-4 form-control col-md-offset-4"
 				placeholder="숫자, 영문, 특수문자 포함" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;">
 		</div>
@@ -172,7 +172,7 @@ margin-bottom: 10px;
 		</div>
 
 		<div class="row inputfield e4">
-			<input id="pwOk" type="text"
+			<input id="pwOk" type="password"
 				class="col-md-4 form-control col-md-offset-4" placeholder="패스워드 재입력"
 				aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;">
@@ -194,7 +194,8 @@ margin-bottom: 10px;
 
 			<div class="col-md-4 col-md-offset-4">
 				<span class="span-radio"><input class="radio-gender"
-					name="gender" type="radio" value="M">남성</span> <span
+					name="gender" type="radio" value="M" checked="checked">남성</span> 
+					<span
 					class="span-radio"><input class="radio-gender" name="gender"
 					type="radio" value="W">여성</span>
 			</div>
@@ -203,6 +204,7 @@ margin-bottom: 10px;
 
 
 
+		<!--  연령대 부분 이전으로 돌아왔을때 값 유지 하도록 코드 추가 할 것. -->
 		<div class="row e6">
 			<h4 class="itemtxt col-md-2 col-md-offset-4">연령대 선택</h4>
 			<br>
@@ -210,17 +212,18 @@ margin-bottom: 10px;
 		<div class="row inputfield e6">
 
 			<div class="col-md-4 col-md-offset-4">
-
+				<input id="ageValue" name="age" type="hidden">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default dropdown-toggle"
+					<button id="btnAge" type="button" class="btn btn-default dropdown-toggle"
 						data-toggle="dropdown" aria-expanded="false">연령<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">20대 미만</a></li>
-						<li><a href="#">20대</a></li>
-						<li><a href="#">30대</a></li>				
-						<li><a href="#">40대</a></li>
-						<li><a href="#">50대 이상</a></li>
+						<!-- javascript:void(0); 페이지 상단으로 이동하는 것 방지 차원 -->
+						<li><a href="javascript:void(0);" onclick="setAge(10, this);">20대 미만</a></li>
+						<li><a href="javascript:void(0);" onclick="setAge(20, this);">20대</a></li>
+						<li><a href="javascript:void(0);" onclick="setAge(30, this);">30대</a></li>				
+						<li><a href="javascript:void(0);" onclick="setAge(40, this);">40대</a></li>
+						<li><a href="javascript:void(0);" onclick="setAge(50, this);">50대 이상</a></li>
 					</ul>
 				</div>
 
@@ -250,6 +253,6 @@ margin-bottom: 10px;
 </form>
 	<%@ include file="../common/footer.jspf"%>
 	
-	<script src='<c:url value="/resources/js/memberForm.js" />'></script>
+	<script src='<c:url value="/resources/js/memberForm.js?ver=5" />'></script>
 </body>
 </html>
