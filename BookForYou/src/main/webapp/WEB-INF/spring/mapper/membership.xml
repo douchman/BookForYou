@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
 <mapper namespace="com.proj.bookforyou.MemberShip.ImemberDAO">
 
 
@@ -39,11 +42,6 @@
 		VALUES(#{usrid},#{pw},#{usrnickname},#{gender},#{age},#{favorite},#{favorite2},#{favorite3},#{servicestate}, #{usrauthnum})
 
 	</insert>
-
-
-
-
-
 
 
 </mapper>

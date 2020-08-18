@@ -1,3 +1,5 @@
+<%@page import="com.proj.detailpage.bookSearchInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,179 +12,114 @@ h4 {
 	padding-left: 5%;
 }
 
-.col-sm-3 {
+div.col-sm-12 {
+	width: 200px;
+	height: 340px;
+	margin-left: 12px;
 	text-align: center;
 }
-
 img{
-	width: 80%;
-	height: 171px;
+	width: 90%;
+	height: 100%;
 }
+
 .row>div>.book:hover{
 	cursor: pointer;
+}
+
+div.row books {
+   white-space: nowrap;
+   border: 0px solid #000000;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   width: 1200px;
+   max-height: 260px;
+}
+div.caption {
+   white-space: nowrap;
+   border: 0px solid #000000;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 1rem;
+   width: 120px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+article{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+#top {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	left: 93%;
+	top: 85%;
+	text-align: center;
+	background-color: rgba( 50, 205, 205, 1 );
+	color: #fff;
+	text-decoration: none;
+}
+.glyphicon{
+	padding-top: 10%;
+	font-size: 25px;
 }
 </style>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jspf"%>
-	<form id="frm" action="${home }detail" method="get">
-		<input id="bookName" type="hidden" name="bookName" />
+	<form id="detailFrm" action="detail" method="get">
+		<input id="bookNo" type="hidden" name="bookNo" />
 	</form>
 	<div class="panel panel-default">
 		<h4><b>${searchStr }</b></h4>
 	</div>
 	<div style="margin: 10px;">
-
-		<div class="row">
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
+		<article>
+			<div class="row books">
+				
 			</div>
-
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-3 col-md-1">
-				<div class="book">
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-		</div>
+		</article>
 	</div>
-	<%@ include file="/WEB-INF/views/common/footer.jspf"%>
+	<a id="top" href="#"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>TOP</a>
+<script src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
+<script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
 <script type="text/javascript">
+var page = 1;
 $(function() {
-	$('.book').click(function(event) {
-		var bookName = $(this).children('.caption').children().text();
-		$('#bookName').val(bookName);
-		document.getElementById("frm").submit();
-	})
+	 getList(page);
+     page++;
 })
+
+$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+	if($(window).scrollTop() >= $(document).height() - $(window).height()){
+		if(page != 1) getList(page);
+		page++;   
+	} 
+});
+
+function detail(bookNo){
+	$('#bookNo').val(bookNo);
+	document.getElementById("detailFrm").submit();
+}
+
+function getList(page){
+    $.ajax({
+        type : 'POST',  
+        dataType : 'text', 
+        data : {"page" : page, "searchStr" : '${searchStr}'},
+        url : 'paging',
+        success : function(data) {
+        	$(".row").append(data);
+       },error:function(e){
+           if(e.status==300){
+               alert("데이터를 가져오는데 실패하였습니다.");
+           };
+       }
+    }); 
+}
 </script>
 </body>
 </html>

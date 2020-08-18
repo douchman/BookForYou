@@ -5,6 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
+<<<<<<< HEAD
+	#modifyBtn, #gobackBtn{
+		width: 100px;
+		height: 30px;
+	}
+</style>
+</head>
+<body>
+	<form>
+		<div align="center" id=text>
+			<textarea  style="width: 800px; height: 300px; resize: none;" id="review">적었던 리뷰가 적혀있는 수정창</textarea>
+		</div>
+		<div align="center">
+			<input type="button" value="수정" id=modifyBtn  />
+			<input type="button" value="돌아가기" id=gobackBtn />
+=======
 	*{margin:0; padding:0;}
 	
 	#modifyBtn, #gobackBtn {
@@ -116,6 +132,7 @@
 		<div align="center">
 			<input type="submit" value="수정" id=modifyBtn /> <input
 				type="button" value="돌아가기" id=gobackBtn />
+>>>>>>> master
 		</div>
 	</form>
 </body>
