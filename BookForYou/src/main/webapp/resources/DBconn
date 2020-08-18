@@ -1,4 +1,4 @@
 driverClassName=oracle.jdbc.OracleDriver
 url=jdbc:oracle:thin:@localhost:1521:xe
-usrname=c##youdk
-password=1234
+usrname=c##jin
+password=jin1234

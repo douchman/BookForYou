@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.service.IMainService;
 import com.proj.detailpage.bookSearchInfo;
+import com.proj.detailpage.detailService;
 
 /**
  * Handles requests for the application home page.
@@ -39,6 +40,8 @@ public class HomeController {
 	private IRecommendService iRecommend;
 	@Autowired
 	private IMainService iMainServ;
+	@Autowired
+	private detailService deSerV;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -62,7 +65,7 @@ public class HomeController {
 //        while (keyIter.hasNext()) {
 //            System.out.println(usrScore.get(keyIter.next()));
 //        }
-		model.addAttribute("bookNo", bookNo);
+		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
 		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
