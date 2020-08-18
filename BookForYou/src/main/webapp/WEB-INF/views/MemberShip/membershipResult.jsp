@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@page import="Mail.AuthnumGenerator"%>
 <%@page import="Mail.ParkMail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,10 +9,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
-
 
 
 <meta charset="UTF-8">
@@ -17,7 +21,6 @@
 <style>
 
 #wrapper .area-txt{
-
 }
 
 
@@ -44,8 +47,12 @@
 
 	<%@ include file="../common/header2.jspf"%>
 
+
+
+
 	<input id="usrAddress" type="hidden" value="${member.usrid}">
 	<input id="authNum" type="hidden" value="${authNum}">
+
 	<div id="wrapper" class="container">
 
 		<div class="area-logo row">
@@ -76,6 +83,7 @@
 
 
 	<%@ include file="../common/footer.jspf"%>
+
 
 <script>
 
@@ -108,7 +116,6 @@ $(document).ready(function(){
 })
 
 </script>
-
 
 </body>
 </html>

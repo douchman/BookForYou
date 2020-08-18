@@ -1,4 +1,14 @@
 $(document).ready(function(){
+
+	var pwChk = $('#pwChkMsg');
+
+	/*  아이디 유효검사  : 이메일 검사라서 중복 진행 후에 메일 발송으로 넘어 갈 것.  */
+
+	/*  닉네임 유효검사   */
+	
+	/*  성별 동작  */
+	
+
 	
 	var pwChk = $('#pwChkMsg');
 	
@@ -64,6 +74,7 @@ $(document).ready(function(){
 	
 	
 	/* 회원가입 버튼 */
+
 	
 	
 	/* 패스워드 유효 검사  */
@@ -117,6 +128,8 @@ $(document).ready(function(){
 })
 	
 
+	
+
 function setAge(age, tag){
 	
 	//console.log(age, tag.innerHTML);
@@ -129,5 +142,4 @@ function setFav(category, no ,tag){
 	$('#fav'+no).html(tag.innerHTML);
 	
 }
-
 
