@@ -146,28 +146,25 @@ to {
 		<div class="area-interest seq1">
 			<span class="item-txt"> #1회원님의 관심사</span>
 			<div class="btn-group">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-default dropdown-toggle"
-=======
-				<button id="fav1" type="button" class="btn btn-default dropdown-toggle"
->>>>>>> master
-					data-toggle="dropdown" aria-expanded="false">
-					분류 선택 <span class="caret"></span>
+
+				<button type="button" class="btn btn-default dropdown-toggle"></button>
+
+				<button id="fav1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">분류 선택 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-<<<<<<< HEAD
+
 					<li><a href="#">예술</a></li>
 					<li><a href="#">종교</a></li>
 					<li><a href="#">과학</a></li>
 					<li><a href="#">사랑</a></li>
 					<li><a href="#">공포</a></li>
-=======
+
 					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">예술</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">종교</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">과학</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">사랑</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">공포</a></li>
->>>>>>> master
+
 				</ul>
 			</div>
 		</div>
@@ -175,28 +172,27 @@ to {
 		<div class="area-interest seq2">
 			<span class="item-txt"> #2 회원님의 관심사</span>
 			<div class="btn-group">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-default dropdown-toggle"
-=======
+				<button type="button" class="btn btn-default dropdown-toggle"></button>
+
 				<button id="fav2" type="button" class="btn btn-default dropdown-toggle"
->>>>>>> master
+
 					data-toggle="dropdown" aria-expanded="false">
 					분류 선택 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-<<<<<<< HEAD
+
 					<li><a href="#">예술</a></li>
 					<li><a href="#">종교</a></li>
 					<li><a href="#">과학</a></li>
 					<li><a href="#">사랑</a></li>
 					<li><a href="#">공포</a></li>
-=======
+
 					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">예술</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">종교</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">과학</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">사랑</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">공포</a></li>
->>>>>>> master
+
 				</ul>
 			</div>
 		</div>
@@ -204,28 +200,27 @@ to {
 		<div class="area-interest seq3">
 			<span class="item-txt"> #3 회원님의 관심사</span>
 			<div class="btn-group">
-<<<<<<< HEAD
-				<button type="button" class="btn btn-default dropdown-toggle"
-=======
+
+				<button type="button" class="btn btn-default dropdown-toggle"></button>
+
 				<button  id="fav3" type="button" class="btn btn-default dropdown-toggle"
->>>>>>> master
+
 					data-toggle="dropdown" aria-expanded="false">
 					분류 선택 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-<<<<<<< HEAD
+
 					<li><a href="#">예술</a></li>
 					<li><a href="#">종교</a></li>
 					<li><a href="#">과학</a></li>
 					<li><a href="#">사랑</a></li>
-					<li><a href="#">공포</a></li>
-=======
+
 					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">예술</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">종교</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">과학</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">사랑</a></li>
 					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">공포</a></li>
->>>>>>> master
+
 				</ul>
 			</div>
 
@@ -262,12 +257,7 @@ to {
 
 	</div>
 </form>
-
 	<%@ include file="../common/footer.jspf"%>
-<<<<<<< HEAD
-=======
-	
 	<script src='<c:url value="/resources/js/memberForm.js?ver=5" />'></script>
->>>>>>> master
 </body>
 </html>

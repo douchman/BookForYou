@@ -1,4 +1,3 @@
-
 <%@page import="Mail.AuthnumGenerator"%>
 <%@page import="Mail.ParkMail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,6 +10,7 @@
 
 
 <%
+
 	ParkMail parkmail = new ParkMail();
 	AuthnumGenerator authNumGen = new AuthnumGenerator();
 	
@@ -25,6 +25,7 @@
 			 	"<p>하단의 링크를 클릭하시면 이메일 인증을 완료됩니다.<br>"+
 				"<a href='http://localhost:8080/bookforyou/authDone?authNum="+
 			 	(String)pageContext.getAttribute("authNum")+"'><I><U>이메일 인증</U></I></a>"+"</div>";
+			 	
 %>
 
 <%
@@ -34,3 +35,4 @@
 			mailContents);
 	
 %>
+

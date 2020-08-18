@@ -4,12 +4,8 @@
 
 <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>'>
 <link rel="icon"  href="<c:url value="/resources/img/favicon.ico"/>">
-<<<<<<< HEAD
 
 
-<style>
-
-=======
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 
 <style>
@@ -17,7 +13,7 @@
 body{
 	font-family: 'Noto Serif KR', serif;
 }
->>>>>>> master
+
 .logoimgslot{
 	
 	pa
