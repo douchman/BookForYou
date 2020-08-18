@@ -112,6 +112,12 @@ margin-bottom: 10px;
 	<%@ include file="../common/header2.jspf"%>
 
 
+<input type="hidden" id="idPass" value="0">
+<input type="hidden" id="pwPass" value="0">
+<input type="hidden" id="nickPass" value="0">
+<input type="hidden" id="agePass" value="0">
+
+
 
 
 <form id="frm1" method="post">
@@ -132,7 +138,7 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e1">
-			<input id="usrid" type="email" name="usrid" value="${member.usrid }"
+			<input id="usrid" type="email" name="usrid" value="${sessionMember.usrid }"
 				class="chkinput col-md-4 form-control col-md-offset-4"
 				placeholder="아이디(이메일)" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
@@ -146,7 +152,7 @@ margin-bottom: 10px;
 			<br>
 		</div>
 		<div class="row inputfield e2">
-			<input id="usrnickname" type="text" name="usrnickname" value="${member.usrnickname}"
+			<input id="usrnickname" type="text" name="usrnickname" value="${sessionMember.usrnickname}"
 				class="chkinput col-md-4 form-control col-md-offset-4"
 				placeholder="2 ~ 8  글자" aria-describedby="basic-addon1"
 				style="width: 300px; font-size: 12pt;"> 
@@ -240,10 +246,9 @@ margin-bottom: 10px;
 				<span>다음 </span><span class="glyphicon glyphicon-arrow-right"></span>
 			</button></a>
 			-->
-			<input type="submit" 
+			<input type="button" 
 			class="btn btn-primary col-md-1 col-md-offset-7" 
-			value="다음"
-			onclick="javascript: form.action='nextMemberShipPage';"
+			value="다음" onclick='nextPage()'
 			>
 		</div>
 
