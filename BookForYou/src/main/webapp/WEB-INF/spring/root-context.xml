@@ -36,5 +36,10 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:mapperInterface="com.proj.bookforyou.service.ISearchDAO"
 		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
+		
+	<bean id="detailFactoryBean"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:mapperInterface="com.proj.detailpage.IDAO"
+		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
 
 </beans>
