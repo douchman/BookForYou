@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>BookForYou</title>
 <style type="text/css">
-h4 {
+h3 {
 	padding-left: 5%;
 }
 
@@ -74,13 +74,18 @@ article{
 		<input id="bookNo" type="hidden" name="bookNo" />
 	</form>
 	<div class="panel panel-default">
-		<h4><b>${searchStr }</b></h4>
+		<h3><b>'${searchStr }'으로 검색한 결과</b></h3>
 	</div>
 	<div style="margin: 10px;">
 		<article>
-			<div class="row books">
-				
-			</div>
+		<c:choose>
+			<c:when test="${searchCount eq 0 }">
+				<h2>검색결과가 없습니다.</h2>
+			</c:when>
+			<c:otherwise>
+				<div class="row books"></div>
+			</c:otherwise>
+		</c:choose>
 		</article>
 	</div>
 	<a id="top" href="#"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>TOP</a>

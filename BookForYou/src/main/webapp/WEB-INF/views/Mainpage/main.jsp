@@ -120,6 +120,7 @@ img {
 		<input type="button" onclick="location.href='dataSet'" value="데이터 출력">
 		<input type="button" onclick="location.href='usrBasedResult'" value="사용자기반 결과 출력">
 		<input type="button" onclick="location.href='Recommend'" value="사용자기반 추천">
+		<input type="button" onclick="location.href='incrCount?author=1'" value="개인 사용자의 저자 평가 수 증가">
 		<table class="table">
 		<c:forEach var="item" items="${allUsrScoreList}">
 			<tr>
@@ -138,6 +139,11 @@ img {
 				<td>${item }</td>
 			</tr>
 		</c:forEach>
+		<c:if test="${incrCount ne 0 }">
+			<tr>
+				<td>${incrCount }</td>
+			</tr>
+		</c:if>
 		</table>
 	</div>
 

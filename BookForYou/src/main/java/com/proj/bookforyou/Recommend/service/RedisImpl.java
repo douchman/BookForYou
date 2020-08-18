@@ -13,14 +13,14 @@ import redis.clients.jedis.Tuple;
 @Service
 public class RedisImpl implements IRedis{
 	@Override
-	public void saveData(String usrId, String bookName, double score) {
+	public void saveData(String usrId, String bookName, String score) {
 		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
 		Map<String, String> bookScore = new HashMap<String, String>();
-		bookScore.put(bookName, Double.toString(score));
+		bookScore.put(bookName, score);
 		jedis.hmset(usrId, bookScore);
-		jedis.zadd(usrId, score, bookName);
+		jedis.zadd(usrId, Double.parseDouble(score), bookName);
 		
 		jedis.close();
 		jedisPubSub.close();
@@ -98,5 +98,18 @@ public class RedisImpl implements IRedis{
 		jedisPubSub.close();
 		
 		return usrSimilarity;
+	}
+	
+	@Override
+	public int incrCount(String usrId, String author) {
+		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
+		Jedis jedis = jedisPubSub.getResource();
+		
+		jedis.hincrBy(usrId, author, 1);
+		int count = Integer.parseInt(jedis.hget(usrId, author));
+		
+		jedis.close();
+		jedisPubSub.close();
+		return count;
 	}
 }

@@ -1,14 +1,6 @@
 package com.proj.bookforyou;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,7 +26,7 @@ import com.proj.detailpage.detailService;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
 	private IRecommendService iRecommend;
@@ -55,7 +47,7 @@ public class HomeController {
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
-//		iRecommend.saveData("park", bookName, "5");		//Redis에 (아이디, 책이름, 점수)저장
+//		iRecommend.saveData("park", bookName, 5);		//Redis에 (아이디, 책이름, 점수)저장
 //		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis에서 (아이디)정보 가져옴
 //		
 //		Set<String> key = usrScore.keySet();
@@ -71,9 +63,10 @@ public class HomeController {
 	@RequestMapping("search")
 	public String search(@RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-
-        session.setAttribute("searchList", iMainServ.searchBook(searchStr));
-        
+		List<bookSearchInfo> searchList = iMainServ.searchBook(searchStr);
+		
+        session.setAttribute("searchList", searchList);
+        model.addAttribute("searchCount", searchList.size());
 		model.addAttribute("searchStr", searchStr);
 		//model.addAttribute("searchBookLst", iMainServ.searchBook(searchStr));
 		return "Mainpage/searchForm";
@@ -113,6 +106,12 @@ public class HomeController {
 	@RequestMapping("Recommend")
 	public String Recommend(Model model) {
 		model.addAttribute("usrBasedRecommend", iRecommend.usrBasedRecommend());
+		return "Mainpage/main";
+	}
+	
+	@RequestMapping("incrCount")
+	public String incrCount(@RequestParam("author") String author, Model model) {
+		model.addAttribute("incrCount", iMainServ.incrCount("1", author));
 		return "Mainpage/main";
 	}
 }

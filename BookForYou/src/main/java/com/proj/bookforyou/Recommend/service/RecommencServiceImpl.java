@@ -36,7 +36,7 @@ public class RecommencServiceImpl implements IRecommendService {
 
 	
 	@Override
-	public void saveData(String usrId, String bookName, double score) {
+	public void saveData(String usrId, String bookName, String score) {
 		iRedis.saveData(usrId, bookName, score);
 	}
 

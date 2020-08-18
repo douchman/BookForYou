@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IRecommendService {
-	public void saveData(String usrId, String bookName, double score);
+	public void saveData(String usrId, String bookName, String score);
 
 	public Map<String, String> loadData(String usrId);
 

@@ -16,7 +16,7 @@
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="${driverClassName}" p:url="${url}"
-		p:username="${parksid}" p:password="${parkspw}" />
+		p:username="${usrname}" p:password="${password}" />
 		
 
 
