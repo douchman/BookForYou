@@ -13,14 +13,14 @@ import redis.clients.jedis.Tuple;
 @Service
 public class RedisImpl implements IRedis{
 	@Override
-	public void saveData(String usrId, String bookName, String score) {
+	public void saveData(String usrId, String bookNo, String score) {
 		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
 		Map<String, String> bookScore = new HashMap<String, String>();
-		bookScore.put(bookName, score);
+		bookScore.put(bookNo, score);
 		jedis.hmset(usrId, bookScore);
-		jedis.zadd(usrId, Double.parseDouble(score), bookName);
+		jedis.zadd(usrId, Double.parseDouble(score), bookNo);
 		
 		jedis.close();
 		jedisPubSub.close();
@@ -38,11 +38,11 @@ public class RedisImpl implements IRedis{
 		return usrScore;
 	}
 	@Override
-	public Double getScore(String usrId, String bookName) {
+	public Double getScore(String usrId, String bookNo) {
 		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
-		double score = jedis.zscore(usrId, bookName);
+		double score = jedis.zscore(usrId, bookNo);
 		
 		jedis.close();
 		jedisPubSub.close();
@@ -92,7 +92,7 @@ public class RedisImpl implements IRedis{
 		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
 		Jedis jedis = jedisPubSub.getResource();
 		
-		Set<Tuple> usrSimilarity = jedis.zrevrangeWithScores(usrId, 0, 1);
+		Set<Tuple> usrSimilarity = jedis.zrevrangeWithScores(usrId, 0, 2);
 		
 		jedis.close();
 		jedisPubSub.close();

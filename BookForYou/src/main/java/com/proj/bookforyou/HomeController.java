@@ -1,5 +1,6 @@
 package com.proj.bookforyou;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -105,7 +106,16 @@ public class HomeController {
 	}
 	@RequestMapping("Recommend")
 	public String Recommend(Model model) {
-		model.addAttribute("usrBasedRecommend", iRecommend.usrBasedRecommend());
+		List<List<bookSearchInfo>> recommendListAll = new ArrayList<List<bookSearchInfo>>();
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("재석")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("명수")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("하하")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("준하")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("세형")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("광희")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("동관")));
+		model.addAttribute("usrBasedRecommend", recommendListAll);
+		model.addAttribute("usrBasedRecommendAll", iRecommend.usrBasedRecommendAll());
 		return "Mainpage/main";
 	}
 	

@@ -10,4 +10,6 @@ public interface IMainService {
 	public String scrollPaging(String page, List<bookSearchInfo> bookList);
 	
 	public int incrCount(String usrId, String author);
+	
+	public List<bookSearchInfo> recommendList(String recNo);
 }

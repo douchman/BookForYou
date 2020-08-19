@@ -39,4 +39,9 @@ public class MainServiceImpl implements IMainService{
 	public int incrCount(String usrId, String author) {
 		return iRedis.incrCount(usrId, author);
 	}
+	
+	@Override
+	public List<bookSearchInfo> recommendList(String recNo) {
+		return IsearchDao.recommendList(recNo.split(" "));
+	}
 }
