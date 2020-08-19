@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class detailServiceImpl implements detailService{
+
 	@Autowired
 	private IDAO iDao;
 	
@@ -30,20 +31,43 @@ public class detailServiceImpl implements detailService{
 
 	@Override
 	public void wishBookList(String nickName, String masterSeq) {
-		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("wishnickName", nickName);
+		map.put("masterSeq",Integer.parseInt(masterSeq));
+		
+		System.out.println(map);
+		iDao.wishBookList(map);
 		
 	}
 
 	@Override
-	public void deleteRating(String nickName) {
-		// TODO Auto-generated method stub
+	public void deleteRating(String nickName, String masterSeq) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("wishnickName", nickName);
+		map.put("masterSeq",Integer.parseInt(masterSeq));
+		
+		System.out.println(map);
+		iDao.deleteRating(map);
 		
 	}
 
 	@Override
-	public void deleteWish(String nickName) {
-		// TODO Auto-generated method stub
+	public void deleteWish(String nickName, String masterSeq) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("nickName", nickName);
+		map.put("masterSeq",Integer.parseInt(masterSeq));
+		
+		System.out.println(map);
+		iDao.deleteWish(map);
+		
+	}
+
+	@Override
+	public void writeReview(bookComment bookcomment) {
+		iDao.writeReview(bookcomment);
 	}
 
 }

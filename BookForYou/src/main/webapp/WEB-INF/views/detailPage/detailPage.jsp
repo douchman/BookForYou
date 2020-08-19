@@ -89,10 +89,15 @@
 	<%String num = "0"; %>
 	
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
-		<input type="hidden" name="nickName" id="nickName" value="nick">
+		<input type="hidden" name="nickName" id="nickName" value="name">
 		<input type="hidden" name="masterSeq" id="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="rating" id="rating" />
-		<input type="hidden" name="wish" id="wish" />
+	
+	</form>
+	<form action="${home }detail/wish" id="detFrm2" method="post">
+		<input type="hidden" name="nickName" value="name">
+		<input type="hidden" name="masterSeq" value="${bookInfo.masterseq }">
+		<input type="hidden" name="wish" id="wish" value="1" />
 	</form>
 	
 	<table>
@@ -146,23 +151,23 @@
 					<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" <% if("5".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" <% if("5".equals(num)){%>checked<%}%> onchange="review();">
 					<span class="startRadio__img"><span class="blind">별 5개</span></span>
 				</label>
 			</div>
-			<div id="review" style="margin-left: 30%; margin-bottom: 2%; display: none;">
-				<a onclick="popUp('/detailPage/writeReview')" id="writeReview" >리뷰를 작성해주세요!</a>
+			<div id="review" style="margin-left: 30%; margin-bottom: 2%; /* display: none; */">
+				<a onclick="writeReview('${home }detail/writeReview', ${bookInfo.masterseq });" id="writeReview" >리뷰를 작성해주세요!</a>
 			</div>
 			</td>
 			<td>
-				<button class="wishBookList" name="wishBookList" value="wish">읽고 싶어요!</button>
+				<button class="wishBookList" name="wishBookList" id="wishBookList" onclick="wish();" value="0">읽고 싶어요!</button>
 			</td>
 		</tr>
 		<tr>
 			<td><h3>작가</h3></td>
 			<td> ${bookInfo.author }</td>
 		</tr>
-		<tr>
+		<tr> 
 			<td><h3>카테고리</h3></td>
 			<td>${bookInfo.addcode }</td>
 		</tr>
@@ -219,7 +224,7 @@
 						<div align="left" class="reviewBtn">
 							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg"
 								width="25px" height="25px" style="vertical-align: bottom;"> 5 
-								<input type="button" value="수정" class="modifyBtn" onclick="popUp('/detailPage/modifyReview.jsp')" style="margin-left: 65%;"> 
+								<input type="button" value="수정" class="modifyBtn" onclick="popUp('${home }detailPage/modifyReview.jsp')" style="margin-left: 65%;"> 
 								<input type="button" value="삭제" class="deleteBtn"> 
 								<input type="button" value="좋아요" class="likeReiew">
 						</div>
@@ -409,33 +414,38 @@
 		console.log(star);
 		document.getElementById("rating").value = star;
 		$("#detFrm").submit();
-	}
+	} 
 	
 
-	function review() {
-		if ($('input:radio[name=star]').is(':checked'))
+	/* function review() {
+		if ($('input:radio[name="star"]').is(':checked'))
 			$('#review').show();
-	}
+	} */
 	
-	$(".wishBookList").click(function() {
-		$('#review').hide();
-		 var star = document.getElementsByName("star");
-	        for(var i=0;star.length;i++){
-	             if(star[i].checked){
-	            	 star[i].checked = false;
-		             star.value = "0";
-		 	        console.log(star.value);
-	             }
-	        }
-	       // document.getElementById("rating").value = star;
-	        document.getElementById("wish").value = document.getElementById("wishBookList").value;
-	        $("#detFrm").submit();
-	});
+	function wish(){
+		if(document.getElementById("wishBookList").clicked){
+			$('#review').hide();
+			  for(var i=0;star.length;i++){
+		             if(star[i].checked){
+		            	 star[i].checked = false;
+		             }
+		        }
+			  	var wishbook = document.getElementById("wishBookList").value;
+			  	wishbook = "1";
+			    console.log(wishbook);
+			  	document.getElementById("wish").value = wishbook;
+			}	
+		console.log(wishbook);
+		$("#detFrm2").submit();
+	} 
 	
-	function popUp(url) {
+	function writeReview(url, masterSeq) {
 		window.name = "리뷰";
+		var nickName = 'qwe';
+		
+		var urllink = url+"?masterSeq="+ masterSeq +"&nickName="+ nickName;
 		var myWindow = window
-				.open(url, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=400, lwfr=600, widtn=400px, height=600px");
+				.open(urllink, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=400, lwfr=600, widtn=200px, height=400px");
 		//url, title, size
 	}
 	

@@ -7,6 +7,9 @@ public interface IDAO {
 	
 	public void indvRating(Map<String, Object> map);
 	public void wishBookList(Map<String, Object> map);
-	public void deleteRating(String nickName);
-	public void deleteWish(String nickName);
+	public void deleteRating(Map<String, Object> map);
+	public void deleteWish(Map<String, Object> map);
+
+	public void writeReview(bookComment bookcomment);
+	
 }
