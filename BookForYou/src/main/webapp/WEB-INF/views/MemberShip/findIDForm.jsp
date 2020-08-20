@@ -11,12 +11,12 @@
 
 }
 
-.area-devide-100{
+.area-divide-100{
 	
 	height: 100px;
 }
 
-.area-devide-50{
+.area-divide-50{
 	
 	height: 50px;
 }
@@ -49,7 +49,7 @@
 			<h4> 가입하실때 입력한 <font class="hlightTxt">닉네임</font>이나  <font class="hlightTxt">이메일</font>을 입력해주세요 </h4>
 		</div>
 		
-		<div class="area-devide-100"></div>
+		<div class="area-divide-100"></div>
 		
 		<div class="area-input col-md-6 col-md-offset-3">
 			<div class="">
@@ -64,7 +64,7 @@
 							type="text" class="form-control" id="usrnickname" name="usrnickname"
 							placeholder="비밀번호" value="">
 					</div>
-					<div class="area-devide-50"></div>
+					<div class="area-divide-50"></div>
 					<div class="area-btn">
 						<input type="button" onclick="getID();" class="btn btn-info" value="찾기">
 					</div>
