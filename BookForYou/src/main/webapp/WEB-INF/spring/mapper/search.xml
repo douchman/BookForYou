@@ -17,4 +17,11 @@
 			)
 		WHERE rnum BETWEEN #{start} AND #{end}
 	</select>
+	<select id="recommendList" parameterType="String" resultType="com.proj.detailpage.bookSearchInfo">
+		SELECT masterseq, title, imgurl FROM BOOKINFO
+		WHERE masterseq in
+		<foreach item="no" collection="array" open="(" separator="," close=")">
+			#{no}
+		</foreach>
+	</select>
 </mapper>

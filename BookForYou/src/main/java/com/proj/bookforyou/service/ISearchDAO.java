@@ -8,4 +8,6 @@ import com.proj.detailpage.bookSearchInfo;
 public interface ISearchDAO {
 	public List<bookSearchInfo> searchBook(String searchStr);
 	public List<bookSearchInfo> getBookList(Map<String, Object> map);
+	
+	public List<bookSearchInfo> recommendList(String[] recNo);
 }

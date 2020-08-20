@@ -39,8 +39,18 @@ public class BfuMember {
 
 	private String nicknameQueryRes;
 
+	// 로그인 쿼리결과 임시저장 인스턴스
+	private String loginResult;
 	
 	
+	public String getLoginResult() {
+		return loginResult;
+	}
+
+	public void setLoginResult(String loginResult) {
+		this.loginResult = loginResult;
+	}
+
 	public String getNicknameQueryRes() {
 		return nicknameQueryRes;
 	}

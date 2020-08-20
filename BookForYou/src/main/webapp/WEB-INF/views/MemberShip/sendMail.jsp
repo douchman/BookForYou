@@ -23,7 +23,7 @@
 			 	"<p>당신에게 딱 맞는 책 < BookForYou > 입니다.<br>"+
 				"<p>가입하신 ID :"+(String)pageContext.getAttribute("mailAddress") + "의 인증 메일 입니다.<br>"+
 			 	"<p>하단의 링크를 클릭하시면 이메일 인증을 완료됩니다.<br>"+
-				"<a href='http://localhost:8080/bookforyou/authDone?authNum="+
+				"<a href='http://localhost:8080/bookforyou/authDone?usrid="+(String)pageContext.getAttribute("mailAddress")+"&authNum="+
 			 	(String)pageContext.getAttribute("authNum")+"'><I><U>이메일 인증</U></I></a>"+"</div>";
 			 	
 %>
