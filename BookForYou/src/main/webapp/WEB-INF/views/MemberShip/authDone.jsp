@@ -34,4 +34,10 @@
 
 	<%@ include file="../common/footer.jspf"%>
 </body>
+
+<script>
+
+
+
+</script>
 </html>

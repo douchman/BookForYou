@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@page import="Mail.AuthnumGenerator"%>
 <%@page import="Mail.ParkMail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,6 +36,7 @@
 	color: #DC143C;
 
 }
+
 </style>
 <title>BookForYou - 회원가입 완료</title>
 </head>
@@ -48,9 +45,7 @@
 	<%@ include file="../common/header2.jspf"%>
 
 
-
-
-	<input id="usrAddress" type="hidden" value="${member.usrid}">
+	<input id="usrAddress" type="hidden" value="${sessionMember.usrid}">
 	<input id="authNum" type="hidden" value="${authNum}">
 
 	<div id="wrapper" class="container">
@@ -68,7 +63,7 @@
 			
 				<h3 class="txt-title"> 회원가입을 진심으로 환영합니다. </h3>
 				<br>
-				<h4 class="txt-sub1"> 입력하신 <label class="sub1-usrid">${member.usrid }</label>  로  인증메일을 발송 하였습니다. </h4>
+				<h4 class="txt-sub1"> 입력하신 <label class="sub1-usrid">${sessionMember.usrid }</label>  로  인증메일을 발송 하였습니다. </h4>
 				<br>
 				<h4 class="txt-sub2"> <label class="sub2-important">이메일 인증</label>이 완료되면 모든 서비스를 이용 하실 수 있습니다. </h4>
 				
@@ -108,9 +103,6 @@ $(document).ready(function(){
 	        		request.responseText + " error = " + 
 	        		error); // 실패 시 처리
 	       }
-
-
-
 	})
 	
 })

@@ -5,6 +5,12 @@
 <head>
 
 <style type="text/css">
+
+body{
+	font-family: 'Noto Serif KR', serif;
+}
+
+
 #wrapper .area {
 	border: 2px solid #B0C4DE;
 	border-radius: 10px;
@@ -14,7 +20,7 @@
 #area-top-center {
 	width:100%;
 	margin-bottom: 25px;
-	padding-top: 90px;
+	padding-top: 45px;
 }
 
 
@@ -40,7 +46,7 @@
 </head>
 <body>
 
-	<%@ include file="../common/header.jspf"%>
+	<%@ include file="../common/header2.jspf"%>
 
 	<!-- 마이페이지 모든 div를 묶는 전체 div wrapper -->
 	<div id="wrapper" class="container">
@@ -50,8 +56,8 @@
 			<div id="area-top-center" class="area col-md-12" align="center">
 				
 				<div class="top-contents col-md-4">
-
-					<h2> 사진이 올 자리입니다.</h2>
+					<div><span style="font-size: 15pt">회원님의 독서 등급</span></div>
+					<img class="" src="<c:url value='/resources/img/grade_gold.png'/>">
 
 				</div>
 				

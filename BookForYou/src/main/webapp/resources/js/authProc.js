@@ -1,0 +1,16 @@
+$(document).ready(function(){
+	
+	$.ajax({
+		
+		type		:		'GET',
+		url			:		'authProc',
+		
+		
+	})
+
+
+
+})
+
+
+

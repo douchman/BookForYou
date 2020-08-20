@@ -18,9 +18,10 @@
 <body>
 
 
-	<hr />
+	
 	<div class="contactfield row">
-		<div class="col-md-4">
+	<div class="col-md-12"><hr/></div>
+		<div class="col-md-3 col-md-offset-1">
 			<address>
 				<strong>BookForYou, Inc.</strong><br> 795 Folsom Ave, Suite 600<br>
 				San Francisco, CA 94107<br> <abbr title="Phone">P:</abbr> (123)
@@ -29,24 +30,29 @@
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3 col-md-offset-1">
 
 			<address>
 				<strong>Email.</strong><br> <a href="#">Book@Bookforyou.com</a>
 			</address>
 		</div>
-		<address>
-			<strong>Contact Us</strong><br> <label> Tel.
-				02-1234-5678</label>
 
-		</address>
-		<div class="col-md-4"></div>
+		<div class="col-md-3 col-md-offset-1">
+			<address>
+				<strong>Contact Us</strong><br> <label> Tel.
+					02-1234-5678</label>
+
+			</address>
+
+		</div>
 
 
 	</div>
 
-<script src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
-<script src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
+	<script
+		src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
+	<script
+		src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
 
 
 
