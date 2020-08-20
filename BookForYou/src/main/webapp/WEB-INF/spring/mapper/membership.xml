@@ -92,13 +92,25 @@
 	</select>
 
 	<resultMap type="HashMap" id="usrinfo">
-	
-	<id column="pw" property="pw"/>
-	<id column="serviceState" property="serviceState"/>
-	
-	
+
+	<id column="pw" property="pw" />
+	<id column="serviceState" property="serviceState" />
+
 	</resultMap>
 	
+	<select id="selectUsrBookLst"
+		parameterType="String"
+		resultType="com.proj.bookforyou.MemberShip.UsrBookInfo">
+	
+	SELECT addcode
+	FROM usrBookInfo
+	WHERE usrId = #{usrid}
+	
+	</select>
+	
+	<resultMap type="Hashmap" id="usrBookMap">
+		<id column="addcode" property="addcode"/>	
+	</resultMap>
 	
 	
 </mapper>

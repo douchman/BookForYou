@@ -2,6 +2,8 @@ package com.proj.bookforyou.MemberShip.controller;
 
 import java.util.HashMap;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.proj.bookforyou.ConfigurationBeanFactory;
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
 import com.proj.bookforyou.MemberShip.service.IMembershipService;
+import com.proj.bookforyou.Recommend.service.TendsAnalysis;
 
 import oracle.net.aso.l;
 import oracle.net.aso.m;
@@ -34,7 +38,14 @@ public class MemberShipController {
 	private IMembershipService iMemserv;
 	
 	
+    
+	@Autowired
+	ConfigurationBeanFactory factory;
 	
+	@Resource
+	private TendsAnalysis tendsAalysis;
+
+
 	
 	@ModelAttribute("sessionMember")
 	public BfuMember getEmptyMember() {	
@@ -91,7 +102,6 @@ public class MemberShipController {
 		authDTO.setUsrid(usrid);
 		authDTO.setAuthNum(authNum);
 		
-		System.out.println("authDone Call");
 		model.addAttribute("authNum" ,iMemserv.authProc(authDTO));
 		
 		return "/MemberShip/authDone";
@@ -215,6 +225,15 @@ public class MemberShipController {
 		//model.addAttribute("usrid",iMemserv.findIDProc(member));
 		model.addAttribute("mode",mode);
 		return "/MemberShip/findInfoResult";
+	}
+	
+	@RequestMapping(value = "getUsrBoofInfo")
+	public String getUsrBoofInfo(
+			@RequestParam("usrid") String usrid,
+			Model model) {
+		
+		model.addAttribute("bookLst",iMemserv.getUsrBookLst(usrid));
+		return "/MemberShip/bookTest";
 	}
 	
 }

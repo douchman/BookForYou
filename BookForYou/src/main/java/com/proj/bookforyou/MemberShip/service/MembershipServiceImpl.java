@@ -1,6 +1,11 @@
 package com.proj.bookforyou.MemberShip.service;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,9 +13,11 @@ import org.springframework.stereotype.Service;
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.ImemberDAO;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
+import com.proj.bookforyou.MemberShip.UsrBookInfo;
 
 import Mail.AuthnumGenerator;
 import Mail.ParkMail;
+import oracle.net.aso.m;
 
 @Service
 public class MembershipServiceImpl implements IMembershipService {
@@ -124,7 +131,17 @@ public class MembershipServiceImpl implements IMembershipService {
 	
 	@Override
 	public String findIDProc(MemberAuthDTO authDTO) {
-		
+	
 		return memdao.selectUsrid(authDTO);
+	}
+	
+	
+	@Override
+	public List<UsrBookInfo> getUsrBookLst(String usrid) {
+		
+		List<UsrBookInfo> usrBookLst = 
+				memdao.selectUsrBookLst(usrid);
+			
+		return usrBookLst;
 	}
 }

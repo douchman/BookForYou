@@ -1,6 +1,8 @@
 package com.proj.bookforyou.MemberShip;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface ImemberDAO {
 
@@ -14,5 +16,7 @@ public interface ImemberDAO {
 	public HashMap<String, String> selectUsrinfo(BfuMember member);
 	public BfuMember getLoginSession(String usrid);
 	public String selectUsrid(MemberAuthDTO authDTO);
+	public List<UsrBookInfo> selectUsrBookLst(String usrid);
+
 	
 }

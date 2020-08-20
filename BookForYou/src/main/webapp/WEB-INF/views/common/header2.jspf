@@ -68,6 +68,7 @@ body{
         <li><a href="memberProc">회원가입</a></li>
         <li><a href="login">로그인</a></li>
         <li><a href="myPage">마이페이지</a></li>
+        <li><a href="getUsrBoofInfo?usrid=testman@test.com">DB테스트</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
