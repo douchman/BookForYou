@@ -17,6 +17,18 @@ public class MainServiceImpl implements IMainService{
 	@Autowired
 	private IRedis iRedis;
 	
+	public static String[] shuffle(String[] arr){
+		for(int x=0;x<arr.length;x++){
+			int i = (int)(Math.random()*arr.length);
+			int j = (int)(Math.random()*arr.length);
+			
+			String tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+		}
+		return arr;
+	}
+	
 	@Override
 	public List<bookSearchInfo> searchBook(String searchStr) {
 		return IsearchDao.searchBook(searchStr);
@@ -42,6 +54,8 @@ public class MainServiceImpl implements IMainService{
 	
 	@Override
 	public List<bookSearchInfo> recommendList(String recNo) {
-		return IsearchDao.recommendList(recNo.split(" "));
+		String[] random_recommend = shuffle(recNo.split(" "));
+		
+		return IsearchDao.recommendList(random_recommend);
 	}
 }

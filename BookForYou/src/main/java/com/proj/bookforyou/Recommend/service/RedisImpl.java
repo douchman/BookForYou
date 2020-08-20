@@ -20,7 +20,7 @@ public class RedisImpl implements IRedis{
 		Map<String, String> bookScore = new HashMap<String, String>();
 		bookScore.put(bookNo, score);
 		jedis.hmset(usrId, bookScore);
-		jedis.zadd(usrId, Double.parseDouble(score), bookNo);
+		jedis.zadd(usrId+"BookRank", Double.parseDouble(score), bookNo);
 		
 		jedis.close();
 		jedisPubSub.close();

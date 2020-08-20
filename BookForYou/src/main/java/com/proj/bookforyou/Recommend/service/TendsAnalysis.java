@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 // 유저 성향 분석 객체
 
-
+@Service
 public class TendsAnalysis implements ITendsAnalysis {
 
 	private final String [] readerTxtLst= {"교양","실용","청소년","중고등참고서","초등참고서","아동","전문"};

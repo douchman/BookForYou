@@ -101,6 +101,7 @@ public class RecommencServiceImpl implements IRecommendService {
 		for(int i=0; i<usrList.size(); i++) {
 			similarityTable[i][i] = "0";
 		}
+		saveUsrBased(similarityTable, usrList);
 		return similarityTable;
 	}
 	

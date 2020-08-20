@@ -42,87 +42,26 @@ img {
 	</form>
 	<div class="panel panel-default">
 		<h2>
-			<b>이런 책 좋아하지?</b>
+			<b>name과 비슷한 사람들이 좋아한 책</b>
 		</h2>
 	</div>
 	<div style="margin: 10px;">
 
 		<div class="row">
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
+			<c:forEach var="item" items="${recommend}">
+				<div class="col-sm-4 col-md-2">
+					<div class="book">
+						<input type="hidden" class="bookNo" value="${item.masterseq }"/>
+						<img src="${item.imgurl }" alt="...">
+						<div class="caption">
+							<p style="font-size: medium;">${item.title }</p>
+						</div>
+						<div class="captionRating">
+							<b style="font-size: small;">평점 5.0</b>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91070586/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">하루 한 번, 심리학 공부를 시작했다</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91361295/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">바다에서 M</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-sm-4 col-md-2">
-				<div class="book">
-					<input type="hidden" class="bookNo" value="5126591"/>
-					<img src="http://image.yes24.com/goods/91281294/800x0" alt="...">
-					<div class="caption">
-						<p style="font-size: medium;">안녕, 나의 빨강머리 앤</p>
-					</div>
-					<div class="captionRating">
-						<b style="font-size: small;">평점 5.0</b>
-					</div>
-				</div>
-			</div>
-
+			</c:forEach>
 		</div>
 	</div>
 
