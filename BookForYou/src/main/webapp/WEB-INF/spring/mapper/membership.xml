@@ -60,8 +60,7 @@
 
 	<select id="selectUsrinfo" 
 	parameterType="com.proj.bookforyou.MemberShip.BfuMember"
-	resultMap="usrinfo"
-	>
+	resultMap="usrinfo">
 
 	SELECT NVL(pw, '0') pw , NVL(serviceState, '2') serviceState
 	FROM bfuMember RIGHT OUTER JOIN Dual

@@ -1,29 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.proj.detailpage.IDAO">
-	
+
 	<select id="detailView" parameterType="int" resultType="com.proj.detailpage.bookInfo">
 		SELECT * FROM bookInfo
 		WHERE masterSeq=#{bookNo}
 	</select>
+	
+	<select id="ratingCheck" parameterType="map" resultType="int">
+		SELECT count(*) from INDVBOOKRATING
+		where MASTERSEQ = #{masterSeq} AND NICKNAME = #{nickName}
+	</select>
+	
+	<update id="ratingUpdate" parameterType="map">
+		UPDATE INDVBOOKRATING SET RATING = #{rating}
+		WHERE MASTERSEQ = #{masterSeq} AND NICKNAME = #{nickName}
+	</update>
 	
 	<insert id="indvRating" parameterType="map">
 		INSERT INTO INDVBOOKRATING(rNo, nickName, masterSeq, rating)
 		VALUES((SELECT NVL(MAX(rNo), 0)+1 FROM INDVBOOKRATING), #{nickName}, #{masterSeq}, #{rating})
 	</insert>
 	
-	<delete id="deleteRating" parameterType="String">
+	<delete id="deleteRating" parameterType="map">
 		delete from INDVBOOKRATING
-		where nickName = #{nickName}
+		where nickName = #{nickName} and masterSeq = #{masterSeq}
 	</delete>
+	
+	<select id="wishCheck" parameterType="map" resultType="int">
+		SELECT count(*) from WISHBOOKLIST
+		where MASTERSEQ = #{masterSeq} AND NICKNAME = #{nickName}
+	</select>
 	
 	<insert id="wishBookList" parameterType="map">
-		INSERT INTO WISHBOOKLIST(MASTERSEQ, NICKNAME)
-		VALUES (#{masterSeq}, #{nickName})
+		INSERT INTO WISHBOOKLIST(masterSeq, nickName)
+		VALUES(#{masterSeq}, #{nickName})
 	</insert>
 	
-	<delete id="deleteWish" parameterType="String">
+	<delete id="deleteWish" parameterType="map">
 		delete from WISHBOOKLIST
-		where nickName = #{nickName}
+		where nickName = #{nickName} and masterSeq = #{masterSeq}
 	</delete>
-</mapper>
+	
+	<insert id="writeReview" parameterType="com.proj.detailpage.bookComment">
+		INSERT INTO bookComment(commentNum, nickName, masterSeq, Review, commentLike)
+		VALUES((SELECT NVL(MAX(commentNum), 0)+1 FROM bookComment), #{nickname}, #{masterseq}, #{review}, 0)
+	</insert>
+	
+	<select id="viewReview" parameterType="int" resultType="com.proj.detailpage.bookComment">
+		SELECT indvBookRating.*, bookComment.*
+		FROM INDVBOOKRATING, BOOKCOMMENT
+		WHERE BOOKCOMMENT.MASTERSEQ = #{bookNo}
+		ORDER BY bookComment.commentNum ASC
+	</select>
+	
+	<insert id="likeReview" parameterType="map">
+		insert into COMMENTLIKE(NICKNAME, COMMENTNUM)
+		values(#{nickName},  #{commentNum})
+	</insert>
+	
+	<delete id="likedelete"  parameterType="map" >
+		DELETE FROM COMMENTLIKE 
+		WHERE NICKNAME = #{nickName} AND COMMENTNUM =  #{commentNum} 
+	</delete>
+	
+	<select id="likeCheck" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		FROM COMMENTLIKE WHERE COMMENTNUM = #{commentNum} and nickName = #{nickName}
+	</select>
+	
+	<update id="likeAdd" parameterType="int">
+		UPDATE BOOKCOMMENT
+		SET commentLike =  commentLike+1 WHERE COMMENTNUM = #{commentNum}
+	</update> 
+	
+	<update id="likeSubtract" parameterType="int">
+		UPDATE BOOKCOMMENT
+		SET commentLike =  commentLike-1 WHERE COMMENTNUM = #{commentNum}
+	</update>
+ 	
+ 	<select id="viewMore" parameterType="int" resultType="com.proj.detailpage.bookInfo">
+ 		select * from  (SELECT * from bookInfo
+		where author = (SELECT author from bookInfo
+		where MASTERSEQ = #{masterSeq})
+ 		order by dbms_random.value)
+ 		where rownum <![CDATA[<=]]> 5
+ 	</select>
+ 	
+ 	<select id="grape1" parameterType="int" resultType="int">
+ 		SELECT count(*) from INDVBOOKRATING 
+     	 WHERE (RATING = 0.5 or RATING = 1) and MASTERSEQ = #{masterSeq}
+ 	</select>
+ 	<select id="grape2" parameterType="int" resultType="int">
+ 		SELECT count(*) from INDVBOOKRATING 
+     	 WHERE (RATING = 1.5 or RATING = 2) and MASTERSEQ = #{masterSeq}
+ 	</select>
+ 	<select id="grape3" parameterType="int" resultType="int">
+ 		SELECT count(*) from INDVBOOKRATING 
+     	 WHERE (RATING = 2.5 or RATING = 3) and MASTERSEQ = #{masterSeq}
+ 	</select>
+ 	<select id="grape4" parameterType="int" resultType="int">
+ 		SELECT count(*) from INDVBOOKRATING 
+     	 WHERE (RATING = 3.5 or RATING = 4) and MASTERSEQ = #{masterSeq}
+ 	</select>
+ 	<select id="grape5" parameterType="int" resultType="int">
+ 		SELECT count(*) from INDVBOOKRATING 
+     	 WHERE (RATING = 4.5 or RATING = 5) and MASTERSEQ = #{masterSeq}
+ 	</select> 
+</mapper> 

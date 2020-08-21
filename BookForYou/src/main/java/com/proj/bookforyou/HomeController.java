@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.service.IMainService;
+import com.proj.detailpage.bookComment;
+import com.proj.detailpage.bookInfo;
 import com.proj.detailpage.bookSearchInfo;
 import com.proj.detailpage.detailService;
 
@@ -58,7 +60,23 @@ public class HomeController {
 //        while (keyIter.hasNext()) {
 //            System.out.println(usrScore.get(keyIter.next()));
 //        }
-		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
+		List<bookComment> lst = deSerV.viewReview(bookNo);
+        List<bookInfo> list = deSerV.viewMore(bookNo);
+        int grape1 = deSerV.grape1(bookNo);
+        int grape2 = deSerV.grape2(bookNo);
+        int grape3 = deSerV.grape3(bookNo);
+        int grape4 = deSerV.grape4(bookNo);
+        int grape5 = deSerV.grape5(bookNo);
+        
+		bookInfo book = deSerV.detailView(bookNo);
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("bookComment", lst);
+		model.addAttribute("viewMore", list);
+		model.addAttribute("grape1", grape1);
+		model.addAttribute("grape2", grape2);
+		model.addAttribute("grape3", grape3);
+		model.addAttribute("grape4", grape4);
+		model.addAttribute("grape5", grape5);
 		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
