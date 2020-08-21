@@ -30,7 +30,7 @@ public class detailController {
 		deSerV.indvRating(rating, nickName, masterSeq);
 		deSerV.deleteWish(nickName, masterSeq);
 		
-		//iRecommend.saveData(nickName, masterSeq, rating);
+		iRecommend.saveData(nickName, masterSeq, rating);
 		
 		bookInfo book = deSerV.detailView(masterSeq);
 		model.addAttribute("bookInfo", book);

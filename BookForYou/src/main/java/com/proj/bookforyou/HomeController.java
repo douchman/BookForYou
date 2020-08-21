@@ -43,7 +43,8 @@ public class HomeController {
 		return "home";
 	}
 	@RequestMapping("main")
-	public String main() {
+	public String main(Model model) {
+		model.addAttribute("recommend", iMainServ.recommendList(iRecommend.usrBasedRecommend("name")));
 		return "Mainpage/main";
 	}
 	@RequestMapping("detail")
@@ -99,8 +100,6 @@ public class HomeController {
 //			}
 //			System.out.println();
 //		}
-		List<String> usrList = iRecommend.getUsrList();
-		iRecommend.saveUsrBased(similarityTable, usrList);
 		model.addAttribute("similarityTable", similarityTable);
 		return "Mainpage/main";
 	}
@@ -114,6 +113,8 @@ public class HomeController {
 		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("세형")));
 		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("광희")));
 		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("동관")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("name")));
+		
 		model.addAttribute("usrBasedRecommend", recommendListAll);
 		model.addAttribute("usrBasedRecommendAll", iRecommend.usrBasedRecommendAll());
 		return "Mainpage/main";
@@ -124,4 +125,5 @@ public class HomeController {
 		model.addAttribute("incrCount", iMainServ.incrCount("1", author));
 		return "Mainpage/main";
 	}
+
 }
