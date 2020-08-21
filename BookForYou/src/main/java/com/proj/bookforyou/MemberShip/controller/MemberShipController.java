@@ -163,7 +163,7 @@ public class MemberShipController {
 		model.addAttribute("mailAddress",usrAddress);
 		model.addAttribute("authNum",authNum);
 		
-		iRecommend.saveUsr(member.getUsrid());
+		iRecommend.saveUsr(member.getUsrnickname());
 		
 		sessionStatus.setComplete();
 		

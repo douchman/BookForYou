@@ -80,8 +80,10 @@ public class RedisImpl implements IRedis{
 			String usrSimilarity = usrList.get(i) + "Similarity";
 			for(int j=0; j<usrList.size(); j++) {
 				//usrBasedSimilarity.put(usrList.get(j), similarityTable[i][j]);
+				if(similarityTable[i][j].contentEquals("NaN"))	similarityTable[i][j] = "0";
 				jedis.zadd(usrSimilarity, Double.parseDouble(similarityTable[i][j]), usrList.get(j));
 			}
+			System.out.println();
 			//jedis.hmset(usrSimilarity, usrBasedSimilarity);
 		}
 		jedis.close();
