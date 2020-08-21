@@ -57,7 +57,7 @@ public class MemberShipController {
 	
 	
 	@RequestMapping(value = "memberProc")
-	public String memberProc() {
+	public String memberProc(@ModelAttribute("sessionMember") BfuMember member) {
 		return "/MemberShip/membershipForm";
 		
 	}
@@ -105,11 +105,12 @@ public class MemberShipController {
 	}
 	
 	@RequestMapping(value = "previousMemberShipPage")
-	public String previousMemberShipPage(Model model, @ModelAttribute("sessionMember")BfuMember member) {
+	public String previousMemberShipPage(Model model, 
+			@ModelAttribute("sessionMember")BfuMember member) {
 		
 
 		//model.addAttribute("member", member);
-		model.addAttribute("member",member);
+		model.addAttribute("sessionMember",member);
 		
 		return "/MemberShip/membershipForm";
 		
@@ -117,7 +118,7 @@ public class MemberShipController {
 	
 	@RequestMapping(value = "nextMemberShipPage")
 	public String nextMemberShipPage(Model model,
-			@ModelAttribute("sessionMember") BfuMember member
+			@ModelAttribute("sessionMember")BfuMember member
 			) {
 
 		logger.info(member.getUsrid());
@@ -136,7 +137,7 @@ public class MemberShipController {
 	
 	@RequestMapping(value = "membershipResult")
 	public String membershipResult(Model model,
-			@ModelAttribute("member")BfuMember member
+			@ModelAttribute("sessionMember")BfuMember member
 			) {
 		String authnum = iMemserv.memberProc(member);
 		//String authnum = "";
@@ -189,9 +190,14 @@ public class MemberShipController {
 			
 			// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
 			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrid());
-					
+			
+			if(tmpLst == null)
+				System.out.println("서비스에서 null 반환");
+			else {
+				System.out.println("서비스에서 not null 반환");
+				member = iTendserv.getResult(tmpLst, member);
+			}
 			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
-			member = iTendserv.getResult(tmpLst, member);
 			
 			model.addAttribute("sessionLogin",member);
 			

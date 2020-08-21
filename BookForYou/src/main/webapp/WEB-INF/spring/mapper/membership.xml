@@ -101,9 +101,9 @@
 		parameterType="String"
 		resultType="com.proj.bookforyou.MemberShip.UsrBookInfo">
 	
-	SELECT addcode
-	FROM usrBookInfo
-	WHERE usrId = #{usrid}
+	SELECT NVL(addcode,'none') addcode
+	FROM usrBookInfo RIGHT OUTER JOIN Dual
+	ON usrId = #{usrid}
 	
 	</select>
 	
