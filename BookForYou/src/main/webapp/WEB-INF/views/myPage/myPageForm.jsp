@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +41,9 @@ body{
 	
 }
 
+.top-contents .area-btn{
+	margin-top: 40px;
+}
 </style>
 <meta charset="UTF-8">
 <title>BookForYou - 마이 페이지</title>
@@ -65,8 +69,12 @@ body{
 				<div class="top-contents col-md-8">
 
 					<h1>반갑습니다.</h1>
-					<h3>[usrName] 님 !</h3>
+					<h3>${sessionLogin.usrnickname } 님 !</h3>
 
+				<div class="area-btn">
+					<a href="modifyAuth"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
+					<a href="#"><input type="button" class="btn btn-info" value="내 서재 이동"></a>
+				</div>
 				</div>
 
 
@@ -79,11 +87,8 @@ body{
 			<!-- 하단에서 좌측 -->
 			<div id="area-bottom-left" class="area col-md-4" align="center">
 
-				<h2> [usrName] 님의 취향은</h2>
-				<h4>[문화]에 대해 </h4>
-				<h4>폭넓은 지식을 소유한</h4> 
-				<h4>[예술]인 이시군요. 아름답습니다.</h4>
-				
+				<h2>${sessionLogin.usrnickname} 님은</h2>
+				<h4>${sessionLogin.tendsResult}</h4>
 				
 				
 

@@ -1,6 +1,8 @@
 package com.proj.bookforyou.MemberShip.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -16,11 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.proj.bookforyou.ConfigurationBeanFactory;
+
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
+import com.proj.bookforyou.MemberShip.UsrBookInfo;
 import com.proj.bookforyou.MemberShip.service.IMembershipService;
-import com.proj.bookforyou.Recommend.service.TendsAnalysis;
+import com.proj.bookforyou.TendsAnalysis.service.ITendsAnalysisService;
 
 import oracle.net.aso.l;
 import oracle.net.aso.m;
@@ -37,14 +40,8 @@ public class MemberShipController {
 	@Autowired
 	private IMembershipService iMemserv;
 	
-	
-    
 	@Autowired
-	ConfigurationBeanFactory factory;
-	
-	@Resource
-	private TendsAnalysis tendsAalysis;
-
+	private ITendsAnalysisService iTendserv;
 
 	
 	@ModelAttribute("sessionMember")
@@ -168,25 +165,35 @@ public class MemberShipController {
 	}
 	
 	@RequestMapping(value = "myPage")
-	public String myPage() {
+	public String myPage(@ModelAttribute("sessionLogin")BfuMember member,
+				Model model) {
+		
+		//model.addAttribute("",member)
 		return "/myPage/myPageForm";
 		
 	}
 	
 	@RequestMapping(value = "loginProc")
 	public String loginProc(Model model,
-							BfuMember member,
+							@ModelAttribute("sessionLogin") BfuMember member,
 							@RequestParam("usrid")String usrid,
-							@RequestParam("pw")String pw,
-							
-							@ModelAttribute("sessionLogin") BfuMember loginSession) {
+							@RequestParam("pw")String pw) {
 	
 		member.setLoginResult(iMemserv.loginProc(member));
 		
 		// 로그인 성공처리
 		if("3".contentEquals(member.getLoginResult())) {
-				
-			model.addAttribute("sessionLogin",iMemserv.getLoginSession(usrid));
+			// 해당 아이디로 로그인결과가 성공이면
+			// 해당하는 아이디로 세션에 등록할 객체 정보를 끌어와 저장한다.
+			member = iMemserv.getLoginSession(usrid);
+			
+			// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
+			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrid());
+					
+			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
+			member = iTendserv.getResult(tmpLst, member);
+			
+			model.addAttribute("sessionLogin",member);
 			
 			return "home";
 		}
@@ -207,6 +214,27 @@ public class MemberShipController {
 	public String findPwProc() {
 		
 		return "/MemberShip/findPwForm";
+	}
+	
+	@RequestMapping(value = "modifyAuth")
+	public String modifyAuth() {		
+		return "/myPage/modifyAuth";
+	}
+	
+	@RequestMapping(value = "confirmPw")
+	public String confirmPw(
+			@ModelAttribute("sessionLogin")BfuMember member,
+			@RequestParam("inputPw")String pw
+			) {
+		// 세션유지중인 멤버객체의 pw와 입력한 pw가 일치 할 경우
+		if(member.getPw().contentEquals(pw)) {
+			return "/myPage/modifyForm";
+		}
+		// 아닐경우 다시 인증페이지로 이동
+		else {
+			return "/myPage/modifyAuth";
+			}
+		
 	}
 	
 	
@@ -230,9 +258,12 @@ public class MemberShipController {
 	@RequestMapping(value = "getUsrBoofInfo")
 	public String getUsrBoofInfo(
 			@RequestParam("usrid") String usrid,
+			@ModelAttribute("sessionLogin")BfuMember member,
 			Model model) {
+		List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(usrid);
 		
-		model.addAttribute("bookLst",iMemserv.getUsrBookLst(usrid));
+		iTendserv.setUsrBookLst(tmpLst, member);
+		model.addAttribute("bookLst",tmpLst);
 		return "/MemberShip/bookTest";
 	}
 	
