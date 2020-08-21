@@ -154,7 +154,7 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	@Override
 	public BfuMember getResult(List<UsrBookInfo> usrBookLst, BfuMember member) {
 		
-		
+		System.out.println("getResult호출");
 		setUsrBookLst(usrBookLst, member);
 		
 		resultComment = "";
