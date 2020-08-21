@@ -197,12 +197,10 @@ public class MemberShipController {
 			// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
 			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrid());
 			
-			if(tmpLst == null)
-				System.out.println("서비스에서 null 반환");
-			else {
-				System.out.println("서비스에서 not null 반환");
+			// 반환 값이  null 아닐때만 성향분석서비스 호출 : 해당 유저의 책정보가 1개이상 있을 경우만
+			if(tmpLst != null)
 				member = iTendserv.getResult(tmpLst, member);
-			}
+			
 			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
 			
 			model.addAttribute("sessionLogin",member);

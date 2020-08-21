@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="col-md-5 col-md-offset-3">
-			<form id="frm">
+			<form id="frm" method="post">
 				<div class="form-group">
 					<label for="exampleInputEmail1">아이디</label> <input type="text"
 						class="form-control" id="usrid" name="usrid"

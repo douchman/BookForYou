@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 		$.ajax({
 		
-			type	:	"GET",
+			type	:	"POST",
 			url		:	"isExistNickName",
 			data	:	$('#frm1').serialize(),
 			success	:	function(response){
@@ -177,9 +177,9 @@ function setAge(age, tag){
 	$('#agePass').val('1');
 }
 	
-function setFav(category, no ,tag){
+function setFav(category, no ,tag, value){
 	$('#fav'+no).html(tag.innerHTML);
-	$('#favorite'+no).val(tag.innerHTML);
+	$('#favorite'+no).val(value);
 	
 }
 

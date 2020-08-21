@@ -138,19 +138,15 @@ public class MembershipServiceImpl implements IMembershipService {
 	
 	@Override
 	public List<UsrBookInfo> getUsrBookLst(String usrid) {
-		
-		List<UsrBookInfo> usrBookLst = 
-				memdao.selectUsrBookLst(usrid);
-		
+
+		List<UsrBookInfo> usrBookLst = memdao.selectUsrBookLst(usrid);
+
 		System.out.println(usrBookLst.get(0).getAddcode());
-		
-		
-			if(usrBookLst.get(0).getAddcode().contentEquals("none")) {
-				System.out.println("null CHK");
-				return null;
-			}
-			else
-				System.out.println("not null");
+
+		if (usrBookLst.get(0).getAddcode().contentEquals("none")) {
+			return null;
+		}
+
 		return usrBookLst;
 	}
 }
