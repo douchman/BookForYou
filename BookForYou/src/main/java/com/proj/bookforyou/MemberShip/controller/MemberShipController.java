@@ -23,6 +23,7 @@ import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
 import com.proj.bookforyou.MemberShip.UsrBookInfo;
 import com.proj.bookforyou.MemberShip.service.IMembershipService;
+import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.TendsAnalysis.service.ITendsAnalysisService;
 
 import oracle.net.aso.l;
@@ -42,6 +43,9 @@ public class MemberShipController {
 	
 	@Autowired
 	private ITendsAnalysisService iTendserv;
+	
+	@Autowired
+	private IRecommendService iRecommend;
 
 	
 	@ModelAttribute("sessionMember")
@@ -109,7 +113,7 @@ public class MemberShipController {
 		
 
 		//model.addAttribute("member", member);
-		model.addAttribute("member",member);
+		model.addAttribute("sessionMember",member);
 		
 		return "/MemberShip/membershipForm";
 		
@@ -136,7 +140,7 @@ public class MemberShipController {
 	
 	@RequestMapping(value = "membershipResult")
 	public String membershipResult(Model model,
-			@ModelAttribute("member")BfuMember member
+			@ModelAttribute("sessionMember")BfuMember member
 			) {
 		String authnum = iMemserv.memberProc(member);
 		//String authnum = "";
@@ -157,6 +161,8 @@ public class MemberShipController {
 		
 		model.addAttribute("mailAddress",usrAddress);
 		model.addAttribute("authNum",authNum);
+		
+		iRecommend.saveUsr(member.getUsrid());
 		
 		sessionStatus.setComplete();
 		

@@ -49,16 +49,6 @@ public class HomeController {
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
-//		iRecommend.saveData("park", bookName, 5);		//Redis에 (아이디, 책이름, 점수)저장
-//		Map<String, String> usrScore = iRecommend.loadData("park");		//Redis에서 (아이디)정보 가져옴
-//		
-//		Set<String> key = usrScore.keySet();
-//		 
-//        Iterator<String> keyIter = key.iterator();
-// 
-//        while (keyIter.hasNext()) {
-//            System.out.println(usrScore.get(keyIter.next()));
-//        }
 		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
 		return "detailPage/detailPage";
 	}
@@ -94,12 +84,7 @@ public class HomeController {
 	@RequestMapping("usrBasedResult")
 	public String usrBasedResult(Model model) {
 		String[][] similarityTable = iRecommend.usrBasedSimilarity();
-//		for(int i=0; i<similarityTable.length; i++) {			//코사인 유사도 결과 확인 코드
-//			for(int j=0; j<similarityTable[i].length; j++) {
-//				System.out.print(String.format("%.2f", similarityTable[i][j]) + "  ");
-//			}
-//			System.out.println();
-//		}
+
 		model.addAttribute("similarityTable", similarityTable);
 		return "Mainpage/main";
 	}
