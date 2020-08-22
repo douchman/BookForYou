@@ -89,7 +89,7 @@
 	<%String num = "0"; %>
 	
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
-		<input type="hidden" name="nickName" id="nickName" value="name">
+		<input type="hidden" name="nickName" id="nickName" value="${sessionLogin.usrnickname }">
 		<input type="hidden" name="masterSeq" id="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="rating" id="rating" />
 	

@@ -24,4 +24,11 @@
 			#{no}
 		</foreach>
 	</select>
+	<select id="recommendCodeList" parameterType="String" resultType="com.proj.detailpage.bookSearchInfo">
+		SELECT masterseq, title, imgurl FROM
+		(SELECT masterseq, title, imgurl FROM BOOKINFO
+		WHERE ADDCODE LIKE #{recommendCode}
+		ORDER BY dbms_random.value)
+		WHERE rownum <![CDATA[<=]]> 12
+	</select>
 </mapper>
