@@ -87,25 +87,31 @@
 	<%@ include file="../common/header.jspf"%>
 	<c:url var="home" value="/"/>
 	<%String num = "0"; %>
-	
+
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
-		<input type="hidden" name="nickName" id="nickName" value="${sessionLogin.usrnickname }">
+		<input type="hidden" name="nickName" id="nickName" value="ej">
 		<input type="hidden" name="masterSeq" id="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="rating" id="rating" />
 	
 	</form>
 	<form action="${home }detail/wish" id="detFrm2" method="post">
-		<input type="hidden" name="nickName" value="name">
+		<input type="hidden" name="nickName" value="ej">
 		<input type="hidden" name="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="wish" id="wish" value="1" />
 	</form>
-	
+	<form action="${home }detail/like" id="detFrm3" method="post">
+		<input type="hidden" name="nickName" value="ej" />
+		<input type="hidden" id="commentNum" name="commentNum" />
+	</form>
+	<form action="detail" id="detFrm4" method="get">
+		<input type="hidden" id="bookNo" name="bookNo">
+	</form>		
 	<table>
 		<tr>
 			<th rowspan="3"><img src="${bookInfo.imgurl }" height="220px" width="180px" style="padding: 10px; "></th>
-			<td colspan="2"><h2>${bookInfo.title }</h2></td>
+			<td colspan="2"><h2>${bookInfo.title } ${bookInfo.vol }</h2></td>
 		</tr>
-		<tr><td><h4>${bookInfo.addcode }</h4></td></tr>
+		<tr><td><h4>${bookInfo.addcode }</h4></td></tr> 
 		<tr>
 			<td> ${bookInfo.author }</td>
 			<td>별점</td>
@@ -186,7 +192,14 @@
 	</table>
 	<table>
 		<tr>
-			<td><h2>별점 그래프</h2></td>
+			<td>
+				<h2>별점 그래프</h2>
+				<input type="hidden" id="grape1" value="${grape1 }">
+				<input type="hidden" id="grape2" value="${grape2 }">
+				<input type="hidden" id="grape3" value="${grape3 }">
+				<input type="hidden" id="grape4" value="${grape4 }">
+				<input type="hidden" id="grape5" value="${grape5 }">
+			</td>
 		</tr>
 		<tr align="center">
 			<td><div id="columnchart_material"
@@ -199,21 +212,21 @@
 		<tr>
 			<td>
 				<div style="overflow: auto; height: 600px;">
-
+					<c:forEach var="bookComment" items="${bookComment }">
 					<div style="border: 1px solid; width: 600px; margin: auto;"
 						align="center">
-						<h4 align="left">닉네임 님 4.5</h4>
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용 <br />
-
+						
+						<h4 align="left">${bookComment.nickname } 님 ${bookComment.rating }</h4>
+						${bookComment.review } <br />
+							
 						<div align="left" class="reviewBtn">
-							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg" width="25px" height="25px" style="vertical-align: bottom;"> 5
-							<input type="button" value="좋아요" class="likeReiew" style="margin-left: 83%;">
+							<img src="https://image.flaticon.com/icons/svg/2558/2558422.svg" width="25px" height="25px" style="vertical-align: bottom;"> ${bookComment.commentLike }
+							<input type="button" value="좋아요" class="likeReiew" style="margin-left: 83%;" onclick="like(${bookComment.commentnum })">
 						</div>
+						
 					</div>
-					<div style="border: 1px solid; width: 600px; margin: auto;"
+					</c:forEach>
+		<%-- 			<div style="border: 1px solid; width: 600px; margin: auto;"
 						align="center">
 						<h4 align="left">닉네임 님 4.5</h4>
 						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
@@ -227,7 +240,7 @@
 								<input type="button" value="수정" class="modifyBtn" onclick="popUp('${home }detailPage/modifyReview.jsp')" style="margin-left: 65%;"> 
 								<input type="button" value="삭제" class="deleteBtn"> 
 								<input type="button" value="좋아요" class="likeReiew">
-						</div>
+						</div> --%>
 					</div>
 
 				</div>
@@ -241,53 +254,28 @@
 		</tr>
 
 	</table>
-	<div>
-		<ul>
-			<li>
-			<table>
-				<tr>
+	<div style="overflow: auto; height: 600px; cursor: pointer;">
+		<c:forEach var="viewMore" items="${viewMore }">
+			<table class="viewmoreDetail">
+				<tr class="imgtitle">
 					<th rowspan="3">
-						<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px">
+						<input type="hidden" class="viewmoreMasterSeq" value="${viewMore.masterseq }">
+						<img src="${viewMore.imgurl }" height="200px" width="150px">
 					</th>
-					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
+					<td colspan="2"><h3>${viewMore.title } ${viewMore.vol }</h3></td>
 				</tr>
 
 				<tr>
-					<td>교육</td>
+					<td>${viewMore.addcode } </td>
 				</tr>
 				<tr>
-					<td>김종남, 김리라</td>
+					<td>${viewMore.author }</td>
 					<td>별점</td>
 				</tr>
 			</table>
-			</li>
-			<li>
-				<table>
-				<tr>
-					<th rowspan="3">
-						<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px">
-					</th>
-					<td colspan="2"><h3>희망을 주는 수학 수업</h3></td>
-				</tr>
-
-				<tr>
-					<td>교육</td>
-				</tr>
-				<tr>
-					<td>김종남, 김리라</td>
-					<td>별점</td>
-				</tr>
-			</table>
-			</li>
-			
-			<li class="last_li">
-			<table>
-				<tr><td><input type="button" value="더보기" id="seeMoreBook" class="more" style="width: 800px; height: 50px"></td></tr>
-			</table>
-			</li>
-		</ul>
+		</c:forEach>
 	</div>
-
+	
 	<table>
 		<tr>
 			<td><h2>이 책이 포함된 컬렉션</h2></td>
@@ -377,6 +365,14 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
+	$(function() {
+	    $('.imgtitle').click(function(event) {
+	       var bookNo = $(this).children().children('.viewmoreMasterSeq').val();
+	       $('#bookNo').val(bookNo);
+	       document.getElementById("detFrm4").submit();
+	    })
+	})
+
 	google.charts.load('current', {
 		'packages' : [ 'bar' ]
 	});
@@ -384,8 +380,8 @@
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ '별점', '인원' ], [ '0.5 ~ 1', 10 ], [ '1.5 ~ 2', 70 ],
-				[ '2.5 ~ 3', 1], [ '3.5 ~ 4', 100 ], [ '4.5 ~ 5', 90 ] ]);
+				[ '별점', '인원' ], [ '0.5 ~ 1',  $('#grape1').val() ], [ '1.5 ~ 2',  $('#grape2').val() ],
+				[ '2.5 ~ 3', $('#grape3').val()], [ '3.5 ~ 4',  $('#grape4').val() ], [ '4.5 ~ 5',  $('#grape5').val() ] ]);
 
 		var options = {
 			chart : {
@@ -398,7 +394,7 @@
 
 		chart.draw(data, google.charts.Bar.convertOptions(options));
 	}
-
+	
 	function value_check() {
 		var check_count = document.getElementsByName("star").length;
 
@@ -422,6 +418,11 @@
 			$('#review').show();
 	} */
 	
+	function like(commentNum) {
+		document.getElementById('commentNum').value = commentNum;
+		document.getElementById('detFrm3').submit();
+	}
+	
 	function wish(){
 		if(document.getElementById("wishBookList").clicked){
 			$('#review').hide();
@@ -441,21 +442,13 @@
 	
 	function writeReview(url, masterSeq) {
 		window.name = "리뷰";
-		var nickName = 'qwe';
+		var nickName = 'name'; //임의로
 		
 		var urllink = url+"?masterSeq="+ masterSeq +"&nickName="+ nickName;
 		var myWindow = window
 				.open(urllink, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=400, lwfr=600, widtn=200px, height=400px");
 		//url, title, size
 	}
-	
-	$('.more').on('click', function(){
-		$('<li><table><tr><th rowspan="3">' +
-	  		'<img src="https://image.aladin.co.kr/product/681/74/cover/8987799379_1.jpg" height="200px" width="150px"> '+        
-	      	'</th><td colspan="2"><h3>희망을 주는 수학 수업</h3></td></tr>' +
-			'<tr><td>교육</td></tr>	<tr><td>김종남, 김리라</td>	<td>별점</td>	</tr></table></li>')
-		.prependTo('.last_li');	//여기다 데이터를 저장해서 불러오기(json)
-	});
 	
 	$('.moreColl').on('click', function(){
 		$('<li><table><tr><th rowspan="3">' +						

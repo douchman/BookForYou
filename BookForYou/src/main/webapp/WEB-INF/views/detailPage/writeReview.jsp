@@ -19,7 +19,7 @@
 </style>
 <script type="text/javascript">
 	function close(){
-		$('#writeFrm').submit();
+	//	$('#writeFrm').submit();
 		window.close();
 	}
 </script>
@@ -33,7 +33,7 @@
 		</div>
 		
 		<div align="center">
-			<input type="button" value="등록" id=okBtn onclick="close();" />
+			<input type="submit" value="등록" id=okBtn onclick="close();" />
 			<input type="button" value="취소" id=cancelBtn onclick="window.close();"/>
 		</div>
 	</form>
