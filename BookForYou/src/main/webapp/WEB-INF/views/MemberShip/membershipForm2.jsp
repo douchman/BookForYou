@@ -114,7 +114,7 @@ to {
 
 
 
-	<form>
+	<form method="post">
 	
 	
 	<div id="wrapper" align="center" class="container">
@@ -149,11 +149,17 @@ to {
 				</button>
 				<ul class="dropdown-menu" role="menu">
 
-					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">예술</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">종교</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">과학</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">사랑</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,1,this)">공포</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,0)">총류/사전</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,1)">철학/심리학/윤리</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,2)">종교</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,3)">사회과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,4)">자연과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,5)">기술과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,6)">예술</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,7)">언어</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,8)">문학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,1,this,9)">역사/지리/관광</a></li>
+					
 
 				</ul>
 			</div>
@@ -169,13 +175,17 @@ to {
 					분류 선택 <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-
-
-					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">예술</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">종교</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">과학</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">사랑</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,2,this)">공포</a></li>
+				
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,0)">총류/사전</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,1)">철학/심리학/윤리</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,2)">종교</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,3)">사회과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,4)">자연과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,5)">기술과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,6)">예술</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,7)">언어</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,8)">문학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,2,this,9)">역사/지리/관광</a></li>
 
 				</ul>
 			</div>
@@ -192,11 +202,16 @@ to {
 				</button>
 				<ul class="dropdown-menu" role="menu">
 
-					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">예술</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">종교</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">과학</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">사랑</a></li>
-					<li><a href="javascript:void(0);" onclick="setFav(0,3,this)">공포</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,0)">총류/사전</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,1)">철학/심리학/윤리</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,2)">종교</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,3)">사회과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,4)">자연과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,5)">기술과학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,6)">예술</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,7)">언어</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,8)">문학</a></li>
+					<li><a href="javascript:void(0);" onclick="setFav(0,3,this,9)">역사/지리/관광</a></li>
 
 				</ul>
 			</div>
@@ -235,6 +250,6 @@ to {
 	</div>
 </form>
 	<%@ include file="../common/footer.jspf"%>
-	<script src='<c:url value="/resources/js/memberForm.js?ver=5" />'></script>
+	<script src='<c:url value="/resources/js/memberForm.js?ver=6" />'></script>
 </body>
 </html>
