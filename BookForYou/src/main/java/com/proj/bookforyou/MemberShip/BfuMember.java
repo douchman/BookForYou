@@ -39,8 +39,49 @@ public class BfuMember {
 
 	private String nicknameQueryRes;
 
+	// 로그인 쿼리결과 임시저장 인스턴스
+	private String loginResult;
 	
+	// 성향분석 결과 코멘트 저장 인스턴스
+	private String tendsResult;
 	
+	// 성향분석 결과  가장많은 카운트의 기호값 저장 인스턴스
+	private String  maxReaderSign;
+	private String  maxContentsSign;
+	
+	public String getTendsResult() {
+		return tendsResult;
+	}
+
+	public void setTendsResult(String tendsResult) {
+		this.tendsResult = tendsResult;
+	}
+
+	public String getMaxReaderSign() {
+		return maxReaderSign;
+	}
+
+	public void setMaxReaderSign(String maxReaderSign) {
+		this.maxReaderSign = maxReaderSign;
+	}
+
+	public String getMaxContentsSign() {
+		return maxContentsSign;
+	}
+
+	public void setMaxContentsSign(String maxContentsSign) {
+		this.maxContentsSign = maxContentsSign;
+	}
+
+
+	public String getLoginResult() {
+		return loginResult;
+	}
+
+	public void setLoginResult(String loginResult) {
+		this.loginResult = loginResult;
+	}
+
 	public String getNicknameQueryRes() {
 		return nicknameQueryRes;
 	}

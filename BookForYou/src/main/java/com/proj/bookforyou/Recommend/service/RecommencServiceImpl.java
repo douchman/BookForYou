@@ -36,8 +36,8 @@ public class RecommencServiceImpl implements IRecommendService {
 
 	
 	@Override
-	public void saveData(String usrId, String bookName, double score) {
-		iRedis.saveData(usrId, bookName, score);
+	public void saveData(String usrId, String bookNo, String score) {
+		iRedis.saveData(usrId, bookNo, score);
 	}
 
 	@Override
@@ -101,16 +101,37 @@ public class RecommencServiceImpl implements IRecommendService {
 		for(int i=0; i<usrList.size(); i++) {
 			similarityTable[i][i] = "0";
 		}
+		saveUsrBased(similarityTable, usrList);
 		return similarityTable;
 	}
 	
 	@Override
-	public List<List<String>> usrBasedRecommend() {
+	public String usrBasedRecommend(String usrId) {
+		String bookNoList = "";
+		List<String> usrRecommendList = new ArrayList<String>();
+		Set<Tuple> usrSimilarity = iRedis.getUsrBasedSimilarity(usrId + "Similarity");		//유사도가 높은 다른회원 3명 가져오기
+		Map<String, String> usrBook = loadData(usrId);										//추천 받을 회원의 평가한 책 목록
+		for(Tuple tuple : usrSimilarity) {													//유사도가 높은 다른회원마다 실행
+			Map<String, String> similarUsrBookData = loadData(tuple.getElement());			//유사도가 높은 다른회원의 책 목록 가져오기
+			for(String book : similarUsrBookData.keySet()) {								//유사도가 높은 다른회원의 책 목록에서 하나씩
+				if(!usrBook.containsKey(book) && !usrRecommendList.contains(book) && Double.parseDouble(similarUsrBookData.get(book)) > 3) {
+					//추천 받을 회원이 평가하지 않은 책
+					//추천목록에 없는 책
+					//평점을 3점 이상 준 책
+					bookNoList += book + " ";												//추천 목록에 추가
+				}
+			}
+		}
+		return bookNoList;
+	}
+	
+	@Override
+	public List<List<String>> usrBasedRecommendAll() {
 		List<List<String>> recommendList = new ArrayList<List<String>>();
 		List<String> usrList = getUsrList();								//회원 목록 가져오기
 		for(int i=0; i<usrList.size(); i++) {								//각각의 회원마다 실행
 			List<String> usrRecommendList = new ArrayList<String>();
-			Set<Tuple> usrSimilarity = iRedis.getUsrBasedSimilarity(usrList.get(i) + "Similarity");		//유사도가 높은 다른회원 2명 가져오기
+			Set<Tuple> usrSimilarity = iRedis.getUsrBasedSimilarity(usrList.get(i) + "Similarity");		//유사도가 높은 다른회원 3명 가져오기
 			Map<String, String> usrBook = loadData(usrList.get(i));										//추천 받을 회원의 평가한 책 목록
 			for(Tuple tuple : usrSimilarity) {													//유사도가 높은 다른회원마다 실행
 				Map<String, String> similarUsrBookData = loadData(tuple.getElement());			//유사도가 높은 다른회원의 책 목록 가져오기

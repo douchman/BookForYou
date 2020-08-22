@@ -4,12 +4,8 @@
 
 <link rel="stylesheet" href='<c:url value="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>'>
 <link rel="icon"  href="<c:url value="/resources/img/favicon.ico"/>">
-<<<<<<< HEAD
 
 
-<style>
-
-=======
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 
 <style>
@@ -17,7 +13,7 @@
 body{
 	font-family: 'Noto Serif KR', serif;
 }
->>>>>>> master
+
 .logoimgslot{
 	
 	pa
@@ -41,7 +37,7 @@ body{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="logoimgslot" class="navbar-brand" href="#"><img class="logoimg" src="<c:url value="/resources/img/simplelogo.png"/>"></a>
+      <a class="logoimgslot" class="navbar-brand" href="main"><img class="logoimg" src="<c:url value="/resources/img/simplelogo.png"/>"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,6 +66,9 @@ body{
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="memberProc">회원가입</a></li>
+        <li><a href="login">로그인</a></li>
+        <li><a href="myPage">마이페이지</a></li>
+        <li><a href="getUsrBoofInfo?usrid=testman@test.com">DB테스트</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

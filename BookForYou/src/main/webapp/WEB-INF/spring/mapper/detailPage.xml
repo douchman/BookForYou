@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.proj.detailpage.IDAO">
-		<select id="detailView" parameterType="int" resultType="com.proj.detailpage.bookInfo">
+	
+	<select id="detailView" parameterType="int" resultType="com.proj.detailpage.bookInfo">
 		SELECT * FROM bookInfo
 		WHERE masterSeq=#{bookNo}
 	</select>
+	
+	<insert id="indvRating" parameterType="map">
+		INSERT INTO INDVBOOKRATING(rNo, nickName, masterSeq, rating)
+		VALUES((SELECT NVL(MAX(rNo), 0)+1 FROM INDVBOOKRATING), #{nickName}, #{masterSeq}, #{rating})
+	</insert>
+	
+	<delete id="deleteRating" parameterType="String">
+		delete from INDVBOOKRATING
+		where nickName = #{nickName}
+	</delete>
+	
+	<insert id="wishBookList" parameterType="map">
+		INSERT INTO WISHBOOKLIST(MASTERSEQ, NICKNAME)
+		VALUES (#{masterSeq}, #{nickName})
+	</insert>
+	
+	<delete id="deleteWish" parameterType="String">
+		delete from WISHBOOKLIST
+		where nickName = #{nickName}
+	</delete>
 </mapper>

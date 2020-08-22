@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
-<mapper namespace="com.proj.bookforyou.MemberShip.memberDAO">
 
 
-	<!--  select 테이블에 ID 존재하는지 확인  : 반환값 0  or 1-->
-	<select id="isExistId" parameterType="String" resultType="int">
-	
-		
-	
-	</select>
 
-
-=======
 <mapper namespace="com.proj.bookforyou.MemberShip.ImemberDAO">
 
 
@@ -49,19 +39,77 @@
 		parameterType="com.proj.bookforyou.MemberShip.BfuMember">
 
 		INSERT INTO bfuMember(usrId, usrNickName, pw, gender, age, favorite, favorite2, favorite3, serviceState, usrAuthNum)
-		VALUES(#{usrid},#{pw},#{usrnickname},#{gender},#{age},#{favorite},#{favorite2},#{favorite3},#{servicestate}, #{usrauthnum})
+		VALUES(#{usrid},#{usrnickname},#{pw},#{gender},#{age},#{favorite},#{favorite2},#{favorite3}, 0, #{usrauthnum})
 
 	</insert>
->>>>>>> master
-
-
-
-
-
-
-<<<<<<< HEAD
 	
-=======
->>>>>>> master
+	<select id="selectUsrAuthNum" parameterType="com.proj.bookforyou.MemberShip.MemberAuthDTO"
+	resultType="String">
+	SELECT usrAuthnum
+	FROM bfuMember
+	WHERE usrId = #{usrid}
+	
+	</select>
+	<update id="updateMemberState" parameterType="com.proj.bookforyou.MemberShip.MemberAuthDTO">
+	
+	UPDATE bfuMember
+	SET serviceState = '1'
+	WHERE usrId = #{usrid}
+	
+	</update>
 
+	<select id="selectUsrinfo" 
+	parameterType="com.proj.bookforyou.MemberShip.BfuMember"
+	resultMap="usrinfo">
+
+	SELECT NVL(pw, '0') pw , NVL(serviceState, '2') serviceState
+	FROM bfuMember RIGHT OUTER JOIN Dual
+	on usrId = #{usrid}
+	
+	</select>
+
+
+	<select id="selectUsrid" parameterType="com.proj.bookforyou.MemberShip.MemberAuthDTO"
+	resultType="String">
+
+	SELECT NVL(usrId, '0')
+	FROM bfuMember RIGHT OUTER JOIN
+	Dual
+	on usrId = #{usrid}
+	or usrNickName = #{usrnickname}
+	
+	</select>
+
+	<select id="getLoginSession"
+			parameterType="String"
+			resultType="com.proj.bookforyou.MemberShip.BfuMember">
+		
+		SELECT *
+		FROM bfuMember
+		WHERE usrId = #{usrid}
+	
+	</select>
+
+	<resultMap type="HashMap" id="usrinfo">
+
+	<id column="pw" property="pw" />
+	<id column="serviceState" property="serviceState" />
+
+	</resultMap>
+	
+	<select id="selectUsrBookLst"
+		parameterType="String"
+		resultType="com.proj.bookforyou.MemberShip.UsrBookInfo">
+	
+	SELECT NVL(addcode,'none') addcode
+	FROM usrBookInfo RIGHT OUTER JOIN Dual
+	ON usrId = #{usrid}
+	
+	</select>
+	
+	<resultMap type="Hashmap" id="usrBookMap">
+		<id column="addcode" property="addcode"/>	
+	</resultMap>
+	
+	
 </mapper>

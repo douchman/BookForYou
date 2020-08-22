@@ -27,6 +27,8 @@
 	<context:component-scan base-package="com.proj.bookforyou.MemberShip.controller" />
 	<context:component-scan base-package="com.proj.bookforyou.MemberShip.service" />
 	<context:component-scan base-package="com.proj.bookforyou.MemberShip" />
+	<context:component-scan base-package="com.proj.bookforyou.TendsAnalysis.service" />
+	<context:component-scan base-package="com.proj.detailpage" />
 	
 	
 	

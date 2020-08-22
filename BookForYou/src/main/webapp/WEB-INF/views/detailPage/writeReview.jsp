@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="home" value="/"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +17,24 @@
 		margin-top: 5%;
 	}
 </style>
+<script type="text/javascript">
+	function close(){
+		$('#writeFrm').submit();
+		window.close();
+	}
+</script>
 </head>
 <body>
-	<form>
+	<form action="${home }detail/write" id="writeFrm" method="post">
+	<input type="hidden" name="masterseq" value="${param.masterSeq }">
+	<input type="hidden" name="nickname" value="${param.nickName }">
 		<div align="center" id=text>
-			<textarea  style="width: 300px; height: 400px; resize: none;" id="review" placeholder="작품에 대한 생각을 말해주세요!"></textarea>
+			<textarea  style="width: 300px; height: 400px; resize: none;" name="review" placeholder="작품에 대한 생각을 말해주세요!"></textarea>
 		</div>
+		
 		<div align="center">
-			<input type="button" value="등록" id=okBtn  />
-			<input type="button" value="취소" id=cancelBtn />
+			<input type="button" value="등록" id=okBtn onclick="close();" />
+			<input type="button" value="취소" id=cancelBtn onclick="window.close();"/>
 		</div>
 	</form>
 </body>

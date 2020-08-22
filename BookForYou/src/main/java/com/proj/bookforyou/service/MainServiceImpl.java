@@ -7,12 +7,27 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proj.bookforyou.Recommend.service.IRedis;
 import com.proj.detailpage.bookSearchInfo;
 
 @Service
 public class MainServiceImpl implements IMainService{
 	@Autowired
 	private ISearchDAO IsearchDao;
+	@Autowired
+	private IRedis iRedis;
+	
+	public static String[] shuffle(String[] arr){
+		for(int x=0;x<arr.length;x++){
+			int i = (int)(Math.random()*arr.length);
+			int j = (int)(Math.random()*arr.length);
+			
+			String tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
+		}
+		return arr;
+	}
 	
 	@Override
 	public List<bookSearchInfo> searchBook(String searchStr) {
@@ -30,5 +45,17 @@ public class MainServiceImpl implements IMainService{
 	@Override
 	public String scrollPaging(String page, List<bookSearchInfo> bookList) {
 		return scrollPaging.scrollPage(page, bookList);
+	}
+	
+	@Override
+	public int incrCount(String usrId, String author) {
+		return iRedis.incrCount(usrId, author);
+	}
+	
+	@Override
+	public List<bookSearchInfo> recommendList(String recNo) {
+		String[] random_recommend = shuffle(recNo.split(" "));
+		
+		return IsearchDao.recommendList(random_recommend);
 	}
 }

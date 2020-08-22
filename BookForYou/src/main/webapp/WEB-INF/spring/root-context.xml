@@ -10,15 +10,14 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
-	<context:property-placeholder location="resources/DBconn" />
+	<context:property-placeholder
+		location="resources/DBconn" />
 
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"
-		p:driverClassName="${driverClassName}" 
-		p:url="${url}"
-		p:username="${usrname}" 
-		p:password="${password}" />
-
+		p:driverClassName="${driverClassName}" p:url="${url}"
+		p:username="${usrname}" p:password="${password}" />
+		
 
 
 	<bean id="sqlSessionFactoryBean"
@@ -35,6 +34,11 @@
 	<bean id="searchBookFactoryBean"
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:mapperInterface="com.proj.bookforyou.service.ISearchDAO"
+		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
+		
+	<bean id="detailFactoryBean"
+		class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:mapperInterface="com.proj.detailpage.IDAO"
 		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
 
 </beans>

@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 
 <style type="text/css">
+
+body{
+	font-family: 'Noto Serif KR', serif;
+}
+
+
 #wrapper .area {
 	border: 2px solid #B0C4DE;
 	border-radius: 10px;
@@ -14,7 +21,7 @@
 #area-top-center {
 	width:100%;
 	margin-bottom: 25px;
-	padding-top: 90px;
+	padding-top: 45px;
 }
 
 
@@ -34,13 +41,16 @@
 	
 }
 
+.top-contents .area-btn{
+	margin-top: 40px;
+}
 </style>
 <meta charset="UTF-8">
 <title>BookForYou - 마이 페이지</title>
 </head>
 <body>
 
-	<%@ include file="../common/header.jspf"%>
+	<%@ include file="../common/header2.jspf"%>
 
 	<!-- 마이페이지 모든 div를 묶는 전체 div wrapper -->
 	<div id="wrapper" class="container">
@@ -50,8 +60,8 @@
 			<div id="area-top-center" class="area col-md-12" align="center">
 				
 				<div class="top-contents col-md-4">
-
-					<h2> 사진이 올 자리입니다.</h2>
+					<div><span style="font-size: 15pt">회원님의 독서 등급</span></div>
+					<img class="" src="<c:url value='/resources/img/grade_gold.png'/>">
 
 				</div>
 				
@@ -59,8 +69,12 @@
 				<div class="top-contents col-md-8">
 
 					<h1>반갑습니다.</h1>
-					<h3>[usrName] 님 !</h3>
+					<h3>${sessionLogin.usrnickname } 님 !</h3>
 
+				<div class="area-btn">
+					<a href="modifyAuth"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
+					<a href="#"><input type="button" class="btn btn-info" value="내 서재 이동"></a>
+				</div>
 				</div>
 
 
@@ -73,11 +87,8 @@
 			<!-- 하단에서 좌측 -->
 			<div id="area-bottom-left" class="area col-md-4" align="center">
 
-				<h2> [usrName] 님의 취향은</h2>
-				<h4>[문화]에 대해 </h4>
-				<h4>폭넓은 지식을 소유한</h4> 
-				<h4>[예술]인 이시군요. 아름답습니다.</h4>
-				
+				<h2>${sessionLogin.usrnickname} 님은</h2>
+				<h4>${sessionLogin.tendsResult}</h4>
 				
 				
 
