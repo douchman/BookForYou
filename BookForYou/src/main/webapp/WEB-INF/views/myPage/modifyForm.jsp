@@ -35,7 +35,6 @@ font-size: 12pt;
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../common/header2.jspf"%>
 
 	<div id="wrapper" class="container row col-md-6 col-md-offset-3" align="center">
 	
@@ -228,7 +227,6 @@ font-size: 12pt;
 		
 	</div>
 
-	<%@ include file="../common/footer.jspf"%>
 	<script src='<c:url value="/resources/js/modifyForm.js?ver=3" />'></script>
 </body>
 </html>

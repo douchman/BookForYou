@@ -41,10 +41,6 @@
 <title>BookForYou - 회원가입 완료</title>
 </head>
 <body>
-
-	<%@ include file="../common/header2.jspf"%>
-
-
 	<input id="usrAddress" type="hidden" value="${sessionMember.usrid}">
 	<input id="authNum" type="hidden" value="${authNum}">
 
@@ -75,10 +71,6 @@
 		
 		
 	</div>
-
-
-	<%@ include file="../common/footer.jspf"%>
-
 
 <script>
 

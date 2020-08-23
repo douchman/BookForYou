@@ -16,11 +16,10 @@ body {
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../common/header2.jspf"%>
 	<div class="area-space"></div>
 
 	<div class="wrapper" class="container col-md-6 col-md-offset-3" align="center">
-			<form action="confirmPw" method="post">
+			<form action="chkPw" method="post">
 
 			<div class="">
 				<h4>본인 확인을 위한 비밀번호를 입력해주세요.</h4>
@@ -43,7 +42,5 @@ body {
 	</div>
 
 	<div class="area-space"></div>
-	
-	<%@ include file="../common/footer.jspf"%>
 </body>
 </html>

@@ -11,14 +11,17 @@
 <style type="text/css">
 .contactfield {
 	width: 100%;
-	height: 15%;
+	height: 20%;
+	background-color: rgba(169, 169, 169, 0.2);
+}
+
+.area-space-100{
+	height: 100px;
 }
 </style>
 </head>
 <body>
-
-
-	
+	<div class="area-space-100"></div>
 	<div class="contactfield row">
 	<div class="col-md-12"><hr/></div>
 		<div class="col-md-3 col-md-offset-1">
@@ -49,19 +52,26 @@
 
 	</div>
 
-	<script
-		src='<c:url value="/webjars/jquery/3.5.1/dist/jquery.min.js" />'></script>
+	
 	<script
 		src='<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.min.js" />'></script>
 
-
-
+	
+	<script src='<c:url value="/resources/js/loginForm.js?ver=6" />'></script>
+	
 </body>
 
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$('.login').css("display","none");
+	if($('#loginState').val()=="1"){
+		$('.login').css("display","");
+		$('.nologin').css("display","none");
+	}
+	else{
+		$('.login').css("display","none");
+		$('.nologin').css("display","");
+	}
 })
 	
 	

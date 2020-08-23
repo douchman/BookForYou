@@ -112,9 +112,6 @@ to {
 <title>BookForYou - 선택 입력 사항</title>
 </head>
 <body>
-	<%@ include file="../common/header2.jspf"%>
-
-
 
 	<form method="post">
 	
@@ -240,7 +237,7 @@ to {
 			> 
 			
 			<input class="btn btn-primary col-md-2 col-md-offset-2" value="가입 완료" type="submit"
-			onclick="javascript : form.action='membershipResult';"
+			onclick="javascript : form.action='membershipDone';"
 			> 
 			
 			
@@ -251,7 +248,6 @@ to {
 
 	</div>
 </form>
-	<%@ include file="../common/footer.jspf"%>
-	<script src='<c:url value="/resources/js/memberForm.js?ver=6" />'></script>
+	<script src='<c:url value="/resources/js/memberForm.js?ver=7" />'></script>
 </body>
 </html>
