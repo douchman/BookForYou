@@ -58,6 +58,10 @@ public class MemberShipController {
 		return new BfuMember();
 	}
 	
+	@ModelAttribute("loginState")
+	public String getloginState() {	
+		return "login";
+	}
 	
 	
 	@RequestMapping(value = "memberProc")
@@ -204,7 +208,7 @@ public class MemberShipController {
 			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
 			
 			model.addAttribute("sessionLogin",member);
-			
+			model.addAttribute("loginState");
 			return "home";
 		}
 		
@@ -231,8 +235,43 @@ public class MemberShipController {
 		return "/myPage/modifyAuth";
 	}
 	
+	@RequestMapping(value = "modify")
+	public String modifyProc(@ModelAttribute("sessionLogin")BfuMember sessionmember,
+				BfuMember member, Model model) {
+		
+		
+		System.out.println(member.getPw());
+		System.out.println(member.getUsrnickname());
+		System.out.println(member.getAge());
+		System.out.println(member.getFavorite());
+		System.out.println(member.getFavorite2());
+		System.out.println(member.getFavorite3());
+		
+		
+		
+		member.setUsrid(sessionmember.getUsrid());
+		
+		//입력된 정보로 멤버테이블 업데이트
+		iMemserv.modifyProc(member);
+		
+		// 업데이트된 정보를 다시 받아와서 로그인 세션으로 객체저장
+		sessionmember = iMemserv.getLoginSession(sessionmember.getUsrid());
+		// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
+		List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(sessionmember.getUsrid());
+					
+		// 반환 값이  null 아닐때만 성향분석서비스 호출 : 해당 유저의 책정보가 1개이상 있을 경우만
+		if(tmpLst != null)
+			sessionmember = iTendserv.getResult(tmpLst, sessionmember);
+					
+		// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.			
+		model.addAttribute("sessionLogin",sessionmember);
+		
+		return "home";
+	}
+	
 	@RequestMapping(value = "confirmPw")
 	public String confirmPw(
+			Model model,
 			@ModelAttribute("sessionLogin")BfuMember member,
 			@RequestParam("inputPw")String pw
 			) {
@@ -242,6 +281,7 @@ public class MemberShipController {
 		}
 		// 아닐경우 다시 인증페이지로 이동
 		else {
+			model.addAttribute("authMsg","비밀번호가 일치하지 않습니다.");
 			return "/myPage/modifyAuth";
 			}
 		

@@ -17,6 +17,7 @@ public interface ImemberDAO {
 	public BfuMember getLoginSession(String usrid);
 	public String selectUsrid(MemberAuthDTO authDTO);
 	public List<UsrBookInfo> selectUsrBookLst(String usrid);
+	public void updateMember(BfuMember member);
 
 	
 }

@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	
+
+	var pwChk = $('#pwChkMsg');
 	/*  form 내에서 enter 키 입력시 강제로 submit 되는 것 막기*/
 	$(document).on("keydown",'input[type="text"]',function(event) {
 	  	if (event.keyCode === 13) {
@@ -18,8 +19,13 @@ $(document).ready(function(){
 	$('#chkNickname').on('click',function(){
 		var nickname = $('#usrnickname').val();
 
-		if(nickname){}
-		else{}
+		//  입력한 닉네임이 이미 설정한닉네임과 동일한 경우
+		if(nickname == $('#tmpNickname').val()){
+			alert('이미 같은 별명입니다.');
+		}
+		else{
+			
+		
 		$.ajax({
 		
 			type	:	"POST",
@@ -39,9 +45,69 @@ $(document).ready(function(){
 				
 		})
 		
-		
+		}
 		
 	})
+	
+	// 패스워드 검사
+	$('#modpw').keyup(function(){
+		//alert(pw +'and' + pwOk);
+		// 패스워드 , 패스워드 확인 입력 필드가 모두 비어있지 않을때
+		if($('#modpw').val() != null && $('#modpw').val() != '' && $('#modpwOk').val() != null && $('#modpwOk').val() != ''){
+			// 그 값들이 일치하는지 확인한다.
+			//일치 하지 않을 경우
+			if($('#modpw').val() != $('#modpwOk').val()){
+				pwChk.css("color","red");
+				pwChk.html('패스워드 미 일치!');
+				$('#pw').val($('#tmppw').val());
+				//$('#pwPass').val('0');
+			}
+			// 일치 할 경우
+			else{
+				pwChk.css("color","blue");
+				pwChk.html('패스워드 일치');	
+				$('#pw').val($('#modpw').val());
+				//$('#pwPass').val('1');
+			}
+		}
+		// 두 입력 필드가 비어있을경우에는 메시지를 없애기
+		else if($('#modpw').val() == null || $('#modpw').val() == '' || $('#modpwOk').val() == null || $('#modpwOk').val() == ''){
+			pwChk.html('');
+			$('#pw').val($('#tmppw').val());
+			//$('#pwPass').val('0');
+		}
+	})
+	
+	$('#modpwOk').keyup(function(){
+		//alert(pw +'and' + pwOk);
+		// 패스워드 , 패스워드 확인 입력 필드가 모두 비어있지 않을때
+		if($('#modpw').val() != null && $('#modpw').val() != '' && $('#modpwOk').val() != null && $('#modpwOk').val() != ''){
+			// 그 값들이 일치하는지 확인한다.
+			//일치 하지 않을 경우
+			if($('#modpw').val() != $('#modpwOk').val()){
+				pwChk.css("color","red");
+				pwChk.html('패스워드 미 일치!');
+				$('#pw').val($('#tmppw').val());
+				//$('#pwPass').val('0');
+			}
+			// 일치 할 경우
+			else{
+				pwChk.css("color","blue");
+				pwChk.html('패스워드 일치');	
+				$('#pw').val($('#modpw').val());
+				//$('#pwPass').val('1');
+			}
+		}
+		// 두 입력 필드가 비어있을경우에는 메시지를 없애기
+		else if($('#modpw').val() == null || $('#modpw').val() == '' || $('#modpwOk').val() == null || $('#modpwOk').val() == ''){
+			pwChk.html('');
+			$('#pw').val($('#tmppw').val());
+			//$('#pwPass').val('0');
+		}
+	})
+
+
+
 })
 
 function initAgeTxt(){

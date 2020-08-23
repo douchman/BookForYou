@@ -39,19 +39,27 @@ font-size: 12pt;
 
 	<div id="wrapper" class="container row col-md-6 col-md-offset-3" align="center">
 	
+	<!--  닉네임 유효검사를 위한 임시 태그 -->
+	<input id="tmpNickname" type="hidden" value="${sessionLogin.usrnickname }">
+	<!-- 유효검사 통과를 위한 임시 태그 -->
+	<input id="nicknameChk" type="hidden" value="0">
 	
+	<!-- 패스워드 유효검사를 위한 태그 : 기존 pw값 입력 저장-->
+	<input id="tmppw" name="tmppw" type="hidden" value="${sessionLogin.pw }">
 	
 	<h2 class="txt-head">[ ${sessionLogin.usrnickname } ]님 정보 수정</h2>
 	
 		<div class="area-divide-50"></div>
 		<!-- FORM! -->
-		<form id="frm1" method="post" action="">
+		<form id="frm1" method="post" action="modify">
+		<!-- 패스워드 유효검사를 위한 태그 : 기존 설정되어 있는 태그 값-->
+		<input id="pw" name="pw" type="hidden" value="${sessionLogin.pw }">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="row" style="text-align: left;">
 				<h4 class="txt-item col-md-4">별명</h4>
 			</div>
 			<div class="row">
-				<input class="form-control col-md-4" style="width: 320px; margin-right: 20px;" id="usrnickname" name="usrnickname" type="text" value="${sessionLogin.usrnickname }">
+				<input class="form-control col-md-3" style="width: 270px; margin-right: 10px;" id="usrnickname" name="usrnickname" type="text" value="${sessionLogin.usrnickname }">
 				<input id="chkNickname" class="btn btn-primary col-md-3" type="button" value="중복확인"> 		
 			</div> 
 			
@@ -61,7 +69,7 @@ font-size: 12pt;
 				<h4 class="txt-item col-md-4">패스워드</h4>
 			</div>
 			<div class="row">
-				<input class="form-control col-md-4" id="pw" name="pw" type="password" > 		
+				<input class="form-control col-md-4" id="modpw" name="modpw" type="password" > 		
 			</div>
 			
 			<div class="area-divide-25"></div>
@@ -71,7 +79,7 @@ font-size: 12pt;
 			</div>
 			
 			<div class="row">
-				<input class="form-control col-md-4" id="pwok" name="pwok" type="password" > 		
+				<input class="form-control col-md-4" id="modpwOk" name="modpwok" type="password" > 		
 			</div>
 			<div class="area-divide-25"></div>
 			<!-- 패스워드 유효검사 메시지  -->	
@@ -221,6 +229,6 @@ font-size: 12pt;
 	</div>
 
 	<%@ include file="../common/footer.jspf"%>
-	<script src='<c:url value="/resources/js/modifyForm.js?ver=1" />'></script>
+	<script src='<c:url value="/resources/js/modifyForm.js?ver=3" />'></script>
 </body>
 </html>

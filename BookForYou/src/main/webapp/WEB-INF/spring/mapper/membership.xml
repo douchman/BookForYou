@@ -107,6 +107,16 @@
 	
 	</select>
 	
+	
+	<update id="updateMember" parameterType="com.proj.bookforyou.MemberShip.BfuMember">
+	UPDATE bfuMember
+	SET usrnickname=#{usrnickname}, pw=#{pw}, age=#{age}, favorite=#{favorite}, favorite2=#{favorite2}, favorite3=#{favorite3}
+	WHERE usrId = #{usrid}
+	
+	
+	</update>
+	
+	
 	<resultMap type="Hashmap" id="usrBookMap">
 		<id column="addcode" property="addcode"/>	
 	</resultMap>

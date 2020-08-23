@@ -58,5 +58,12 @@
 
 </body>
 
-
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('.login').css("display","none");
+})
+	
+	
+</script>
 </html>

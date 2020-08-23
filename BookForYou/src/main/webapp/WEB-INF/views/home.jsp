@@ -97,6 +97,8 @@ img {
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
+	
+
 	<%@ include file="common/footer.jspf"%>
 </body>
 </html>

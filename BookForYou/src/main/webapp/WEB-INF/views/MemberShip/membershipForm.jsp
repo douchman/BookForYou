@@ -5,6 +5,11 @@
 <html>
 <head>
 <style type="text/css">
+.login{
+
+	display: none;
+}
+
 .inputfield {
 	margin-bottom: 30px;
 }
@@ -257,6 +262,8 @@ margin-bottom: 10px;
 </form>
 	<%@ include file="../common/footer.jspf"%>
 	
+	
 	<script src='<c:url value="/resources/js/memberForm.js?ver=5" />'></script>
+	
 </body>
 </html>

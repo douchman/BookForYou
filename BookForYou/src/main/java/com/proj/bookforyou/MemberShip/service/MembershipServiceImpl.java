@@ -149,4 +149,10 @@ public class MembershipServiceImpl implements IMembershipService {
 
 		return usrBookLst;
 	}
+	
+	@Override
+	public void modifyProc(BfuMember member) {
+		memdao.updateMember(member);
+		
+	}
 }
