@@ -87,7 +87,7 @@ function getID(){
 	
 	var frmData = $('#frm').serialize();
 	
-	window.open('findIDProc?'+frmData+"&mode=1","_Blank" , 'toolbar=no,menumar=no,width=400,height=400,left='+popupX+',top='+popupY).focus();
+	window.open('findIDProc?'+frmData+"&mode=1","_Blank" , 'toolbar=no,menubar=no,width=400,height=400,left='+popupX+',top='+popupY).focus();
 	
 }
 

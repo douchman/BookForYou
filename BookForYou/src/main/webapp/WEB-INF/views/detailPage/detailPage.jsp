@@ -443,7 +443,7 @@
 		
 		var urllink = url+"?masterSeq="+ masterSeq +"&nickName="+ nickName;
 		var myWindow = window
-				.open(urllink, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=400, lwfr=600, widtn=200px, height=400px");
+				.open(urllink, "_Blank", "toolbar=no, scrollbars=yes, resizable=yes,widtn=150, height=200");
 		//url, title, size
 	}
 	
