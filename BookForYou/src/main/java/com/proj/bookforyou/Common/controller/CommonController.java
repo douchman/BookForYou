@@ -32,6 +32,8 @@ public class CommonController {
 		pageMap.put("findIDProc", "myPage/MemberShip/findInfoResult");
 		pageMap.put("findPWProc", "myPage/MemberShip/findInfoResult");
 		pageMap.put("authProc", "MemberShip/authDone");
+		pageMap.put("detailView", "detailPage/detailPage");
+		pageMap.put("mainPage", "Mainpage/main");
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");

@@ -59,14 +59,15 @@ public class HomeController {
 	*/
 	@RequestMapping("main")
 	public String main(Model model, @ModelAttribute("sessionLogin") BfuMember member) {
+		iRecommend.usrBasedSimilarity();
 		model.addAttribute("recommend", iMainServ.recommendList(iRecommend.usrBasedRecommend(member.getUsrnickname())));
 		model.addAttribute("recommendCodeList", iMainServ.recommendCodeList(member.getMaxReaderSign(), member.getMaxContentsSign()));
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
 		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
-		return "detailPage/detailPage";
+		return "forward:/detailView";
 	}
 	@RequestMapping("search")
 	public String search(@RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
@@ -88,43 +89,4 @@ public class HomeController {
 		//List<bookSearchInfo> bookList = iMainServ.getBookList(page, searchStr);
 		return iMainServ.scrollPaging(page, bookList);
 	}
-	
-	
-	
-	
-	@RequestMapping("dataSet")
-	public String dataSet(Model model) {
-		model.addAttribute("allUsrScoreList", iRecommend.allUsrScoreList());
-		return "Mainpage/main";
-	}
-	@RequestMapping("usrBasedResult")
-	public String usrBasedResult(Model model) {
-		String[][] similarityTable = iRecommend.usrBasedSimilarity();
-
-		model.addAttribute("similarityTable", similarityTable);
-		return "Mainpage/main";
-	}
-	@RequestMapping("Recommend")
-	public String Recommend(Model model) {
-		List<List<bookSearchInfo>> recommendListAll = new ArrayList<List<bookSearchInfo>>();
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("재석")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("명수")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("하하")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("준하")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("세형")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("광희")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("동관")));
-		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("name")));
-		
-		model.addAttribute("usrBasedRecommend", recommendListAll);
-		model.addAttribute("usrBasedRecommendAll", iRecommend.usrBasedRecommendAll());
-		return "Mainpage/main";
-	}
-	
-	@RequestMapping("incrCount")
-	public String incrCount(@RequestParam("author") String author, Model model) {
-		model.addAttribute("incrCount", iMainServ.incrCount("1", author));
-		return "Mainpage/main";
-	}
-
 }
