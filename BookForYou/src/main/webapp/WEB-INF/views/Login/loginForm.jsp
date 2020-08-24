@@ -8,15 +8,13 @@
 .area-btn {
 	margin-right: 9px;
 }
-.area-space-150{
-	height: 150px; 
-	
-}
 </style>
 <meta charset="UTF-8">
 <title>BookForYou 회원 로그인</title>
 </head>
 <body>
+	<%@ include file="../common/header2.jspf"%>
+
 	<input id="loginResult" type="hidden" value="${member.loginResult }">
 	<div id="wrapper" class="container">
 
@@ -26,7 +24,7 @@
 		</div>
 
 		<div class="col-md-5 col-md-offset-3">
-			<form id="frm" method="post">
+			<form id="frm">
 				<div class="form-group">
 					<label for="exampleInputEmail1">아이디</label> <input type="text"
 						class="form-control" id="usrid" name="usrid"
@@ -46,15 +44,16 @@
 						class="area-btn col-md-3 btn btn-primary" id="btnRegist"
 						type="button" value="회원가입"> <input
 						class="area-btn col-md-3 btn btn-primary"
-						onclick="location.href='findID'" type="button" value="ID 찾기">
+						onclick="location.href='findIDProc'" type="button" value="ID 찾기">
 					<input class="area-btn col-md-3 btn btn-primary"
-						onclick="location.href='findPw'" type="button" value="PW 찾기">
+						onclick="location.href='findPwProc'" type="button" value="PW 찾기">
 				</div>
 			</form>
 
 		</div>
 	</div>
-	<div class="area-space-150"></div>
-	
+
+	<%@ include file="../common/footer.jspf"%>
+	<script src='<c:url value="/resources/js/loginForm.js?ver=6" />'></script>
 </body>
 </html>

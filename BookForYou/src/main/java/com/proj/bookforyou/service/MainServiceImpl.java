@@ -58,9 +58,4 @@ public class MainServiceImpl implements IMainService{
 		
 		return IsearchDao.recommendList(random_recommend);
 	}
-	@Override
-	public List<bookSearchInfo> recommendCodeList(String no1, String no3) {
-		String recommendCode = no1 + "_" + no3 + "__";
-		return IsearchDao.recommendCodeList(recommendCode);
-	}
 }

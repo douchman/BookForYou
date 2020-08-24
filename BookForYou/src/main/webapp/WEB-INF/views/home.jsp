@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-
+<c:url var="home" value="/"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -53,7 +53,7 @@ img {
 </script>
 </head>
 <body>
-
+	<%@ include file="common/header.jspf"%>
 	<div id="carousel-example-generic" class="carousel slide"
 		data-ride="carousel">
 		<!-- Indicators -->
@@ -97,6 +97,6 @@ img {
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	
+	<%@ include file="common/footer.jspf"%>
 </body>
 </html>

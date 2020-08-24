@@ -17,5 +17,4 @@ public interface IMembershipService {
 	public BfuMember getLoginSession(String usrid);
 	public String findIDProc(MemberAuthDTO authDTO);
 	public List<UsrBookInfo> getUsrBookLst(String usrid);
-	public void modifyProc(BfuMember member);
 }

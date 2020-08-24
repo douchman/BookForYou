@@ -32,6 +32,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../common/header2.jspf"%>
 
 	<div id="wrapper" class="container col-md-6 col-md-offset-3" align="center">
 
@@ -71,6 +72,8 @@
 		
 	</div>
 
+	<%@ include file="../common/footer.jspf"%>
+
 
 <script type="text/javascript">
 
@@ -82,7 +85,7 @@ function getID(){
 	
 	var frmData = $('#frm').serialize();
 	
-	window.open('findPWProc?'+frmData+"&mode=2","_Blank" , 'toolbar=no,menumar=no,width=400,height=400,left='+popupX+',top='+popupY).focus();
+	window.open('findPW?'+frmData+"&mode=2","_Blank" , 'toolbar=no,menumar=no,width=400,height=400,left='+popupX+',top='+popupY).focus();
 	
 }
 

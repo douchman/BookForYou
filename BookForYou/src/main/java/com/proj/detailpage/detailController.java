@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,36 +27,29 @@ public class detailController {
 		System.out.println(rating);
 		System.out.println(masterSeq);
 		
-		if(deSerV.ratingCheck(nickName, masterSeq) == 0) {
-			deSerV.indvRating(rating, nickName, masterSeq);
-			deSerV.deleteWish(nickName, masterSeq);
-		}
-		else {
-			deSerV.ratingUpdate(rating, nickName, masterSeq);
-		}
-		//iRecommend.saveData(nickName, masterSeq, rating);
+		deSerV.indvRating(rating, nickName, masterSeq);
+		deSerV.deleteWish(nickName, masterSeq);
+		
+		iRecommend.saveData(nickName, masterSeq, rating);
 		
 		bookInfo book = deSerV.detailView(masterSeq);
 		model.addAttribute("bookInfo", book);
-		return "redirect:/detail?bookNo=" + masterSeq;
+		return "detailPage/detailPage";
 	}
 	
 	@RequestMapping("wish")
 	public String wish(Model model, @RequestParam("wish") String wish, @RequestParam("masterSeq") String masterSeq,  @RequestParam("nickName") String nickName) {
-		if(deSerV.wishCheck(nickName, masterSeq) == 0) {
+		if(wish.contentEquals("1")) {
 			bookInfo book = deSerV.detailView(masterSeq);
 			model.addAttribute("bookInfo", book);
 			deSerV.wishBookList(nickName, masterSeq);
 			deSerV.deleteRating(nickName, masterSeq);
 		}
-		else {
-			deSerV.deleteWish(nickName, masterSeq);
-		}
 		System.out.println(wish);
 		System.out.println(masterSeq);
 		System.out.println(nickName);
 		
-		return "redirect:/detail?bookNo=" + masterSeq;
+		return "detailPage/detailPage";
 	}
 	
 	@RequestMapping("writeReview")
@@ -65,6 +57,7 @@ public class detailController {
 		return "detailPage/writeReview";
 	}
 	
+
 	
 	@RequestMapping("write")
 	public String write(bookComment bookcomment, Model model) {
@@ -73,32 +66,6 @@ public class detailController {
 		System.out.println(bookcomment.getMasterseq());
 		model.addAttribute(bookcomment);
 		deSerV.writeReview(bookcomment);
-		return "detail/writeReview";
-	}
-	
-	@RequestMapping("modifyReview")
-	public String modifyReview() {
-		return "detailPage/modifyReview";
-	}
-	
-	//modify 추가해야함
-	
-	
-	@RequestMapping("like")
-	public String like(Model  model,@RequestParam("nickName") String nickName, @RequestParam("commentNum") String commentNum) {
-		
-		System.out.println(nickName);
-		System.out.println(commentNum);
-		System.out.println(deSerV.likeCheck(nickName, commentNum));
-		
-		if(deSerV.likeCheck(nickName, commentNum) == 0) {
-			deSerV.likeReview(nickName, commentNum);
-			deSerV.likeAdd(Integer.parseInt(commentNum));
-			}
-		else {
-			deSerV.likedelete(nickName, commentNum);
-			deSerV.likeSubtract(Integer.parseInt(commentNum));
-		}
 		return "detailPage/detailPage";
 	}
 }

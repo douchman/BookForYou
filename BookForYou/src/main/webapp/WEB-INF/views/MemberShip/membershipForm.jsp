@@ -5,11 +5,6 @@
 <html>
 <head>
 <style type="text/css">
-.login{
-
-	display: none;
-}
-
 .inputfield {
 	margin-bottom: 30px;
 }
@@ -114,6 +109,8 @@ margin-bottom: 10px;
 <title>BookForYou - 필수입력사항</title>
 </head>
 <body>
+	<%@ include file="../common/header2.jspf"%>
+
 
 <input type="hidden" id="idPass" value="0">
 <input type="hidden" id="pwPass" value="0">
@@ -258,7 +255,8 @@ margin-bottom: 10px;
 	</div>
 
 </form>
-<script src='<c:url value="/resources/js/memberForm.js?ver=7" />'></script>
+	<%@ include file="../common/footer.jspf"%>
+	
+	<script src='<c:url value="/resources/js/memberForm.js?ver=5" />'></script>
 </body>
-
 </html>

@@ -6,28 +6,8 @@ public class bookComment extends Wishbooklist{
 
     // ´ñ±Û 
     private String review;
-    
-    private Number rating;
 
-    private Number commentLike;
-    
-    public Number getCommentLike() {
-		return commentLike;
-	}
-
-	public void setCommentLike(Number commentLike) {
-		this.commentLike = commentLike;
-	}
-
-	public Number getRating() {
-		return rating;
-	}
-
-	public void setRating(Number rating) {
-		this.rating = rating;
-	}
-
-	public Integer getCommentnum() {
+    public Integer getCommentnum() {
         return commentnum;
     }
 

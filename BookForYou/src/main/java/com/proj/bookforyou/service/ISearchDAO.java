@@ -10,5 +10,4 @@ public interface ISearchDAO {
 	public List<bookSearchInfo> getBookList(Map<String, Object> map);
 	
 	public List<bookSearchInfo> recommendList(String[] recNo);
-	public List<bookSearchInfo> recommendCodeList(String recommendCode);
 }
