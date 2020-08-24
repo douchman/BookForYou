@@ -161,7 +161,17 @@ public class detailServiceImpl implements detailService{
 		iDao.likedelete(map);
 		
 	}
-                                                                                                                                                                                                                                                          
+     
+	// 책 부가코드 가져오기
+	@Override
+	public String getAddCode(int seqNum) {
+		
+		String addcode = iDao.getAddCode(seqNum);
+		
+		addcode = addcode.substring(2,3);
+		return addcode;
+	}
+	
 	@Override
 	public int grape1(String bookNo) {
 		return iDao.grape1(Integer.parseInt(bookNo));

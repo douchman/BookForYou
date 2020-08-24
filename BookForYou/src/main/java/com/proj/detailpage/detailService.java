@@ -30,4 +30,7 @@ public interface detailService {
 	public int grape3(String bookNo);
 	public int grape4(String bookNo);
 	public int grape5(String bookNo);
+	
+	// 추가
+	public String getAddCode(int seqNum);
 }

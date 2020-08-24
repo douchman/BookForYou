@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.proj.bookforyou.Library.DTO.Bookinfo;
+
 public interface ImemberDAO {
 
 	public String isExistId(String usrid);
@@ -18,6 +20,7 @@ public interface ImemberDAO {
 	public String selectUsrid(MemberAuthDTO authDTO);
 	public List<UsrBookInfo> selectUsrBookLst(String usrid);
 	public void updateMember(BfuMember member);
+	public List<Bookinfo> getBookLst_basedHis(String addcode);
 
 	
 }

@@ -31,4 +31,7 @@ public interface IDAO {
 	public int grape3(int bookNo);
 	public int grape4(int bookNo);
 	public int grape5(int bookNo);
+	
+	//추가
+	public String getAddCode(int seqNum);
 }

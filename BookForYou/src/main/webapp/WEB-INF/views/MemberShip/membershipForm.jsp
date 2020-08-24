@@ -129,7 +129,7 @@ margin-bottom: 10px;
 		<div class="head" align="center">
 			<h1 class="head-title"> <img src='<c:url value="/resources/img/textlogo_resize.png"/>'>  와 함께하기 1단계 </h1>
 		
-			<h4 class="head-sub"> 회원님의 정보를 입력해주세요. </h4>
+			<h4 class="head-sub"> 회원님의 소중한 정보를 입력해주세요. </h4>
 			<br><br>
 			<h4 class="head-sub sub"> 모든 정보를 입력하시면 다음으로 넘어갑니다. </h4>
 		</div>

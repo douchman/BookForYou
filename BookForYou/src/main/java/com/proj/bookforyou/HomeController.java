@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.proj.bookforyou.MemberShip.BfuMember;
+import com.proj.bookforyou.MemberShip.usrBookHistory;
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.service.IMainService;
 import com.proj.detailpage.bookComment;
@@ -29,7 +30,7 @@ import com.proj.detailpage.detailService;
 /**
  * Handles requests for the application home page.
  */
-@SessionAttributes({"sessionMember", "sessionLogin"})
+@SessionAttributes({"sessionMember", "sessionLogin","sessionHistory"})
 @Controller
 public class HomeController {
 	
@@ -50,6 +51,11 @@ public class HomeController {
 	public BfuMember getEmptyMember() {	
 		return new BfuMember();
 	}
+	
+	@ModelAttribute("sessionHistory")
+	public List<usrBookHistory> getHistory() {	
+		return new ArrayList<usrBookHistory>();
+	}
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -66,9 +72,25 @@ public class HomeController {
 		return "forward:/mainPage";
 	}
 	@RequestMapping("detail")
-	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
+	public String detail(
+			@ModelAttribute("sessionLogin") BfuMember member,
+			@ModelAttribute("sessionHistory") List<usrBookHistory> usrBookHistory,
+			@RequestParam("bookNo") String bookNo, Model model) {
+		
+		
 		List<bookComment> lst = deSerV.viewReview(bookNo);
         List<bookInfo> list = deSerV.viewMore(bookNo);
+        
+        // 클릭 될 때마다 유저 히스토리에 로그인된 유저의 id와 add코드를 추가한다.
+        usrBookHistory usrHis = new usrBookHistory();
+        usrHis.setUsrId(member.getUsrid());
+        usrHis.setAddCode(deSerV.getAddCode(Integer.valueOf(bookNo)));
+        usrBookHistory.add(usrHis);
+        
+        for(usrBookHistory ur : usrBookHistory) {
+        	System.out.println(ur.getUsrId() + " : " + ur.getAddCode());
+        }
+        
         int grape1 = deSerV.grape1(bookNo);
         int grape2 = deSerV.grape2(bookNo);
         int grape3 = deSerV.grape3(bookNo);

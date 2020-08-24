@@ -114,6 +114,17 @@
 	
 	</update>
 	
+	<select id="getBookLst_basedHis" parameterType="String" resultType="com.proj.bookforyou.Library.DTO.Bookinfo">
+	
+	select * from(
+		select * from bookinfo
+		where addcode LIKE '__'||#{addcode}||'__'
+		order by DBMS_RANDOM.RANDOM)
+	<![CDATA[ where rownum  < 11 ]]>
+	 
+		
+	</select>
+	
 	
 	<resultMap type="Hashmap" id="usrBookMap">
 		<id column="addcode" property="addcode"/>	

@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-
+import com.proj.bookforyou.Library.DTO.Bookinfo;
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
 import com.proj.bookforyou.MemberShip.UsrBookInfo;
+import com.proj.bookforyou.MemberShip.usrBookHistory;
 import com.proj.bookforyou.MemberShip.service.IMembershipService;
 import com.proj.bookforyou.Recommend.service.IRecommendService;
+import com.proj.bookforyou.TendsAnalysis.service.IHistoryService;
 import com.proj.bookforyou.TendsAnalysis.service.ITendsAnalysisService;
 
 import oracle.net.aso.l;
@@ -32,7 +34,7 @@ import oracle.security.o3logon.a;
 
 
 
-@SessionAttributes({"sessionMember", "sessionLogin","loginState"})
+@SessionAttributes({"sessionMember", "sessionLogin","loginState","sessionHistory"})
 @Controller
 public class MemberShipController {
 
@@ -47,6 +49,8 @@ public class MemberShipController {
 	@Autowired
 	private IRecommendService iRecommend;
 
+	@Autowired
+	private IHistoryService iHisServ;
 	
 	@ModelAttribute("sessionMember")
 	public BfuMember getEmptyMember() {	
@@ -173,9 +177,18 @@ public class MemberShipController {
 	}
 	
 	@RequestMapping(value = "goMyPage")
-	public String myPage(@ModelAttribute("sessionLogin")BfuMember member,
+	public String myPage(
+			@ModelAttribute("sessionHistory") ArrayList<usrBookHistory> usrBookHistory,
+			@ModelAttribute("sessionLogin")BfuMember member,
 				Model model) {
 		
+		System.out.println(usrBookHistory.get(0).getAddCode());
+		
+		String maxContentSign = iHisServ.setHistoryLst(usrBookHistory);
+		
+		List<Bookinfo> bookLst  = iMemserv.getBookLst_basedHis(maxContentSign);		
+		
+		model.addAttribute("bookLst",bookLst);
 		//model.addAttribute("",member)
 		return "forward:/myPage";
 		

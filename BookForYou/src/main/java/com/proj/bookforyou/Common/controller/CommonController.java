@@ -38,6 +38,13 @@ public class CommonController {
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");
+		pageMap.put("GoLibrary", "Library/libraryForm");
+		pageMap.put("gobookRatingDetail", "Library/ratedListForm");
+		pageMap.put("gowishBook", "Library/wishListForm");
+		pageMap.put("collList", "Library/collectionList");
+		pageMap.put("collForm", "Library/collectionForm");
+		pageMap.put("collView", "Library/collectionView");
+		pageMap.put("practice", "Library/practice");
 		
 		
 	}
