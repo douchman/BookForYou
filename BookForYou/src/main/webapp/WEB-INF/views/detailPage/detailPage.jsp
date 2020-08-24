@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +85,6 @@
 
 </head>
 <body>
-	<%@ include file="../common/header.jspf"%>
 	<c:url var="home" value="/"/>
 	<%String num = "0"; %>
 
@@ -161,7 +161,7 @@
 					<span class="startRadio__img"><span class="blind">별 5개</span></span>
 				</label>
 			</div>
-			<div id="review" style="margin-left: 30%; margin-bottom: 2%; /* display: none; */">
+			<div id="review" style="margin-left: 30%; margin-bottom: 2%;">
 				<a onclick="writeReview('${home }detail/writeReview', ${bookInfo.masterseq });" id="writeReview" >리뷰를 작성해주세요!</a>
 			</div>
 			</td>
@@ -242,8 +242,6 @@
 								<input type="button" value="좋아요" class="likeReiew">
 						</div> --%>
 					</div>
-
-				</div>
 			</td>
 		</tr>
 	</table>
@@ -361,7 +359,6 @@
 		</ul>
 	</div>
 	<br/><br/>
-<%@ include file="../common/footer.jspf"%>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
@@ -442,7 +439,7 @@
 	
 	function writeReview(url, masterSeq) {
 		window.name = "리뷰";
-		var nickName = 'name'; //임의로
+		var nickName = $('#nickName').val();
 		
 		var urllink = url+"?masterSeq="+ masterSeq +"&nickName="+ nickName;
 		var myWindow = window

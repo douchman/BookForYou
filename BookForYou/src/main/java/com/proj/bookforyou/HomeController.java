@@ -63,7 +63,7 @@ public class HomeController {
 	public String main(Model model, @ModelAttribute("sessionLogin") BfuMember member) {
 		model.addAttribute("recommend", iMainServ.recommendList(iRecommend.usrBasedRecommend(member.getUsrnickname())));
 		model.addAttribute("recommendCodeList", iMainServ.recommendCodeList(member.getMaxReaderSign(), member.getMaxContentsSign()));
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
@@ -84,7 +84,7 @@ public class HomeController {
 		model.addAttribute("grape3", grape3);
 		model.addAttribute("grape4", grape4);
 		model.addAttribute("grape5", grape5);
-		return "detailPage/detailPage";
+		return "forward:/detailView";
 	}
 	@RequestMapping("search")
 	public String search(@RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
@@ -95,8 +95,9 @@ public class HomeController {
         model.addAttribute("searchCount", searchList.size());
 		model.addAttribute("searchStr", searchStr);
 		//model.addAttribute("searchBookLst", iMainServ.searchBook(searchStr));
-		return "Mainpage/searchForm";
+		return "forward:/searchBook";
 	}
+	
 	@RequestMapping(value = "paging", produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String paging(@RequestParam("page") String page, @RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
@@ -113,14 +114,15 @@ public class HomeController {
 	@RequestMapping("dataSet")
 	public String dataSet(Model model) {
 		model.addAttribute("allUsrScoreList", iRecommend.allUsrScoreList());
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
+	
 	@RequestMapping("usrBasedResult")
 	public String usrBasedResult(Model model) {
 		String[][] similarityTable = iRecommend.usrBasedSimilarity();
 
 		model.addAttribute("similarityTable", similarityTable);
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
 	@RequestMapping("Recommend")
 	public String Recommend(Model model) {
@@ -136,13 +138,13 @@ public class HomeController {
 		
 		model.addAttribute("usrBasedRecommend", recommendListAll);
 		model.addAttribute("usrBasedRecommendAll", iRecommend.usrBasedRecommendAll());
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
 	
 	@RequestMapping("incrCount")
 	public String incrCount(@RequestParam("author") String author, Model model) {
 		model.addAttribute("incrCount", iMainServ.incrCount("1", author));
-		return "Mainpage/main";
+		return "forward:/mainPage";
 	}
 
 }

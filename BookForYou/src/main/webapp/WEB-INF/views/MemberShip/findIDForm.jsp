@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="../common/header2.jspf"%>
 
 	<div id="wrapper" class="container col-md-6 col-md-offset-3" align="center">
 
@@ -62,7 +62,7 @@
 					<div class="form-group">
 						<label for="exampleInputPassword1">닉네임</label> <input
 							type="text" class="form-control" id="usrnickname" name="usrnickname"
-							placeholder="비밀번호" value="">
+							placeholder="닉네임" value="">
 					</div>
 					<div class="area-divide-50"></div>
 					<div class="area-btn">
@@ -75,8 +75,6 @@
 		</div>
 		
 	</div>
-
-	<%@ include file="../common/footer.jspf"%>
 
 
 <script type="text/javascript">

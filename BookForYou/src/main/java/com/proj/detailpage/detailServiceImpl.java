@@ -101,6 +101,7 @@ public class detailServiceImpl implements detailService{
 
 	@Override
 	public void writeReview(bookComment bookcomment) {
+	
 		System.out.println(bookcomment.getNickname());
 		System.out.println(bookcomment.getReview());
 		System.out.println(bookcomment.getMasterseq());

@@ -309,7 +309,7 @@ public class MemberShipController {
 		//System.out.println(mode);
 		model.addAttribute("usrid",iMemserv.findIDProc(member));
 		model.addAttribute("mode",mode);
-		return "forward:/findID";
+		return "/MemberShip/findInfoResult";
 	}
 	
 	
@@ -317,7 +317,7 @@ public class MemberShipController {
 	public String findPW(@RequestParam("mode") String mode,MemberAuthDTO member,Model model) {
 		//model.addAttribute("usrid",iMemserv.findIDProc(member));
 		model.addAttribute("mode",mode);
-		return "forward:/findPW";
+		return "/MemberShip/findInfoResult";
 	}
 	
 	@RequestMapping(value = "getUsrBoofInfo")
@@ -331,5 +331,7 @@ public class MemberShipController {
 		model.addAttribute("bookLst",tmpLst);
 		return "/MemberShip/bookTest";
 	}
+	
+	
 	
 }
