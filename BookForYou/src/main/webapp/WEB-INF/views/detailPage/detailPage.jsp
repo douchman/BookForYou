@@ -89,18 +89,18 @@
 	<%String num = "0"; %>
 
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
-		<input type="hidden" name="nickName" id="nickName" value="ej">
+		<input type="hidden" name="nickName" id="nickName" value="${sessionLogin.usrnickname }">
 		<input type="hidden" name="masterSeq" id="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="rating" id="rating" />
 	
 	</form>
 	<form action="${home }detail/wish" id="detFrm2" method="post">
-		<input type="hidden" name="nickName" value="ej">
+		<input type="hidden" name="nickName" value="${sessionLogin.usrnickname }">
 		<input type="hidden" name="masterSeq" value="${bookInfo.masterseq }">
 		<input type="hidden" name="wish" id="wish" value="1" />
 	</form>
 	<form action="${home }detail/like" id="detFrm3" method="post">
-		<input type="hidden" name="nickName" value="ej" />
+		<input type="hidden" name="nickName" value="${sessionLogin.usrnickname }" />
 		<input type="hidden" id="commentNum" name="commentNum" />
 	</form>
 	<form action="detail" id="detFrm4" method="get">

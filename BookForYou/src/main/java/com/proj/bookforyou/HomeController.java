@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 import com.proj.bookforyou.service.IMainService;
+import com.proj.detailpage.bookComment;
+import com.proj.detailpage.bookInfo;
 import com.proj.detailpage.bookSearchInfo;
 import com.proj.detailpage.detailService;
 
@@ -59,15 +61,30 @@ public class HomeController {
 	*/
 	@RequestMapping("main")
 	public String main(Model model, @ModelAttribute("sessionLogin") BfuMember member) {
-		iRecommend.usrBasedSimilarity();
 		model.addAttribute("recommend", iMainServ.recommendList(iRecommend.usrBasedRecommend(member.getUsrnickname())));
 		model.addAttribute("recommendCodeList", iMainServ.recommendCodeList(member.getMaxReaderSign(), member.getMaxContentsSign()));
-		return "forward:/mainPage";
+		return "Mainpage/main";
 	}
 	@RequestMapping("detail")
 	public String detail(@RequestParam("bookNo") String bookNo, Model model) {
-		model.addAttribute("bookInfo", deSerV.detailView(bookNo));
-		return "forward:/detailView";
+		List<bookComment> lst = deSerV.viewReview(bookNo);
+        List<bookInfo> list = deSerV.viewMore(bookNo);
+        int grape1 = deSerV.grape1(bookNo);
+        int grape2 = deSerV.grape2(bookNo);
+        int grape3 = deSerV.grape3(bookNo);
+        int grape4 = deSerV.grape4(bookNo);
+        int grape5 = deSerV.grape5(bookNo);
+        
+		bookInfo book = deSerV.detailView(bookNo);
+		model.addAttribute("bookInfo", book);
+		model.addAttribute("bookComment", lst);
+		model.addAttribute("viewMore", list);
+		model.addAttribute("grape1", grape1);
+		model.addAttribute("grape2", grape2);
+		model.addAttribute("grape3", grape3);
+		model.addAttribute("grape4", grape4);
+		model.addAttribute("grape5", grape5);
+		return "detailPage/detailPage";
 	}
 	@RequestMapping("search")
 	public String search(@RequestParam("searchStr") String searchStr, Model model, HttpServletRequest request) {
@@ -89,4 +106,43 @@ public class HomeController {
 		//List<bookSearchInfo> bookList = iMainServ.getBookList(page, searchStr);
 		return iMainServ.scrollPaging(page, bookList);
 	}
+	
+	
+	
+	
+	@RequestMapping("dataSet")
+	public String dataSet(Model model) {
+		model.addAttribute("allUsrScoreList", iRecommend.allUsrScoreList());
+		return "Mainpage/main";
+	}
+	@RequestMapping("usrBasedResult")
+	public String usrBasedResult(Model model) {
+		String[][] similarityTable = iRecommend.usrBasedSimilarity();
+
+		model.addAttribute("similarityTable", similarityTable);
+		return "Mainpage/main";
+	}
+	@RequestMapping("Recommend")
+	public String Recommend(Model model) {
+		List<List<bookSearchInfo>> recommendListAll = new ArrayList<List<bookSearchInfo>>();
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("재석")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("명수")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("하하")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("준하")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("세형")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("광희")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("동관")));
+		recommendListAll.add(iMainServ.recommendList(iRecommend.usrBasedRecommend("name")));
+		
+		model.addAttribute("usrBasedRecommend", recommendListAll);
+		model.addAttribute("usrBasedRecommendAll", iRecommend.usrBasedRecommendAll());
+		return "Mainpage/main";
+	}
+	
+	@RequestMapping("incrCount")
+	public String incrCount(@RequestParam("author") String author, Model model) {
+		model.addAttribute("incrCount", iMainServ.incrCount("1", author));
+		return "Mainpage/main";
+	}
+
 }
