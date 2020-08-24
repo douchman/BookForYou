@@ -50,8 +50,6 @@ body{
 </head>
 <body>
 
-	<%@ include file="../common/header2.jspf"%>
-
 	<!-- 마이페이지 모든 div를 묶는 전체 div wrapper -->
 	<div id="wrapper" class="container">
 
@@ -72,7 +70,7 @@ body{
 					<h3>${sessionLogin.usrnickname } 님 !</h3>
 
 				<div class="area-btn">
-					<a href="modifyAuth"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
+					<a href="selfConfirm"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
 					<a href="#"><input type="button" class="btn btn-info" value="내 서재 이동"></a>
 				</div>
 				</div>
@@ -151,8 +149,5 @@ body{
 		</div>
 
 	</div>
-
-
-	<%@ include file="../common/footer.jspf"%>
 </body>
 </html>

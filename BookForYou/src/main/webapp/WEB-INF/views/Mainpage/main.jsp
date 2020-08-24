@@ -42,7 +42,7 @@ img {
 	</form>
 	<div class="panel panel-default">
 		<h2>
-			<b>name과 비슷한 사람들이 좋아한 책</b>
+			<b>${sessionLogin.usrnickname }님과 비슷한 사람들이 좋아한 책</b>
 		</h2>
 	</div>
 	<div style="margin: 10px;">
@@ -64,6 +64,34 @@ img {
 			</c:forEach>
 		</div>
 	</div>
+	
+	<c:if test="${not empty recommendCodeList}">
+		<div class="panel panel-default">
+			<h2>
+				<b>${sessionLogin.usrnickname }님이 좋아할 만한 책</b>
+			</h2>
+		</div>
+		
+		<div style="margin: 10px;">
+
+			<div class="row">
+				<c:forEach var="item" items="${recommendCodeList}">
+					<div class="col-sm-4 col-md-2">
+						<div class="book">
+							<input type="hidden" class="bookNo" value="${item.masterseq }"/>
+							<img src="${item.imgurl }" alt="...">
+							<div class="caption">
+								<p style="font-size: medium;">${item.title }</p>
+							</div>
+							<div class="captionRating">
+								<b style="font-size: small;">평점 5.0</b>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</c:if>
 
 
 	<div>
@@ -131,11 +159,6 @@ img {
 				var bookNo = $(this).children('.bookNo').val();
 				$('#bookNo').val(bookNo);
 				document.getElementById("detailFrm").submit();
-			})
-			$('.panel').click(function(event) {
-				var searchStr = '안녕, 나의 빨강머리 앤';
-				$('#searchStr').val(searchStr);
-				document.getElementById("searchFrm").submit();
 			})
 		})
 	</script>

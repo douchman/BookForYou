@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../common/header2.jspf"%>
 	
 	인증번호 : ${authNum }
 	<div id="wrapper" class="container">
@@ -32,7 +31,6 @@
 		</div>
 	</div>
 
-	<%@ include file="../common/footer.jspf"%>
 </body>
 
 <script>

@@ -12,4 +12,5 @@ public interface IMainService {
 	public int incrCount(String usrId, String author);
 	
 	public List<bookSearchInfo> recommendList(String recNo);
+	public List<bookSearchInfo> recommendCodeList(String no1, String no3);
 }
