@@ -14,6 +14,7 @@ public interface IRedis {
 	public List<String> getUsrList();
 	public void saveUsrBased(String[][] similarityTable, List<String> usrList);
 	public Set<Tuple> getUsrBasedSimilarity(String usrId);
+	public Map<String, String> isExistBook(String usrId);
 	
 	public int incrCount(String usrId, String author);
 }

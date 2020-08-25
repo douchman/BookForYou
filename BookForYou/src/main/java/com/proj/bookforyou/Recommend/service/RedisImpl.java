@@ -101,6 +101,18 @@ public class RedisImpl implements IRedis{
 		
 		return usrSimilarity;
 	}
+	@Override
+	public Map<String, String> isExistBook(String usrId) {
+		JedisPubSubClient jedisPubSub = new JedisPubSubClient("127.0.0.1", 6379);
+		Jedis jedis = jedisPubSub.getResource();
+		
+		Map<String, String> isExistBook = jedis.hgetAll(usrId);
+		
+		jedis.close();
+		jedisPubSub.close();
+		
+		return isExistBook;
+	}
 	
 	@Override
 	public int incrCount(String usrId, String author) {

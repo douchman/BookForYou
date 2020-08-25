@@ -150,6 +150,11 @@ public class RecommencServiceImpl implements IRecommendService {
 	}
 	
 	@Override
+	public Map<String, String> isExistBook(String usrId) {
+		return iRedis.isExistBook(usrId);
+	}
+	
+	@Override
 	public void saveUsrBased(String[][] similarityTable, List<String> usrList) {
 		iRedis.saveUsrBased(similarityTable, usrList);
 	}

@@ -22,5 +22,7 @@ public interface IRecommendService {
 	public List<List<String>> usrBasedRecommendAll();
 
 	public void saveUsrBased(String[][] similarityTable, List<String> usrList);
+	
+	public Map<String, String> isExistBook(String usrId);
 
 }
