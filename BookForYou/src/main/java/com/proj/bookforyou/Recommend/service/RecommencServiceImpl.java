@@ -112,6 +112,9 @@ public class RecommencServiceImpl implements IRecommendService {
 		Set<Tuple> usrSimilarity = iRedis.getUsrBasedSimilarity(usrId + "Similarity");		//유사도가 높은 다른회원 3명 가져오기
 		Map<String, String> usrBook = loadData(usrId);										//추천 받을 회원의 평가한 책 목록
 		for(Tuple tuple : usrSimilarity) {													//유사도가 높은 다른회원마다 실행
+			if(tuple.getScore() == 0) {
+				return bookNoList;
+			}
 			Map<String, String> similarUsrBookData = loadData(tuple.getElement());			//유사도가 높은 다른회원의 책 목록 가져오기
 			for(String book : similarUsrBookData.keySet()) {								//유사도가 높은 다른회원의 책 목록에서 하나씩
 				if(!usrBook.containsKey(book) && !usrRecommendList.contains(book) && Double.parseDouble(similarUsrBookData.get(book)) > 3) {
