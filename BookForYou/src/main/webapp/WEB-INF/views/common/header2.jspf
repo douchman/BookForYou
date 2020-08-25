@@ -54,7 +54,7 @@ body{
       <ul class="nav navbar-nav">
       </ul>
       <input id="rootPath" type="hidden" value="${root }">
-      <form id="seFrm" class="navbar-form navbar-left" role="search"  action="search" method="get">
+      <form id="seFrm" class="navbar-form navbar-left" role="search"  action="${root }search" method="get">
         <div class="form-group col-md-4">
           <input id="word" type="text" class="form-control" name="searchStr" placeholder="책검색" style="widows: 250px;">
         </div>
