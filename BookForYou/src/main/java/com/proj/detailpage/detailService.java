@@ -33,4 +33,5 @@ public interface detailService {
 	
 	// 추가
 	public String getAddCode(int seqNum);
+	public Double getRating(String masterSeq, String usrnickname);
 }

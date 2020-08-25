@@ -113,4 +113,14 @@
  		WHERE masterSeq = #{seqNum}
  	
  	</select>
+ 	
+ 	<select id="getRating" parameterType="Map" resultType="Double" >
+ 	
+ 	SELECT NVL(rating,0) rating
+ 	FROM indvbookrating RIGHT OUTER JOIN Dual
+ 	on nickName = #{usrnickname}
+ 	AND masterSeq = #{masterSeq}
+ 	
+ 	
+ 	</select>
 </mapper> 

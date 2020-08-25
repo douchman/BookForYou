@@ -89,6 +89,7 @@
 	<c:url var="home" value="/"/>
 	<%String num = "0"; %>
 	<input id="rootPath" type="hidden" value="${root}">
+	<input id="usrbookRate" type="hidden" value="${usrbookRate}">
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
 		<!-- 부가번호 추가 -->
 		<input type="hidden" name="addcode" value="${addcode }">
@@ -364,13 +365,27 @@
 	<br/><br/>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-
 	$(function() {
 	    $('.imgtitle').click(function(event) {
 	       var bookNo = $(this).children().children('.viewmoreMasterSeq').val();
 	       $('#bookNo').val(bookNo);
 	       document.getElementById("detFrm4").submit();
 	    })
+	    
+	    var usrbookRate = $('#usrbookRate').val();
+	    
+	    if(usrbookRate >0){
+	    	usrbookRate = usrbookRate / 0.5;
+	    	console.log(usrbookRate);
+	    	for (var i = 0; i < usrbookRate; i++) {	
+	    		document.getElementsByName("star")[i].checked = true;
+	    	}
+	    	    
+	    }
+	
+
+  	
+	    
 	})
 
 	google.charts.load('current', {

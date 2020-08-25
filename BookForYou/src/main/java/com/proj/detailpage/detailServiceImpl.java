@@ -173,6 +173,20 @@ public class detailServiceImpl implements detailService{
 		return addcode;
 	}
 	
+	// 선택된 책에 로그인된 유저가 반영한 점수 불러오기
+	@Override
+	public Double getRating(String masterSeq, String usrnickname) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("masterSeq", masterSeq);
+		map.put("usrnickname", usrnickname);
+		
+		Double rate = iDao.getRating(map);
+		
+		return Double.valueOf(rate);
+	}
+	
+	
 	@Override
 	public int grape1(String bookNo) {
 		return iDao.grape1(Integer.parseInt(bookNo));

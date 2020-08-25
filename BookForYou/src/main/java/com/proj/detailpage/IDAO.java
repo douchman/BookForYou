@@ -1,5 +1,6 @@
 package com.proj.detailpage;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,4 +35,5 @@ public interface IDAO {
 	
 	//추가
 	public String getAddCode(int seqNum);
+	public Double getRating(Map<String, String> map);
 }

@@ -112,6 +112,8 @@ public class HomeController {
 		
 		
 		// 부가번호 추가
+		System.out.println("FROM HOME CON RATING : " + deSerV.getRating(bookNo, member.getUsrnickname()));
+		model.addAttribute("usrbookRate",deSerV.getRating(bookNo, member.getUsrnickname()));
 		model.addAttribute("addcode",addCode);
 		return "forward:/detailView";
 	}
