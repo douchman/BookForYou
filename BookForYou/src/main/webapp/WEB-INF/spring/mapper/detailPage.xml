@@ -107,4 +107,10 @@
  		SELECT count(*) from INDVBOOKRATING 
      	 WHERE (RATING = 4.5 or RATING = 5) and MASTERSEQ = #{masterSeq}
  	</select> 
+ 	
+ 	<select id="getAddCode" parameterType="int" resultType="String">
+ 		SELECT addcode FROM Bookinfo
+ 		WHERE masterSeq = #{seqNum}
+ 	
+ 	</select>
 </mapper> 

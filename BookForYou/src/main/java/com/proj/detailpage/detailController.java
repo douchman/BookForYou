@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.proj.bookforyou.Recommend.service.IRecommendService;
 
@@ -73,7 +74,7 @@ public class detailController {
 		System.out.println(bookcomment.getMasterseq());
 		model.addAttribute(bookcomment);
 		deSerV.writeReview(bookcomment);
-		return "detail/writeReview";
+		return "detailPage/writeReviewDone";
 	}
 	
 	@RequestMapping("modifyReview")
@@ -81,7 +82,7 @@ public class detailController {
 		return "detailPage/modifyReview";
 	}
 	
-	//modify Ãß°¡ÇØ¾ßÇÔ
+	//modify ï¿½ß°ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 	
 	
 	@RequestMapping("like")

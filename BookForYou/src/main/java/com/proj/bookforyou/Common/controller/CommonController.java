@@ -29,12 +29,22 @@ public class CommonController {
 		pageMap.put("modifyAuth", "myPage/modifyAuth");
 		pageMap.put("confirmPw", "myPage/modifyForm");
 		pageMap.put("backtoAuth", "myPage/modifyAuth");
-		pageMap.put("findIDProc", "myPage/MemberShip/findInfoResult");
-		pageMap.put("findPWProc", "myPage/MemberShip/findInfoResult");
+		//pageMap.put("findID", "MemberShip/findInfoResult");
+		//pageMap.put("findPW", "MemberShip/findInfoResult");
 		pageMap.put("authProc", "MemberShip/authDone");
+		pageMap.put("detailView", "detailPage/detailPage");
+		pageMap.put("mainPage", "Mainpage/main");
+		pageMap.put("searchBook", "Mainpage/searchForm");
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");
 		//pageMap.put("home", "home");
+		pageMap.put("GoLibrary", "Library/libraryForm");
+		pageMap.put("gobookRatingDetail", "Library/ratedListForm");
+		pageMap.put("gowishBook", "Library/wishListForm");
+		pageMap.put("collList", "Library/collectionList");
+		pageMap.put("collForm", "Library/collectionForm");
+		pageMap.put("collView", "Library/collectionView");
+		pageMap.put("practice", "Library/practice");
 		
 		
 	}

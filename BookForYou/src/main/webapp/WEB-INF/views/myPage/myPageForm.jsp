@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +72,7 @@ body{
 
 				<div class="area-btn">
 					<a href="selfConfirm"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
-					<a href="#"><input type="button" class="btn btn-info" value="내 서재 이동"></a>
+					<a href="#"><input onclick='location.href="${root}Library/bookRating"' type="button" class="btn btn-info" value="내 서재 이동"></a>
 				</div>
 				</div>
 
@@ -111,26 +112,25 @@ body{
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="http://image.aladin.co.kr/product/64/24/cover/8989313791_1.jpg" alt="...">
-							<div class="carousel-caption">...</div>
-						</div>
-						
-						<div class="item">
-							<img src="http://image.aladin.co.kr/product/62/52/cover/8989002664_1.jpg" alt="...">
-							<div class="carousel-caption">...</div>
-						</div>
-						
-						<div class="item">
-							<img src="http://image.aladin.co.kr/product/64/27/cover/8991432166_1.jpg" alt="...">
-							<div class="carousel-caption">...</div>
-						</div>
-						
-						<div class="item">
-							<img src="http://image.aladin.co.kr/product/64/80/cover/8995760907_1.jpg" alt="...">
-							<div class="carousel-caption">...</div>
-						</div>
-						
+				
+
+						<c:forEach var="item" items="${bookLst}" begin="1" varStatus="idx">
+							<c:choose>
+								<c:when test="${idx.count eq '1'}">
+									<div class="item active">
+										<a href="${root}/detail?bookNo=${item.masterseq}"><img src="${item.imgurl}" alt="..."></a>
+										<div class="carousel-caption">...</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="item">
+										<img src="${item.imgurl}" alt="...">
+										<div class="carousel-caption">...</div>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+
 					</div>
 
 					<!-- Controls -->

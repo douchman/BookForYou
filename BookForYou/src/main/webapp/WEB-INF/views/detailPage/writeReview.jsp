@@ -17,12 +17,7 @@
 		margin-top: 5%;
 	}
 </style>
-<script type="text/javascript">
-	function close(){
-	//	$('#writeFrm').submit();
-		window.close();
-	}
-</script>
+
 </head>
 <body>
 	<form action="${home }detail/write" id="writeFrm" method="post">
@@ -33,8 +28,8 @@
 		</div>
 		
 		<div align="center">
-			<input type="submit" value="등록" id=okBtn onclick="close();" />
-			<input type="button" value="취소" id=cancelBtn onclick="window.close();"/>
+			<input type="submit" value="등록" id='okBtn' onclick="close();" />
+			<input type="button" value="취소" id='cancelBtn' onclick="window.close();"/>
 		</div>
 	</form>
 </body>

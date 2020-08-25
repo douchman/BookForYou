@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +37,9 @@ img {
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jspf"%>
 	<form id="detailFrm" action="detail" method="get">
 		<input id="bookNo" type="hidden" name="bookNo" />
+		<input id="bookAddcode" type="hidden" name="bookAddcode" />
 	</form>
 	<div class="panel panel-default">
 		<h2>
@@ -95,10 +96,6 @@ img {
 
 
 	<div>
-		<input type="button" onclick="location.href='dataSet'" value="데이터 출력">
-		<input type="button" onclick="location.href='usrBasedResult'" value="사용자기반 결과 출력">
-		<input type="button" onclick="location.href='Recommend'" value="사용자기반 추천">
-		<input type="button" onclick="location.href='incrCount?author=1'" value="개인 사용자의 저자 평가 수 증가">
 		<table class="table">
 		<c:forEach var="item" items="${allUsrScoreList}">
 			<tr>
@@ -151,8 +148,6 @@ img {
 		</c:forEach>
 	</div>
 
-
-	<%@ include file="/WEB-INF/views/common/footer.jspf"%>
 	<script type="text/javascript">
 		$(function() {
 			$('.book').click(function(event) {

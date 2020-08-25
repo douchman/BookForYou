@@ -33,6 +33,7 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 			{"아시아역사","유럽역사","아프리카역사","북아메리카역사","남아메리카역사","오세아니아역사","","지리","전기"}
 	};
 	
+	private final String NONE ="회원님께서 평가한 도서가 너무 부족해요 T ^ T"; 
 	
 	// 독자대상 기호 분석후에 도출된 성향 코드에 따른 출력문구 정리
 	private final String A00 = "하나에 얽메이지 않고 <br/>다양한 문화를 좋아하시네요.";
@@ -94,12 +95,23 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	
 	
 	@Override
-	public void setUsrBookLst(List<UsrBookInfo> usrBookLst, BfuMember member) {
+	public Boolean setUsrBookLst(List<UsrBookInfo> usrBookLst, BfuMember member) {
 		this.usrBookLst = usrBookLst;
 		this.member = member;
 		System.out.println(member.getAge());
 		//System.out.println(usrBookLst);
-		divideLst();
+		
+		// 도서 목록이 10권 이하일 경우
+		if(usrBookLst.size() <10) {
+			return false;
+		}
+		else {
+			divideLst();
+			return true;
+		}
+		
+		
+		
 	}
 	
 	
@@ -155,87 +167,95 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	public BfuMember getResult(List<UsrBookInfo> usrBookLst, BfuMember member) {
 		
 		System.out.println("getResult호출");
-		setUsrBookLst(usrBookLst, member);
-		
-		resultComment = "";
-		switch (maxReaderSignEntry.getKey()) {
-		// 교양 서적을 가장 많이 봤을 때
-		case "0":
-			// 나이가 20대 이하 일때
-			if(this.member.getAge() < 20)
-				resultComment += A01;
-			else 
-				resultComment += A00;
-			break;
-		// 실용도서를 가장 많이 봤을때 
-		case "1":
-			resultComment += A10;
-			break;
-		//청소년 도서를 가장 많이 봤을 때
-		case "4":
-			// 청소년 도서를 가장 많이 본 사람중 나이가 20대 이상인 경우
-			if(member.getAge() >=20)
-				resultComment += A41;
-			else
-				resultComment += A40;
+		if(setUsrBookLst(usrBookLst, member)) {
+			resultComment = "";
+			switch (maxReaderSignEntry.getKey()) {
+			// 교양 서적을 가장 많이 봤을 때
+			case "0":
+				// 나이가 20대 이하 일때
+				if(this.member.getAge() < 20)
+					resultComment += A01;
+				else 
+					resultComment += A00;
+				break;
+			// 실용도서를 가장 많이 봤을때 
+			case "1":
+				resultComment += A10;
+				break;
+			//청소년 도서를 가장 많이 봤을 때
+			case "4":
+				// 청소년 도서를 가장 많이 본 사람중 나이가 20대 이상인 경우
+				if(member.getAge() >=20)
+					resultComment += A41;
+				else
+					resultComment += A40;
+				
+				break;
+			// 초등 또는 중고등 참고서를 많이 봤을 때
+			case "5":case "6":
+				// 40대 이상일때
+				if(member.getAge() >= 40)
+					resultComment += A51;
+				//20대에서 
+				else if(20 <= member.getAge() && member.getAge() <= 30 )
+					resultComment += A52;
+				else
+					resultComment += A50;
+				break;
+			// 아동 도서를 많이 봤을 때
+			case "7":
+				resultComment += A70;
+				break;
+			// 전문도서를 많이 봤을 때
+			case "9":
+				if(member.getAge() < 20) 
+					resultComment += A91;
+				else
+					resultComment += A90;
+				break;
+			default:
+				break;
+			}
 			
-			break;
-		// 초등 또는 중고등 참고서를 많이 봤을 때
-		case "5":case "6":
-			// 40대 이상일때
-			if(member.getAge() >= 40)
-				resultComment += A51;
-			//20대에서 
-			else if(20 <= member.getAge() && member.getAge() <= 30 )
-				resultComment += A52;
-			else
-				resultComment += A50;
-			break;
-		// 아동 도서를 많이 봤을 때
-		case "7":
-			resultComment += A70;
-			break;
-		// 전문도서를 많이 봤을 때
-		case "9":
-			if(member.getAge() < 20) 
-				resultComment += A91;
-			else
-				resultComment += A90;
-			break;
-		default:
-			break;
+			resultComment +="<br/>그리고  ";
+			
+			switch (maxContentsSignEntry.getKey()) {
+			case "0":	
+				resultComment += B00;
+				break;
+			case "1":	
+				// 연령 비교해서 확인 하고 추가
+				if(member.getAge() <20)
+					resultComment += B11;
+				else
+					resultComment += B10;
+				break;
+			case "2":	
+				resultComment += B20;
+				break;
+			case "3":case"4":case"5":
+				resultComment += B30;
+				break;
+			case "6":	
+				resultComment += B60;
+				break;
+			case "7":case"8":	
+				resultComment += B70;
+				break;
+			case "9":	
+				resultComment += B90;
+				break;
+			default:
+				break;
+			}
+			
 		}
 		
-		resultComment +="<br/>그리고  ";
-		
-		switch (maxContentsSignEntry.getKey()) {
-		case "0":	
-			resultComment += B00;
-			break;
-		case "1":	
-			// 연령 비교해서 확인 하고 추가
-			if(member.getAge() <20)
-				resultComment += B11;
-			else
-				resultComment += B10;
-			break;
-		case "2":	
-			resultComment += B20;
-			break;
-		case "3":case"4":case"5":
-			resultComment += B30;
-			break;
-		case "6":	
-			resultComment += B60;
-			break;
-		case "7":case"8":	
-			resultComment += B70;
-			break;
-		case "9":	
-			resultComment += B90;
-			break;
-		default:
-			break;
+		else {
+			member.setTendsResult(NONE);
+			member.setMaxReaderSign("0");
+			member.setMaxContentsSign("0");
+			
 		}
 		
 		// 도출된 가장 많은 카운트의 기호값과 결과로 보내질 성향분석 코멘트를 세션 객체에 저장하고 반환

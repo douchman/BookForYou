@@ -34,6 +34,7 @@ body{
 	
 }
 </style>
+<input id="rootpath" type="hidden" value="${root }">
 <input id="loginState" type="hidden" value="${loginState}">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -45,7 +46,7 @@ body{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="${root }main"><img class="logoimg" src="<c:url value="/resources/img/simplelogo.png"/>"></a>
+      <a class="navbar-brand" onclick="homeBtn();"><img class="logoimg" src="<c:url value="/resources/img/simplelogo.png"/>"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,12 +63,31 @@ body{
        
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="nologin" href="signup">회원가입</a></li>
-        <li><a class="nologin" href="signin">로그인</a></li>
-        <li><a class="login" href="signout" style="display: none;">로그아웃</a></li>
-        <li><a class="login" href="goMyPage" style="display: none;" >마이페이지</a></li>
+        <li><a class="nologin" href="${root}signup">회원가입</a></li>
+        <li><a class="nologin" href="${root}signin">로그인</a></li>
+        <li><a class="login" href="${root}signout" style="display: none;">로그아웃</a></li>
+        <li><a class="login" href="${root}goMyPage" style="display: none;" >마이페이지</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="area-space-150"></div>
+
+<script>
+
+function homeBtn() {
+	
+	var loginState = $('#loginState').val();
+	
+	if(loginState == '1')
+		location.href = ""+$('#rootpath').val()+"main";
+	else{
+		alert("로그인을 먼저 해주십시오")
+		location.href= ""+$('#rootpath').val()+"signin";
+}
+	
+}
+
+</script>
+
+

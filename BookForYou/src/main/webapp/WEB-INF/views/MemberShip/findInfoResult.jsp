@@ -40,11 +40,23 @@ mode :2 -> 패스워드 찾기
 			<a href="home"><img
 				src="<c:url value='/resources/img/BFYlogo.png'/>"></a>
 		</div>
+		<c:choose>
 		
+		<c:when test="${usrid eq '0'}">
+		<h3>일치하는 아이디를 찾을 수 없습니다.</h3>
+		</c:when>
+		
+		
+		<c:otherwise>
 		<h3>회원님의 아이디 입니다.</h3>
 		<br>
 		<h3 style="color: #1E90FF;"> ${usrid}</h3>
-
+		
+		</c:otherwise>
+		
+		
+		
+		</c:choose>
 	</div>
 
 

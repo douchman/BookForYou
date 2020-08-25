@@ -40,5 +40,8 @@
 		class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:mapperInterface="com.proj.detailpage.IDAO"
 		p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
-
+		
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean"
+	id="libraryFactoryBean" p:mapperInterface="com.proj.bookforyou.Library.IDAO.IDAO"
+	p:sqlSessionFactory-ref="sqlSessionFactoryBean" />
 </beans>

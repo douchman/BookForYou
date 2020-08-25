@@ -10,6 +10,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proj.bookforyou.Library.DTO.Bookinfo;
 import com.proj.bookforyou.MemberShip.BfuMember;
 import com.proj.bookforyou.MemberShip.ImemberDAO;
 import com.proj.bookforyou.MemberShip.MemberAuthDTO;
@@ -154,5 +155,16 @@ public class MembershipServiceImpl implements IMembershipService {
 	public void modifyProc(BfuMember member) {
 		memdao.updateMember(member);
 		
+	}
+	
+	@Override
+	public List<Bookinfo> getBookLst_basedHis(String addcode) {
+		
+		List<Bookinfo> bookLst= memdao.getBookLst_basedHis(addcode);
+		
+		for(Bookinfo b : bookLst) {
+			System.out.println(b.getTitle());
+		}
+		return bookLst;
 	}
 }

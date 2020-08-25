@@ -22,8 +22,8 @@
 </head>
 <body>
 	<div class="area-space-100"></div>
-	<div class="contactfield row">
-	<div class="col-md-12"><hr/></div>
+	<div class="contactfield col-md-12">
+	<div class=""><hr/></div>
 		<div class="col-md-3 col-md-offset-1">
 			<address>
 				<strong>BookForYou, Inc.</strong><br> 795 Folsom Ave, Suite 600<br>
