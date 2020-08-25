@@ -49,7 +49,7 @@ img {
 }
 </style>
 <script>
-	$('.carousel').carousel({ interval: 2000 })
+	$('.carousel').carousel({ interval: 2000; })
 </script>
 </head>
 <body>
