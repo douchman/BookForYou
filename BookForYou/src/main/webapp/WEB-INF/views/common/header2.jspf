@@ -54,9 +54,9 @@ body{
       <ul class="nav navbar-nav">
       </ul>
       <input id="rootPath" type="hidden" value="${root }">
-      <form id="seFrm" class="navbar-form navbar-left" role="search">
+      <form id="seFrm" class="navbar-form navbar-left" role="search"  action="search" method="get">
         <div class="form-group col-md-4">
-          <input id="word" type="text" class="form-control" placeholder="책검색" style="widows: 250px;">
+          <input id="word" type="text" class="form-control" name="searchStr" placeholder="책검색" style="widows: 250px;">
         </div>
         <div class="col-md-4 col-md-offset-4"> 
        	 	<button id="se" type="submit" style="width:80px; margin-left: 10px;" class="btn btn-default">검색</button>
