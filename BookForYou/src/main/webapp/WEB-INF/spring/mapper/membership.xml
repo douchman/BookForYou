@@ -100,8 +100,8 @@
 		resultType="com.proj.bookforyou.MemberShip.UsrBookInfo">
 	
 	SELECT NVL(addcode,'none') addcode
-	FROM usrBookInfo RIGHT OUTER JOIN Dual
-	ON usrId = #{usrid}
+	FROM indvBookRating RIGHT OUTER JOIN Dual
+	ON nickName = #{nickname}
 	
 	</select>
 	

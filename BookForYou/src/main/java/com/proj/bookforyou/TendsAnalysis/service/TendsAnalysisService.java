@@ -145,8 +145,8 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 			contentsSignCntMap.put(reader,contentsSignCntMap.getOrDefault(reader, 0)+1);
 		}
 		
-		System.out.println(ReaderSignCntMap);
-		System.out.println(contentsSignCntMap);
+		//System.out.println(ReaderSignCntMap);
+		//System.out.println(contentsSignCntMap);
 		
 		calMaxSignValue();
 	}
@@ -165,8 +165,8 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 			}
 		}
 		
-		System.out.println("가장많은 독자대상 기호 =" +maxReaderSignEntry.getKey());
-		System.out.println("가장많은 내용분류 기호 =" +maxContentsSignEntry.getKey());
+		//System.out.println("가장많은 독자대상 기호 =" +maxReaderSignEntry.getKey());
+		//System.out.println("가장많은 내용분류 기호 =" +maxContentsSignEntry.getKey());
 		
 		//System.out.println(getResult());
 	}

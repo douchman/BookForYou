@@ -6,7 +6,7 @@ public interface detailService {
 	public bookInfo detailView(String bookNo);
 	
 	public int ratingCheck(String nickName, String masterSeq);
-	public void indvRating(String rating, String nickName, String masterSeq);
+	public void indvRating(String rating, String nickName, String masterSeq,String addCode);
 	public void ratingUpdate(String rating, String nickName, String masterSeq);
 	public int wishCheck(String nickName, String masterSeq);
 	public void wishBookList(String nickName, String masterSeq);

@@ -18,7 +18,7 @@ public interface ImemberDAO {
 	public HashMap<String, String> selectUsrinfo(BfuMember member);
 	public BfuMember getLoginSession(String usrid);
 	public String selectUsrid(MemberAuthDTO authDTO);
-	public List<UsrBookInfo> selectUsrBookLst(String usrid);
+	public List<UsrBookInfo> selectUsrBookLst(String nickname);
 	public void updateMember(BfuMember member);
 	public List<Bookinfo> getBookLst_basedHis(String addcode);
 

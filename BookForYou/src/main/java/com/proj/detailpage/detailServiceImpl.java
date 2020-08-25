@@ -42,12 +42,13 @@ public class detailServiceImpl implements detailService{
 	}
 	
 	@Override
-	public void indvRating(String rating, String nickName, String masterSeq){
+	public void indvRating(String rating, String nickName, String masterSeq,String addCode){
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("rating", Double.parseDouble(rating));
 		map.put("nickName", nickName);
 		map.put("masterSeq",Integer.parseInt(masterSeq));
+		map.put("addcode",addCode);
 		
 		System.out.println("indvRating : " + map);
 		iDao.indvRating(map);
@@ -168,7 +169,7 @@ public class detailServiceImpl implements detailService{
 		
 		String addcode = iDao.getAddCode(seqNum);
 		
-		addcode = addcode.substring(2,3);
+		//addcode = addcode.substring(2,3);
 		return addcode;
 	}
 	

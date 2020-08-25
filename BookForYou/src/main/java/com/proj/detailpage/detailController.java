@@ -24,13 +24,14 @@ public class detailController {
 	@RequestMapping("indivRating")
 	public String indivRating(Model model, @RequestParam("nickName") String nickName, 
 			@RequestParam("rating") String rating,
-			@RequestParam("masterSeq") String masterSeq) {
+			@RequestParam("masterSeq") String masterSeq,
+			@RequestParam("addcode")String addcode) {
 		System.out.println(nickName);
 		System.out.println(rating);
 		System.out.println(masterSeq);
 		
 		if(deSerV.ratingCheck(nickName, masterSeq) == 0) {
-			deSerV.indvRating(rating, nickName, masterSeq);
+			deSerV.indvRating(rating, nickName, masterSeq,addcode);
 			deSerV.deleteWish(nickName, masterSeq);
 		}
 		else {
