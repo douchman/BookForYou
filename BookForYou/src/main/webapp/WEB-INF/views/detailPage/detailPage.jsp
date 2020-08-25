@@ -85,9 +85,10 @@
 
 </head>
 <body>
+<c:set var="root" value="${pageContext.request.contextPath }/"/>
 	<c:url var="home" value="/"/>
 	<%String num = "0"; %>
-
+	<input id="rootPath" type="hidden" value="${root}">
 	<form action="${home }detail/indivRating" id="detFrm" method="post">
 		<!-- 부가번호 추가 -->
 		<input type="hidden" name="addcode" value="${addcode }">
@@ -123,43 +124,43 @@
 			<td colspan="2" >
 			<div class="startRadio">
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="0.5" id="0.5"  onclick=" value_check();"  <% if("0.5".equals(num)){%>checked<%}%> onchange="review();">
+					<input type="radio" name="star" value="0.5" id="0.5"  onclick=" value_check();"  <% if("0.5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 0.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="1" id="1"  onclick=" value_check();" <% if("1".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="1" id="1"  onclick=" value_check();" <% if("1".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 1개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="1.5" id="1.5"  onclick=" value_check();" <% if("1.5".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="1.5" id="1.5"  onclick=" value_check();" <% if("1.5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 1.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="2" id="2"  onclick=" value_check();" <% if("2".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="2" id="2"  onclick=" value_check();" <% if("2".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 2개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="2.5" id="2.5"  onclick=" value_check();" <% if("2.5".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="2.5" id="2.5"  onclick=" value_check();" <% if("2.5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 2.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="3" id="3"  onclick=" value_check();" <% if("3".equals(num)){%>checked<%}%>  onchange="review();"> 
+					<input type="radio" name="star" value="3" id="3"  onclick=" value_check();" <% if("3".equals(num)){%>checked<%}%>> 
 					<span class="startRadio__img"><span class="blind">별 3개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="3.5" id="3.5"  onclick=" value_check();" <% if("3.5".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="3.5" id="3.5"  onclick=" value_check();" <% if("3.5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 3.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="4" id="4"  onclick=" value_check();" <% if("4".equals(num)){%>checked<%}%>  onchange="review();">
+					<input type="radio" name="star" value="4" id="4"  onclick=" value_check();" <% if("4".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 4개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="4.5" id="4.5"  onclick=" value_check();"  <% if("4.5".equals(num)){%>checked<%}%> onchange="review();">
+					<input type="radio" name="star" value="4.5" id="4.5"  onclick=" value_check();"  <% if("4.5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 4.5개</span></span>
 				</label>
 				<label class="startRadio__box">
-					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" <% if("5".equals(num)){%>checked<%}%> onchange="review();">
+					<input type="radio" name="star" value="5" id="5"  onclick=" value_check();" <% if("5".equals(num)){%>checked<%}%>>
 					<span class="startRadio__img"><span class="blind">별 5개</span></span>
 				</label>
 			</div>
@@ -394,9 +395,10 @@
 		chart.draw(data, google.charts.Bar.convertOptions(options));
 	}
 	
+	////
 	function value_check() {
 		var check_count = document.getElementsByName("star").length;
-
+		var rootPath = $('#rootPath').val();
 		for (var i = 0; i < check_count; i++) {
 			if (document.getElementsByName("star")[i].checked == true) {
 				var star = "";
@@ -408,10 +410,22 @@
 		}
 		console.log(star);
 		document.getElementById("rating").value = star;
-		$("#detFrm").submit();
+		//$("#detFrm").submit();
+		
+		$.ajax({
+			type		:		"POST",
+			url			:		rootPath+"detail/indivRating",
+			data		:		$("#detFrm").serialize(),
+			success		:		function (response) {
+				console.log("done");
+			}
+		})
+		
+		
 	} 
-	
+	////
 
+	
 	/* function review() {
 		if ($('input:radio[name="star"]').is(':checked'))
 			$('#review').show();

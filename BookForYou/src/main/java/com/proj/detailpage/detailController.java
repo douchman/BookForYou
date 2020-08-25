@@ -22,7 +22,8 @@ public class detailController {
 	private IRecommendService iRecommend;
 	 
 	@RequestMapping("indivRating")
-	public String indivRating(Model model, @RequestParam("nickName") String nickName, 
+	@ResponseBody
+	public void indivRating(Model model, @RequestParam("nickName") String nickName, 
 			@RequestParam("rating") String rating,
 			@RequestParam("masterSeq") String masterSeq,
 			@RequestParam("addcode")String addcode) {
@@ -41,7 +42,7 @@ public class detailController {
 		
 		bookInfo book = deSerV.detailView(masterSeq);
 		model.addAttribute("bookInfo", book);
-		return "redirect:/detail?bookNo=" + masterSeq;
+		//return "redirect:/detail?bookNo=" + masterSeq;
 	}
 	
 	@RequestMapping("wish")
