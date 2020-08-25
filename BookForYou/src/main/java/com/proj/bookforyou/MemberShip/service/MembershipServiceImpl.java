@@ -143,11 +143,11 @@ public class MembershipServiceImpl implements IMembershipService {
 		List<UsrBookInfo> usrBookLst = memdao.selectUsrBookLst(usrid);
 
 		System.out.println(usrBookLst.get(0).getAddcode());
-
+		/*
 		if (usrBookLst.get(0).getAddcode().contentEquals("none")) {
 			return null;
 		}
-
+		*/
 		return usrBookLst;
 	}
 	

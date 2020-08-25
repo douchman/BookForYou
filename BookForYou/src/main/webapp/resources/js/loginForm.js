@@ -25,12 +25,6 @@ $(document).ready(function() {
 		loginMsg.html('');
 	}
 	
-	
-
-	
-	$('#btnRegist').on('click', function() {
-		location.href='memberProc';
-	})
 })
 
 

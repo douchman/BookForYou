@@ -8,8 +8,20 @@
 
 <style type="text/css">
 
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
 body{
 	font-family: 'Noto Serif KR', serif;
+	-webkit-animation : fadein 3s;
 }
 
 
@@ -27,7 +39,7 @@ body{
 
 
 #area-bottom-left {
-	padding-top: 50px;
+	
 	
 }
 
@@ -50,7 +62,9 @@ body{
 <title>BookForYou - 마이 페이지</title>
 </head>
 <body>
-
+<center>
+<h1 style="margin-bottom: 10px"> 마이페이지 </h1>
+</center>
 	<!-- 마이페이지 모든 div를 묶는 전체 div wrapper -->
 	<div id="wrapper" class="container">
 
@@ -72,7 +86,7 @@ body{
 
 				<div class="area-btn">
 					<a href="selfConfirm"><input type="button" class="btn btn-info" value="내 정보 수정하기"></a>
-					<a href="#"><input onclick='location.href="${root}Library/bookRating"' type="button" class="btn btn-info" value="내 서재 이동"></a>
+					<a href="#"><input onclick='location.href="${root}/Library/bookRating"' type="button" class="btn btn-info" value="내 서재 이동"></a>
 				</div>
 				</div>
 
@@ -85,8 +99,8 @@ body{
 		
 			<!-- 하단에서 좌측 -->
 			<div id="area-bottom-left" class="area col-md-4" align="center">
-
-				<h2>${sessionLogin.usrnickname} 님은</h2>
+				<h3 style="color: #6495ED">회원님의 성향</h3>
+				<h3>${sessionLogin.usrnickname} 님은</h3>
 				<h4>${sessionLogin.tendsResult}</h4>
 				
 				
@@ -99,7 +113,7 @@ body{
 			<!-- 하단에서 우측 -->
 			<div id="area-bottom-right" class="area col-md-7" align="center">
 
-				<h4>  이런 서적은 어떠세요 ?  </h4>
+				<h4 style="color: #6495ED">  이런 서적은 어떠세요 ?  </h4>
 				<div id="carousel-example-generic" class="carousel slide"
 					data-ride="carousel">
 					<!-- Indicators -->
@@ -124,7 +138,7 @@ body{
 								</c:when>
 								<c:otherwise>
 									<div class="item">
-										<img src="${item.imgurl}" alt="...">
+										<a href="${root}/detail?bookNo=${item.masterseq}"><img src="${item.imgurl}" alt="..."></a>
 										<div class="carousel-caption">...</div>
 									</div>
 								</c:otherwise>

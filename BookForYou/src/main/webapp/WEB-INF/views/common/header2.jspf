@@ -30,7 +30,7 @@ body{
 
 
 .area-space-150{
-	height: 150px; 
+	height: 100px; 
 	
 }
 </style>
@@ -53,12 +53,13 @@ body{
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <input id="rootPath" type="hidden" value="${root }">
+      <form id="seFrm" class="navbar-form navbar-left" role="search">
         <div class="form-group col-md-4">
-          <input type="text" class="form-control" placeholder="책검색" style="widows: 250px;">
+          <input id="word" type="text" class="form-control" placeholder="책검색" style="widows: 250px;">
         </div>
         <div class="col-md-4 col-md-offset-4"> 
-       	 	<button type="submit" style="width:80px; margin-left: 10px;" class="btn btn-default">검색</button>
+       	 	<button id="se" type="submit" style="width:80px; margin-left: 10px;" class="btn btn-default">검색</button>
         </div>
        
       </form>
@@ -87,6 +88,10 @@ function homeBtn() {
 }
 	
 }
+
+	
+	
+
 
 </script>
 

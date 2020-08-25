@@ -33,15 +33,15 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 			{"아시아역사","유럽역사","아프리카역사","북아메리카역사","남아메리카역사","오세아니아역사","","지리","전기"}
 	};
 	
-	private final String NONE ="회원님께서 평가한 도서가 너무 부족해요 T ^ T"; 
+	private final String NONE ="회원님께서 평가한 도서가<br/> 너무 부족해요 T ^ T"; 
 	
 	// 독자대상 기호 분석후에 도출된 성향 코드에 따른 출력문구 정리
 	private final String A00 = "하나에 얽메이지 않고 <br/>다양한 문화를 좋아하시네요.";
 	private final String A01 = "젊은 나이에도 <br/> 다양한 문학을 즐기시는군요.";
 	private final String A10 = "실생활에 도움이되는 서적을 많이 읽는<br/> 현실적인 사람이군요.";
 	private final String A40 = "본인에게 맞는책을 잘 읽으시네요";
-	private final String A41 = "회원님은 연령에 비해 <br/>쉬운책을 자주 읽으시는것 같아요.<br/>" + 
-	                		   "가끔은 조금 어려운 책을 읽어보는건 어떨까요 ?";
+	private final String A41 = "회원님은 연령에 비해 <br/>쉬운책을 자주 읽으시네요.<br/>" + 
+	                		   "가끔은 어려운 책을 읽어보는건 어떨까요 ?";
 	private final String A50 = "참고서를 주로 보시는군요.<br/> 배움의 길은 끝이 없다고 하죠.";
 	private final String A51 = "참고서를 자주보시네요!<br/> 혹시 자녀분을 두신걸까요 ?";
 	private final String A52 = "참고서를 많이 읽으셨어요. <br/> 예전에 배운 것들이 그리워진 걸까요 ?";
@@ -56,7 +56,7 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	private final String B10 ="삶에서 얻은것을 바탕으로 <br/>진리를 찾는.. <br/> 철학적인 삶을 사시는군요.";
 	private final String B11 ="어린나이에도 불구하고 <br/>철학 서적을 정말 좋아하시네요.<br/> 세계 최연소 철학자가 아닐까요?";
 	private final String B20 ="종교서적을 자주 보시는걸보면 <br/>신앙심이 매우 깊은 분일 것 같네요.";
-	private final String B30 ="공학관련 서적을 많이 보시네요.<br/> 과학에 대한<br/>관심과 열정이 뚜렷하신분 같습니다.";
+	private final String B30 ="공학관련 서적을 많이 보시네요.<br/> 과학에 대한관심과 열정이 <br/>뚜렷하신분 같습니다.";
 	private final String B60 ="예술에 대해 관심이 많으시군요.";
 	private final String B70 ="각나라에 대한 <br/>문학과 언어에 관심이 많으시군요.";
 	private final String B90 ="역사서적을 많이 읽으시네요.<br/>역사를 알면 미래가 보인다고하죠 <br/>회원님은 미래가 보이시나요?";
@@ -71,7 +71,7 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	// 독자대상 기호 값 카운트 리스트
 	private Map<String, Integer> ReaderSignCntMap;
 	// 내용분류1 기호 값 카운트 리스트
-	Map<String, Integer> contentsSignCntMap;
+	private Map<String, Integer> contentsSignCntMap;
 
 	
 	// 분할된 독자대상 기호 저장 리스트
@@ -96,9 +96,18 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	
 	@Override
 	public Boolean setUsrBookLst(List<UsrBookInfo> usrBookLst, BfuMember member) {
+		maxReaderSignEntry = null;
+		maxContentsSignEntry = null;
+		
+		ReaderSignLst.clear();
+		contentsSignLst.clear();
+		
+		ReaderSignCntMap.clear();
+		contentsSignCntMap.clear();
+		
 		this.usrBookLst = usrBookLst;
 		this.member = member;
-		System.out.println(member.getAge());
+		//System.out.println(member.getAge());
 		//System.out.println(usrBookLst);
 		
 		// 도서 목록이 10권 이하일 경우
@@ -166,8 +175,9 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 	@Override
 	public BfuMember getResult(List<UsrBookInfo> usrBookLst, BfuMember member) {
 		
-		System.out.println("getResult호출");
+		//System.out.println("getResult호출");
 		if(setUsrBookLst(usrBookLst, member)) {
+			//System.out.println("if 실행");
 			resultComment = "";
 			switch (maxReaderSignEntry.getKey()) {
 			// 교양 서적을 가장 많이 봤을 때
@@ -243,27 +253,31 @@ public class TendsAnalysisService implements ITendsAnalysisService {
 				resultComment += B70;
 				break;
 			case "9":	
+				System.out.println("철학");
 				resultComment += B90;
 				break;
 			default:
 				break;
 			}
 			
+			// 도출된 가장 많은 카운트의 기호값과 결과로 보내질 성향분석 코멘트를 세션 객체에 저장하고 반환
+			member.setTendsResult(resultComment);
+			member.setMaxReaderSign(maxReaderSignEntry.getKey());
+			member.setMaxContentsSign(maxContentsSignEntry.getKey());
+			
+			return this.member;
 		}
 		
 		else {
+			//System.out.println("else 실행");
 			member.setTendsResult(NONE);
 			member.setMaxReaderSign("0");
 			member.setMaxContentsSign("0");
+			return this.member;
 			
 		}
 		
-		// 도출된 가장 많은 카운트의 기호값과 결과로 보내질 성향분석 코멘트를 세션 객체에 저장하고 반환
-		member.setTendsResult(resultComment);
-		member.setMaxReaderSign(maxReaderSignEntry.getKey());
-		member.setMaxContentsSign(maxContentsSignEntry.getKey());
 		
-		return this.member;
 	}
 	
 	

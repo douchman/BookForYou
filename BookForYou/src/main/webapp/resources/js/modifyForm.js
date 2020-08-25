@@ -114,7 +114,7 @@ function initAgeTxt(){
 	var btnHtml = "";
 	var age = $('#ageValue').val();
 	if(age == 10)
-		btnHtml += age +'대 미만'
+		btnHtml += age+10 +'대 미만'
 	else if(age == 50)
 		btnHtml += age +'대 이상'
 	else
