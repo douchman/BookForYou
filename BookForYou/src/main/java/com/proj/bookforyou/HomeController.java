@@ -67,6 +67,7 @@ public class HomeController {
 	*/
 	@RequestMapping("main")
 	public String main(Model model, @ModelAttribute("sessionLogin") BfuMember member) {
+		iRecommend.usrBasedSimilarity();
 		model.addAttribute("recommend", iMainServ.recommendList(iRecommend.usrBasedRecommend(member.getUsrnickname())));
 		model.addAttribute("recommendCodeList", iMainServ.recommendCodeList(member.getMaxReaderSign(), member.getMaxContentsSign()));
 		return "forward:/mainPage";
