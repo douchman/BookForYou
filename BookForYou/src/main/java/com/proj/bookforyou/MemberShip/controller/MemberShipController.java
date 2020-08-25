@@ -154,10 +154,10 @@ public class MemberShipController {
 		String authnum = iMemserv.memberProc(member);
 		//String authnum = "";
 		
-		System.out.println("chk1");
+		//System.out.println("chk1");
 		model.addAttribute("sessionMember",member);
 		model.addAttribute("authNum",authnum);
-		System.out.println("chk2");
+		//System.out.println("chk2");
 		return "forward:/membershipResult";
 	}
 	
@@ -186,10 +186,10 @@ public class MemberShipController {
 			@ModelAttribute("sessionLogin")BfuMember member,
 				Model model) {
 		
-		System.out.println("유저 북 리스트  isEmpty: " + usrBookHistory.isEmpty() + "크기 : " + usrBookHistory.size() );
+		//System.out.println("유저 북 리스트  isEmpty: " + usrBookHistory.isEmpty() + "크기 : " + usrBookHistory.size() );
 	
 		String maxContentSign = iHisServ.setHistoryLst(usrBookHistory);
-		System.out.println("카운트 :" +maxContentSign) ;
+		//System.out.println("카운트 :" +maxContentSign) ;
 		List<Bookinfo> bookLst  = iMemserv.getBookLst_basedHis(maxContentSign);		
 		
 		model.addAttribute("bookLst",bookLst);
@@ -204,7 +204,7 @@ public class MemberShipController {
 			@ModelAttribute("loginState") String loginState,
 			SessionStatus sessionStatus,
 				Model model) {
-		
+		System.out.println("ID : " +member.getUsrid() + "로그아웃");
 		if(!sessionStatus.isComplete()) {
 			sessionStatus.setComplete();		
 		}
@@ -228,12 +228,13 @@ public class MemberShipController {
 		if("3".contentEquals(member.getLoginResult())) {
 			// 해당 아이디로 로그인결과가 성공이면
 			// 해당하는 아이디로 세션에 등록할 객체 정보를 끌어와 저장한다.
+			System.out.println("ID : " +member.getUsrid() + "로그인 하였음");
 			member = iMemserv.getLoginSession(usrid);
 			
 			// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
-			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrid());
+			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrnickname());
 			
-			System.out.println("리스트 크기 :"+ tmpLst.size() +"비어잇나 :" + tmpLst.isEmpty());
+			//System.out.println("리스트 크기 :"+ tmpLst.size() +"비어잇나 :" + tmpLst.isEmpty());
 			member = iTendserv.getResult(tmpLst, member);
 			
 			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
@@ -271,12 +272,12 @@ public class MemberShipController {
 				BfuMember member, Model model) {
 		
 		
-		System.out.println(member.getPw());
-		System.out.println(member.getUsrnickname());
-		System.out.println(member.getAge());
-		System.out.println(member.getFavorite());
-		System.out.println(member.getFavorite2());
-		System.out.println(member.getFavorite3());
+		//System.out.println(member.getPw());
+		//System.out.println(member.getUsrnickname());
+		//System.out.println(member.getAge());
+		//System.out.println(member.getFavorite());
+		//System.out.println(member.getFavorite2());
+		//System.out.println(member.getFavorite3());
 		
 		
 		

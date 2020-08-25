@@ -84,7 +84,9 @@ public class HomeController {
         // 클릭 될 때마다 유저 히스토리에 로그인된 유저의 id와 add코드를 추가한다.
         usrBookHistory usrHis = new usrBookHistory();
         usrHis.setUsrId(member.getUsrid());
-        usrHis.setAddCode(deSerV.getAddCode(Integer.valueOf(bookNo)));
+        
+        String addCode = deSerV.getAddCode(Integer.valueOf(bookNo));
+        usrHis.setAddCode(addCode);
         usrBookHistory.add(usrHis);
         
         for(usrBookHistory ur : usrBookHistory) {
@@ -106,6 +108,10 @@ public class HomeController {
 		model.addAttribute("grape3", grape3);
 		model.addAttribute("grape4", grape4);
 		model.addAttribute("grape5", grape5);
+		
+		
+		// 부가번호 추가
+		model.addAttribute("addcode",addCode);
 		return "forward:/detailView";
 	}
 	@RequestMapping("search")

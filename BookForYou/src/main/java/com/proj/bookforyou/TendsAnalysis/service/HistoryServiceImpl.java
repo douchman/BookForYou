@@ -43,6 +43,13 @@ public class HistoryServiceImpl implements IHistoryService {
 			return String.valueOf(ran.nextInt(9));
 		}
 		else {
+			for(int i=0; i<contentSignLst.size();i++) {
+				contentSignLst.get(i).setAddCode(
+						contentSignLst.get(i).getAddCode().substring(2,3)
+						);
+				
+			}
+				
 			this.contentsSignLst = contentSignLst;
 			//System.out.println(contentsSignLst);
 			return setSignCntMap();
@@ -67,7 +74,7 @@ public class HistoryServiceImpl implements IHistoryService {
 				maxContentsSignEntry = entry;
 			}
 		}
-		System.out.println("가장 많은키 " + maxContentsSignEntry.getKey());
+		//System.out.println("가장 많은키 " + maxContentsSignEntry.getKey());
 		return maxContentsSignEntry.getKey();		
 	}
 

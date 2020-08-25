@@ -18,8 +18,8 @@
 	</update>
 	
 	<insert id="indvRating" parameterType="map">
-		INSERT INTO INDVBOOKRATING(rNo, nickName, masterSeq, rating)
-		VALUES((SELECT NVL(MAX(rNo), 0)+1 FROM INDVBOOKRATING), #{nickName}, #{masterSeq}, #{rating})
+		INSERT INTO INDVBOOKRATING(rNo, nickName, masterSeq, rating, addCode)
+		VALUES((SELECT NVL(MAX(rNo), 0)+1 FROM INDVBOOKRATING), #{nickName}, #{masterSeq}, #{rating},#{addcode})
 	</insert>
 	
 	<delete id="deleteRating" parameterType="map">

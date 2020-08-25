@@ -53,7 +53,7 @@ public class MembershipServiceImpl implements IMembershipService {
 		String authNum = auth.getAuthNum();
 		//System.out.println("생성된 인증번호 : " + authNum);
 		
-		
+		/*
 		System.out.println("id"+member.getUsrid());
 		System.out.println("nick"+member.getUsrnickname());
 		System.out.println("pw"+member.getPw());
@@ -62,7 +62,7 @@ public class MembershipServiceImpl implements IMembershipService {
 		System.out.println("f1"+member.getFavorite());
 		System.out.println("f2"+member.getFavorite2());
 		System.out.println("f3"+member.getFavorite3());
-		
+		*/
 		member.setUsrauthnum(authNum);
 		
 		
@@ -77,7 +77,7 @@ public class MembershipServiceImpl implements IMembershipService {
 	public boolean authProc(MemberAuthDTO authDTO) {
 		
 		String usrAuthNum = memdao.selectUsrAuthNum(authDTO);
-		System.out.println("usr authNum = " + usrAuthNum);
+		//System.out.println("usr authNum = " + usrAuthNum);
 		
 		if(authDTO.getAuthNum().contentEquals(usrAuthNum)) {
 			memdao.updateMemberState(authDTO);
@@ -90,14 +90,14 @@ public class MembershipServiceImpl implements IMembershipService {
 	
 	@Override
 	public String loginProc(BfuMember member) {
-		System.out.println(member.getUsrid());
-		System.out.println(member.getPw());
+		//System.out.println(member.getUsrid());
+		//System.out.println(member.getPw());
 		
 		HashMap<String , String > usrInfo = memdao.selectUsrinfo(member);
 		
 		String result = "";
-		System.out.println("pw : "+usrInfo.get("pw"));
-		System.out.println("s state : "+usrInfo.get("serviceState"));
+		//System.out.println("pw : "+usrInfo.get("pw"));
+		//System.out.println("s state : "+usrInfo.get("serviceState"));
 		
 		// 0 반환시 아이디가 없는것
 		// 아이디가 존재하지 않을경우 0 반환
@@ -138,11 +138,11 @@ public class MembershipServiceImpl implements IMembershipService {
 	
 	
 	@Override
-	public List<UsrBookInfo> getUsrBookLst(String usrid) {
+	public List<UsrBookInfo> getUsrBookLst(String nickName) {
 
-		List<UsrBookInfo> usrBookLst = memdao.selectUsrBookLst(usrid);
+		List<UsrBookInfo> usrBookLst = memdao.selectUsrBookLst(nickName);
 
-		System.out.println(usrBookLst.get(0).getAddcode());
+	
 		/*
 		if (usrBookLst.get(0).getAddcode().contentEquals("none")) {
 			return null;
@@ -161,10 +161,11 @@ public class MembershipServiceImpl implements IMembershipService {
 	public List<Bookinfo> getBookLst_basedHis(String addcode) {
 		
 		List<Bookinfo> bookLst= memdao.getBookLst_basedHis(addcode);
-		
+		/*
 		for(Bookinfo b : bookLst) {
 			System.out.println(b.getTitle());
 		}
+		*/
 		return bookLst;
 	}
 }
