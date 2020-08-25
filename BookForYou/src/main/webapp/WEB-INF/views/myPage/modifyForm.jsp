@@ -227,6 +227,6 @@ font-size: 12pt;
 		
 	</div>
 
-	<script src='<c:url value="/resources/js/modifyForm.js?ver=3" />'></script>
+	<script src='<c:url value="/resources/js/modifyForm.js?ver=4" />'></script>
 </body>
 </html>

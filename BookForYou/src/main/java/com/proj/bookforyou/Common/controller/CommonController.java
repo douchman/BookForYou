@@ -51,20 +51,17 @@ public class CommonController {
 	
 	@RequestMapping(value = "/")
 	public String index(Model model) {
-		System.out.println("common call 1");
 		return "redirect:/home";
 	}
 	
 	@RequestMapping(value = "/{formPath}")
 	public String path(Model model, @PathVariable String formPath) {
 		model.addAttribute("formPath", "form/" + formPath);
-		System.out.println("common call 2");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/form/{formPath}")
 	public String formpath(@PathVariable String formPath) {
-		System.out.println("common call 3");
 		return pageMap.get(formPath);
 	}
 

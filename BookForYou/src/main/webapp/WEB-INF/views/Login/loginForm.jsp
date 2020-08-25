@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +43,9 @@
 				</div>
 				<div class="area-btngroup">
 					<input class="area-btn col-md-2 btn btn-primary" id="btnLogin"
-						type="button" value="로그인" onclick="loginProc()"> <input
+						type="button" value="로그인" onclick="loginProc();"> <input
 						class="area-btn col-md-3 btn btn-primary" id="btnRegist"
-						type="button" value="회원가입"> <input
+						type="button" value="회원가입" onclick="location.href='${root}signup'"> <input
 						class="area-btn col-md-3 btn btn-primary"
 						onclick="location.href='findID'" type="button" value="ID 찾기">
 					<input class="area-btn col-md-3 btn btn-primary"
@@ -55,6 +56,6 @@
 		</div>
 	</div>
 	<div class="area-space-150"></div>
-	
+<script src='<c:url value="/resources/js/loginForm.js?ver=7" />'></script>
 </body>
 </html>

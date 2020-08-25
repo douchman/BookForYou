@@ -66,6 +66,10 @@ public class MemberShipController {
 	public String getloginState() {	
 		return "0";
 	}
+	@ModelAttribute("sessionHistory")
+	public List<usrBookHistory> getHistory() {	
+		return new ArrayList<usrBookHistory>();
+	}
 	
 	
 	@RequestMapping(value = "isExistId")	
@@ -182,10 +186,10 @@ public class MemberShipController {
 			@ModelAttribute("sessionLogin")BfuMember member,
 				Model model) {
 		
-		System.out.println(usrBookHistory.get(0).getAddCode());
-		
+		System.out.println("유저 북 리스트  isEmpty: " + usrBookHistory.isEmpty() + "크기 : " + usrBookHistory.size() );
+	
 		String maxContentSign = iHisServ.setHistoryLst(usrBookHistory);
-		
+		System.out.println("카운트 :" +maxContentSign) ;
 		List<Bookinfo> bookLst  = iMemserv.getBookLst_basedHis(maxContentSign);		
 		
 		model.addAttribute("bookLst",bookLst);
@@ -229,9 +233,8 @@ public class MemberShipController {
 			// 임시 Lst 에 해당 회원의정보로 책리스트를 받아오고
 			List<UsrBookInfo> tmpLst = iMemserv.getUsrBookLst(member.getUsrid());
 			
-			// 반환 값이  null 아닐때만 성향분석서비스 호출 : 해당 유저의 책정보가 1개이상 있을 경우만
-			if(tmpLst != null)
-				member = iTendserv.getResult(tmpLst, member);
+			System.out.println("리스트 크기 :"+ tmpLst.size() +"비어잇나 :" + tmpLst.isEmpty());
+			member = iTendserv.getResult(tmpLst, member);
 			
 			// 그 리스트와 불러온 회원객체를 전달하여 필요한 값들을 회원객체에 추가하여 반환 받는다.
 			

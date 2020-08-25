@@ -32,14 +32,22 @@ public class HistoryServiceImpl implements IHistoryService {
 
 	@Override
 	public String setHistoryLst( ArrayList<usrBookHistory> contentSignLst) {
+		contentsSignCntMap.clear();
+		this.contentsSignLst.clear();
+		maxContentsSignEntry = null;
+		
 		// 열람 기록이 3권이 넘지 않을 경우
-		if(contentSignLst.size() <3) {
+		if(contentSignLst.size() <3 || contentSignLst.isEmpty()) {
 			// 랜덤하게 0~9 사이 난수를 생성해서 리턴
+			
 			return String.valueOf(ran.nextInt(9));
 		}
-		this.contentsSignLst = contentSignLst;
-		//System.out.println(contentsSignLst);
-		return setSignCntMap();
+		else {
+			this.contentsSignLst = contentSignLst;
+			//System.out.println(contentsSignLst);
+			return setSignCntMap();
+		}
+		
 	}
 	
 	@Override
@@ -59,7 +67,7 @@ public class HistoryServiceImpl implements IHistoryService {
 				maxContentsSignEntry = entry;
 			}
 		}
-		
+		System.out.println("가장 많은키 " + maxContentsSignEntry.getKey());
 		return maxContentsSignEntry.getKey();		
 	}
 

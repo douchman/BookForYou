@@ -67,19 +67,19 @@ img {
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img class="d-block w-100" src="https://post-phinf.pstatic.net/MjAxOTA5MjFfMTM2/MDAxNTY5MDI4ODUwMzA3.R9Yu6RGesmK-iGtw5fSGPxOeI6tuc7W6WgcFuJvbN4Ug.8eSfJVX2iAFId5_2v92x26vJ_VYXRxYr8yGJXf8uv68g.JPEG/0.jpg?type=w1200" alt="First slide">
+				<img class="d-block w-100" src="<c:url value="/resources/img/mainImg.png"/>" alt="First slide">
+				<div class="carousel-caption">
+					<input type="button" style="color: black;" class="ghost-button" name="enter" onclick="enterMain();" value="입 장 하 기">
+				</div>
+			</div>
+			<div class="item">
+				<img class="d-block w-100" src="<c:url value="/resources/img/mainImg4.png"/>" alt="Second slide">
 				<div class="carousel-caption">
 					<input type="button" class="ghost-button" name="enter" onclick="enterMain();" value="입 장 하 기">
 				</div>
 			</div>
 			<div class="item">
-				<img class="d-block w-100" src="https://images.pexels.com/photos/2355519/pexels-photo-2355519.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Second slide">
-				<div class="carousel-caption">
-					<input type="button" class="ghost-button" name="enter" onclick="enterMain();" value="입 장 하 기">
-				</div>
-			</div>
-			<div class="item">
-				<img class="d-block w-100" src="${pageContext.request.contextPath}/resources/img/book1.jpg" alt="Third slide">
+				<img class="d-block w-100" src="<c:url value="/resources/img/mainImg5.png"/>" alt="Third slide">
 				<div class="carousel-caption">
 					<input id="enterMain" type="button" class="ghost-button" name="enter" onclick="enterMain();" value="입 장 하 기">
 				</div>

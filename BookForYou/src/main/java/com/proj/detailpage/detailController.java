@@ -72,7 +72,7 @@ public class detailController {
 		System.out.println(bookcomment.getNickname());
 		System.out.println(bookcomment.getReview());
 		System.out.println(bookcomment.getMasterseq());
-		model.addAttribute(bookcomment);
+		model.addAttribute("bookComment",bookcomment);
 		deSerV.writeReview(bookcomment);
 		return "detailPage/writeReviewDone";
 	}
